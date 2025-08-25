@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: node:18
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: npm run dev
+    ports:
+      - '5173:5173'
+
+  backend:
+    image: rust:1.72
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: cargo run
+    ports:
+      - '3000:3000'
