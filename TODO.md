@@ -4,10 +4,10 @@ This document breaks down the development plan for **LearnWithManga**. Tasks are
 by feature to allow different contributors and AIs to work in parallel.
 
 ## 1. Project Scaffolding
-- [ ] Create `frontend/` (Vue 3 + TypeScript) and `backend/` (Rust) workspaces.
-- [ ] Add `docker-compose.yml` for local development.
-- [ ] Set up CI workflow (GitHub Actions) running lint/tests for both layers.
-- [ ] Configure shared formatting tools: Prettier (frontend) & rustfmt/clippy (backend).
+- [x] Create `frontend/` (Vue 3 + TypeScript) and `backend/` (Rust) workspaces.
+- [x] Add `docker-compose.yml` for local development.
+- [x] Set up CI workflow (GitHub Actions) running lint/tests for both layers.
+- [x] Configure shared formatting tools: Prettier (frontend) & rustfmt/clippy (backend).
 
 ## 2. User Management & Onboarding
 - [ ] Implement registration/login with JWT auth and password hashing.
