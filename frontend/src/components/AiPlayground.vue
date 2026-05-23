@@ -288,6 +288,21 @@
         </Transition>
       </div>
 
+      <!-- Invitation Admin (si l'email est invité mais pas encore lié) -->
+      <div v-if="user && hasPendingAdminInvite" class="glass-panel settings-card" style="margin-top: 20px;">
+        <div class="panel-header">
+          <span class="step-num">👑</span>
+          <h2>Invitation administrateur</h2>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 15px;">
+          Tu as été invité en tant qu'administrateur. Lie ton compte pour accéder au panneau d'administration.
+        </p>
+        <button @click="linkAdminAccount" :disabled="linkingAdmin" class="btn btn-primary btn-block">
+          <span v-if="linkingAdmin" class="spinner"></span>
+          <span v-else>🔗 Lier mon compte administrateur</span>
+        </button>
+      </div>
+
       <!-- Encart 2 : Configuration du modèle (Affiché uniquement si connecté) -->
       <Transition name="slide-up">
         <div v-if="isConnectionVerified" class="glass-panel settings-card success-border">
@@ -543,6 +558,9 @@ const handleSignOut = async () => {
   await supabase.auth.signOut()
 }
 
+const hasPendingAdminInvite = ref(false)
+const linkingAdmin = ref(false)
+
 const checkAdminStatus = async () => {
   if (!user.value) return
   try {
@@ -554,8 +572,37 @@ const checkAdminStatus = async () => {
     isAdmin.value = admins.some(
       (a: any) => (a.user_id === userId) || (a.email === userEmail)
     )
+    hasPendingAdminInvite.value = admins.some(
+      (a: any) => a.email === userEmail && !a.user_id
+    )
   } catch {
     isAdmin.value = false
+    hasPendingAdminInvite.value = false
+  }
+}
+
+const linkAdminAccount = async () => {
+  if (!user.value) return
+  linkingAdmin.value = true
+  try {
+    const res = await fetch(`${API_BASE}/admin/link`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: user.value.id,
+        email: user.value.email
+      })
+    })
+    if (!res.ok) {
+      alert('Impossible de lier le compte')
+      return
+    }
+    hasPendingAdminInvite.value = false
+    await checkAdminStatus()
+  } catch {
+    alert('Erreur réseau')
+  } finally {
+    linkingAdmin.value = false
   }
 }
 

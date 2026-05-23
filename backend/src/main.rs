@@ -97,6 +97,23 @@ async fn main() {
         }
     };
 
+    // Seed default admin on first startup
+    let admin_email = "devops.benjamin@gmail.com";
+    let result = sqlx::query(
+        "INSERT INTO user_roles (email, role) VALUES ($1, 'admin') ON CONFLICT (email) DO NOTHING"
+    )
+    .bind(admin_email)
+    .execute(&db_pool)
+    .await;
+    match result {
+        Ok(r) => {
+            if r.rows_affected() > 0 {
+                println!("👑 Admin par défaut créé: {}", admin_email);
+            }
+        }
+        Err(e) => eprintln!("⚠️ Impossible de créer l'admin par défaut: {}", e),
+    }
+
     let llm_client = LlmClient::new();
     let shared_state = Arc::new(AppState {
         llm_client,

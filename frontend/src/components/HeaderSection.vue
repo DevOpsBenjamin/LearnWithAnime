@@ -49,9 +49,9 @@
           ◀️
         </button>
 
-        <!-- Bouton Admin (toujours visible pour accéder au panneau admin) -->
+        <!-- Bouton Admin (visible uniquement pour les admins) -->
         <button
-          v-if="user"
+          v-if="isAdmin"
           @click="$emit('go-to-admin')"
           class="action-icon-btn btn-admin"
           title="Panneau d'administration"
