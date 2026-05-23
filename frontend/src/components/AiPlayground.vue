@@ -9,10 +9,12 @@
       :userConfigs="userConfigs"
       :activeConfigName="activeConfigName"
       :currentView="currentView"
+      :isAdmin="isAdmin"
       @update:activeConfigName="activeConfigName = $event"
       @activate-config="activateConfig"
       @go-to-settings="currentView = 'settings'"
       @go-to-playground="currentView = 'playground'"
+      @go-to-admin="currentView = 'admin'"
       @sign-out="handleSignOut"
     />
 
@@ -225,7 +227,7 @@
     </div>
 
     <!-- Vue Paramètres (Page dédiée) -->
-    <div v-else class="settings-grid">
+    <div v-else-if="currentView === 'settings'" class="settings-grid">
       <!-- Encart 1 : Connexion au LLM -->
       <div class="glass-panel settings-card">
         <div class="panel-header">
@@ -499,6 +501,14 @@
         </div>
       </Transition>
     </div>
+
+    <!-- Vue Admin -->
+    <div v-else-if="currentView === 'admin'" class="playground-grid" style="display: flex; justify-content: center; padding-top: 20px;">
+      <AdminPanel
+        :user="user"
+        @admin-updated="checkAdminStatus"
+      />
+    </div>
   </div>
 </template>
 
@@ -506,6 +516,7 @@
 import { ref, computed, watch, onMounted } from 'vue'
 import { supabase } from '../supabase'
 import HeaderSection from './HeaderSection.vue'
+import AdminPanel from './AdminPanel.vue'
 
 interface UserLlmSettings {
   user_id: string;
@@ -532,6 +543,22 @@ const handleSignOut = async () => {
   await supabase.auth.signOut()
 }
 
+const checkAdminStatus = async () => {
+  if (!user.value) return
+  try {
+    const res = await fetch(`${API_BASE}/admin/admins`)
+    if (!res.ok) return
+    const admins = await res.json()
+    const userEmail = user.value.email
+    const userId = user.value.id
+    isAdmin.value = admins.some(
+      (a: any) => (a.user_id === userId) || (a.email === userEmail)
+    )
+  } catch {
+    isAdmin.value = false
+  }
+}
+
 interface PresetItem {
   vocab: string;
   anime: string;
@@ -555,7 +582,8 @@ const apiUrl = ref('http://localhost:1337/v1')
 const apiKey = ref('')
 
 // Navigation et validation d'API
-const currentView = ref<'playground' | 'settings'>('playground')
+const currentView = ref<'playground' | 'settings' | 'admin'>('playground')
+const isAdmin = ref(false)
 const isConnectionVerified = ref(false)
 const connectionError = ref('')
 const isLoadingSettings = ref(false) // Guard pour éviter que le watcher ne reset la connexion pendant le chargement
@@ -934,6 +962,7 @@ onMounted(() => {
     if (data.user) {
       user.value = data.user
       await fetchUserSettings(data.user.id)
+      await checkAdminStatus()
       
       // Auto-vérifier la connexion au montage uniquement si pas déjà vérifié par fetchUserSettings
       if (apiUrl.value && !isConnectionVerified.value) {

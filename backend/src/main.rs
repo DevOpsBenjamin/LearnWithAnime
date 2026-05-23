@@ -37,6 +37,31 @@ struct Card {
     context_sentence: Option<String>,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+struct UserRole {
+    user_id: Option<uuid::Uuid>,
+    email: String,
+    role: String,
+    granted_at: chrono::DateTime<chrono::Utc>,
+}
+
+#[derive(Debug, Deserialize)]
+struct AddAdminRequest {
+    email: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct ClaimAdminRequest {
+    user_id: uuid::Uuid,
+    email: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct LinkAdminRequest {
+    user_id: uuid::Uuid,
+    email: String,
+}
+
 #[derive(Debug, Serialize, Deserialize, sqlx::FromRow, Clone)]
 struct UserLlmSettings {
     user_id: uuid::Uuid,
@@ -99,6 +124,12 @@ async fn main() {
         .route("/api/user/llm-settings", post(handle_save_user_settings))
         .route("/api/user/llm-settings/activate", post(handle_activate_user_setting))
         .route("/api/user/llm-settings/:user_id/:config_name", delete(handle_delete_user_setting))
+        // Routes Admin
+        .route("/api/admin/admins", get(handle_list_admins))
+        .route("/api/admin/admins", post(handle_add_admin))
+        .route("/api/admin/admins/:email", delete(handle_remove_admin))
+        .route("/api/admin/claim", post(handle_claim_admin))
+        .route("/api/admin/link", post(handle_link_admin))
         // Servir les fichiers statiques du frontend Vue
         .nest_service(
             "/",
@@ -381,6 +412,121 @@ async fn handle_delete_user_setting(
     }
 
     Ok(Json(serde_json::json!({ "status": "success", "deleted": config_name })))
+}
+
+// ==========================================
+// Handlers Admin
+// ==========================================
+
+async fn handle_list_admins(
+    State(state): State<Arc<AppState>>,
+) -> Result<Json<Vec<UserRole>>, (StatusCode, String)> {
+    println!("📥 Liste des administrateurs");
+    
+    let admins = sqlx::query_as::<_, (Option<uuid::Uuid>, String, String, chrono::DateTime<chrono::Utc>)>(
+        "SELECT user_id, email, role, granted_at FROM user_roles WHERE role = 'admin' ORDER BY granted_at"
+    )
+    .fetch_all(&state.db_pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?
+    .into_iter()
+    .map(|(user_id, email, role, granted_at)| UserRole { user_id, email, role, granted_at })
+    .collect();
+    
+    Ok(Json(admins))
+}
+
+async fn handle_add_admin(
+    State(state): State<Arc<AppState>>,
+    Json(payload): Json<AddAdminRequest>,
+) -> Result<Json<UserRole>, (StatusCode, String)> {
+    println!("📥 Ajout d'un administrateur par email: {}", payload.email);
+    
+    let row = sqlx::query_as::<_, (Option<uuid::Uuid>, String, String, chrono::DateTime<chrono::Utc>)>(
+        "INSERT INTO user_roles (email, role) VALUES ($1, 'admin') ON CONFLICT (email) DO UPDATE SET role = 'admin' RETURNING user_id, email, role, granted_at"
+    )
+    .bind(&payload.email)
+    .fetch_one(&state.db_pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?;
+    
+    println!("✅ Administrateur ajouté: {}", payload.email);
+    Ok(Json(UserRole { user_id: row.0, email: row.1, role: row.2, granted_at: row.3 }))
+}
+
+async fn handle_remove_admin(
+    State(state): State<Arc<AppState>>,
+    Path(email): Path<String>,
+) -> Result<Json<serde_json::Value>, (StatusCode, String)> {
+    println!("📥 Suppression d'un administrateur: {}", email);
+    
+    let rows = sqlx::query("DELETE FROM user_roles WHERE email = $1 AND role = 'admin'")
+        .bind(&email)
+        .execute(&state.db_pool)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?
+        .rows_affected();
+    
+    if rows == 0 {
+        return Err((StatusCode::NOT_FOUND, "Administrateur introuvable".to_string()));
+    }
+    
+    println!("✅ Administrateur supprimé: {}", email);
+    Ok(Json(serde_json::json!({ "status": "success", "removed": email })))
+}
+
+async fn handle_claim_admin(
+    State(state): State<Arc<AppState>>,
+    Json(payload): Json<ClaimAdminRequest>,
+) -> Result<Json<UserRole>, (StatusCode, String)> {
+    println!("📥 Réclamation du rôle admin: {} ({})", payload.user_id, payload.email);
+    
+    let admin_count: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM user_roles WHERE role = 'admin'"
+    )
+    .fetch_one(&state.db_pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?;
+    
+    if admin_count > 0 {
+        return Err((StatusCode::FORBIDDEN, "Un administrateur existe déjà. Seul un admin existant peut ajouter de nouveaux admins.".to_string()));
+    }
+    
+    let row = sqlx::query_as::<_, (Option<uuid::Uuid>, String, String, chrono::DateTime<chrono::Utc>)>(
+        "INSERT INTO user_roles (user_id, email, role) VALUES ($1, $2, 'admin') RETURNING user_id, email, role, granted_at"
+    )
+    .bind(payload.user_id)
+    .bind(&payload.email)
+    .fetch_one(&state.db_pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?;
+    
+    println!("✅ Premier administrateur créé: {} ({})", payload.user_id, payload.email);
+    Ok(Json(UserRole { user_id: row.0, email: row.1, role: row.2, granted_at: row.3 }))
+}
+
+async fn handle_link_admin(
+    State(state): State<Arc<AppState>>,
+    Json(payload): Json<LinkAdminRequest>,
+) -> Result<Json<UserRole>, (StatusCode, String)> {
+    println!("📥 Liaison du compte admin: {} -> {}", payload.email, payload.user_id);
+    
+    let row = sqlx::query_as::<_, (Option<uuid::Uuid>, String, String, chrono::DateTime<chrono::Utc>)>(
+        "UPDATE user_roles SET user_id = $1 WHERE email = $2 AND role = 'admin' AND user_id IS NULL RETURNING user_id, email, role, granted_at"
+    )
+    .bind(payload.user_id)
+    .bind(&payload.email)
+    .fetch_optional(&state.db_pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?;
+    
+    match row {
+        Some(r) => {
+            println!("✅ Compte lié: {} -> {}", payload.email, payload.user_id);
+            Ok(Json(UserRole { user_id: r.0, email: r.1, role: r.2, granted_at: r.3 }))
+        }
+        None => Err((StatusCode::NOT_FOUND, "Aucune invitation admin trouvée pour cet email ou déjà liée".to_string())),
+    }
 }
 
 // ==========================================

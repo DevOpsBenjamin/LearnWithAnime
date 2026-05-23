@@ -49,6 +49,16 @@
           ◀️
         </button>
 
+        <!-- Bouton Admin (visible uniquement pour les admins) -->
+        <button
+          v-if="isAdmin"
+          @click="$emit('go-to-admin')"
+          class="action-icon-btn btn-admin"
+          title="Panneau d'administration"
+        >
+          🔐
+        </button>
+
         <!-- Profil Utilisateur -->
         <div v-if="user" class="user-profile">
           <img v-if="avatarUrl" :src="avatarUrl" class="user-avatar" alt="Avatar" />
@@ -88,7 +98,8 @@ defineProps<{
   hasActiveConfig: boolean;
   userConfigs: UserLlmSettings[];
   activeConfigName: string;
-  currentView: 'playground' | 'settings';
+  currentView: 'playground' | 'settings' | 'admin';
+  isAdmin: boolean;
 }>()
 
 defineEmits<{
@@ -96,6 +107,7 @@ defineEmits<{
   'activate-config': [configName: string];
   'go-to-settings': [];
   'go-to-playground': [];
+  'go-to-admin': [];
   'sign-out': [];
 }>()
 </script>
