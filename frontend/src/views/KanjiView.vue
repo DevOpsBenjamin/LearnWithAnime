@@ -51,7 +51,10 @@
     </section>
 
     <section class="detail-section">
-      <div v-if="!selectedRadical && !selectedKanjiChar" class="glass-panel detail-placeholder">
+      <div
+        v-if="!selectedRadical && !selectedKanjiChar"
+        class="glass-panel detail-placeholder"
+      >
         <div class="placeholder-content">
           <span class="placeholder-icon">🔍</span>
           <h3>Sélectionnez un radical</h3>
@@ -61,7 +64,9 @@
 
       <div v-else-if="selectedKanji" class="glass-panel">
         <div class="detail-header">
-          <button @click="selectedKanjiChar = null" class="back-btn">◀ Retour</button>
+          <button @click="selectedKanjiChar = null" class="back-btn">
+            ◀ Retour
+          </button>
         </div>
 
         <div class="kanji-detail">
@@ -76,38 +81,65 @@
             </div>
             <div class="info-card">
               <span class="info-label">Traits</span>
-              <span class="info-value">{{ selectedKanji.stroke_count || '?' }}</span>
+              <span class="info-value">{{
+                selectedKanji.stroke_count || '?'
+              }}</span>
             </div>
             <div class="info-card">
               <span class="info-label">Grade</span>
-              <span class="info-value">{{ selectedKanji.grade ? `第${selectedKanji.grade}` : '—' }}</span>
+              <span class="info-value">{{
+                selectedKanji.grade ? `第${selectedKanji.grade}` : '—'
+              }}</span>
             </div>
             <div class="info-card">
               <span class="info-label">Fréquence</span>
-              <span class="info-value">{{ selectedKanji.frequency_rank ? `#${selectedKanji.frequency_rank}` : '—' }}</span>
+              <span class="info-value">{{
+                selectedKanji.frequency_rank
+                  ? `#${selectedKanji.frequency_rank}`
+                  : '—'
+              }}</span>
             </div>
           </div>
 
           <div class="detail-block">
             <h4>Lecture on'yomi (音読み)</h4>
             <div class="yomi-tags">
-              <span v-for="y in selectedKanji.on_yomi" :key="y" class="yomi-tag on-yomi">{{ y }}</span>
-              <span v-if="selectedKanji.on_yomi.length === 0" class="no-data">—</span>
+              <span
+                v-for="y in selectedKanji.on_yomi"
+                :key="y"
+                class="yomi-tag on-yomi"
+                >{{ y }}</span
+              >
+              <span v-if="selectedKanji.on_yomi.length === 0" class="no-data"
+                >—</span
+              >
             </div>
           </div>
 
           <div class="detail-block">
             <h4>Lecture kun'yomi (訓読み)</h4>
             <div class="yomi-tags">
-              <span v-for="y in selectedKanji.kun_yomi" :key="y" class="yomi-tag kun-yomi">{{ y }}</span>
-              <span v-if="selectedKanji.kun_yomi.length === 0" class="no-data">—</span>
+              <span
+                v-for="y in selectedKanji.kun_yomi"
+                :key="y"
+                class="yomi-tag kun-yomi"
+                >{{ y }}</span
+              >
+              <span v-if="selectedKanji.kun_yomi.length === 0" class="no-data"
+                >—</span
+              >
             </div>
           </div>
 
           <div class="detail-block">
             <h4>Sens (EN)</h4>
             <div class="meanings-list">
-              <span v-for="m in selectedKanji.meanings_en" :key="m" class="meaning-item">{{ m }}</span>
+              <span
+                v-for="m in selectedKanji.meanings_en"
+                :key="m"
+                class="meaning-item"
+                >{{ m }}</span
+              >
             </div>
           </div>
 
@@ -127,10 +159,17 @@
 
           <div class="detail-block">
             <h4>Radical</h4>
-            <div class="radical-ref" @click="goToRadical(selectedKanji.radical_number!)">
+            <div
+              class="radical-ref"
+              @click="goToRadical(selectedKanji.radical_number!)"
+            >
               <span class="rr-char">{{ radicalForCurrentKanji?.char }}</span>
-              <span class="rr-number">Radical {{ selectedKanji.radical_number }}</span>
-              <span class="rr-meaning">{{ radicalForCurrentKanji?.meaning }}</span>
+              <span class="rr-number"
+                >Radical {{ selectedKanji.radical_number }}</span
+              >
+              <span class="rr-meaning">{{
+                radicalForCurrentKanji?.meaning
+              }}</span>
             </div>
           </div>
         </div>
@@ -142,7 +181,10 @@
             <span class="rr-big-char">{{ selectedRadical!.char }}</span>
             <span class="rr-info">
               <strong>{{ selectedRadical!.meaning }}</strong>
-              <span class="rr-meta">Radical {{ selectedRadical!.number }} — {{ selectedRadical!.stroke_count }} traits</span>
+              <span class="rr-meta"
+                >Radical {{ selectedRadical!.number }} —
+                {{ selectedRadical!.stroke_count }} traits</span
+              >
             </span>
           </span>
         </div>
@@ -150,7 +192,12 @@
         <div v-if="selectedRadical!.variants.length > 0" class="detail-block">
           <h4>Variantes</h4>
           <div class="variants-list">
-            <span v-for="v in selectedRadical!.variants" :key="v" class="variant-char">{{ v }}</span>
+            <span
+              v-for="v in selectedRadical!.variants"
+              :key="v"
+              class="variant-char"
+              >{{ v }}</span
+            >
           </div>
         </div>
 
@@ -165,7 +212,10 @@
               v-for="k in radicalKanjiList"
               :key="k.char"
               @click="selectKanji(k.char)"
-              :class="['kanji-mini-btn', { active: selectedKanjiChar === k.char }]"
+              :class="[
+                'kanji-mini-btn',
+                { active: selectedKanjiChar === k.char },
+              ]"
             >
               <span class="km-char">{{ k.char }}</span>
               <span class="km-meta">{{ k.stroke_count }}t</span>
@@ -180,7 +230,11 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
-import { fetchRadicals, fetchKanjiList, fetchKanjiDetail } from '../services/kanji'
+import {
+  fetchRadicals,
+  fetchKanjiList,
+  fetchKanjiDetail,
+} from '../services/kanji'
 import type { Radical, KanjiMeta, KanjiEntry } from '../services/kanji'
 
 const loading = ref(true)
@@ -230,7 +284,11 @@ const radicalKanjiList = computed(() => {
 
 const radicalForCurrentKanji = computed(() => {
   if (!selectedKanji.value?.radical_number) return null
-  return radicals.value.find((r) => r.number === selectedKanji.value!.radical_number) || null
+  return (
+    radicals.value.find(
+      (r) => r.number === selectedKanji.value!.radical_number,
+    ) || null
+  )
 })
 
 function selectRadical(rad: Radical) {
@@ -281,7 +339,10 @@ watch(selectedRadical, async () => {
 
 onMounted(async () => {
   try {
-    const [rads, kanjiList] = await Promise.all([fetchRadicals(), fetchKanjiList()])
+    const [rads, kanjiList] = await Promise.all([
+      fetchRadicals(),
+      fetchKanjiList(),
+    ])
     radicals.value = rads
     allKanjiMeta.value = kanjiList
   } catch {

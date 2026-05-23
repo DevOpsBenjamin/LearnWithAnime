@@ -88,7 +88,15 @@
     </div>
     <nav class="nav-tabs">
       <button
-        :class="['nav-tab', { active: currentView === 'playground' || currentView === 'settings' || currentView === 'admin' }]"
+        :class="[
+          'nav-tab',
+          {
+            active:
+              currentView === 'playground' ||
+              currentView === 'settings' ||
+              currentView === 'admin',
+          },
+        ]"
         @click="$emit('go-to-playground')"
       >
         🎴 Playground

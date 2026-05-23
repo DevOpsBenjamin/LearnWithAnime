@@ -553,7 +553,9 @@ const apiUrl = ref('http://localhost:1337/v1')
 const apiKey = ref('')
 
 // Navigation et validation d'API
-const currentView = ref<'playground' | 'settings' | 'admin' | 'kanji'>('playground')
+const currentView = ref<'playground' | 'settings' | 'admin' | 'kanji'>(
+  'playground',
+)
 const isAdmin = ref(false)
 const isConnectionVerified = ref(false)
 const connectionError = ref('')
