@@ -16,12 +16,35 @@ Utilisés sous licence **CC-BY-SA 4.0**.
 
 Voir https://www.edrdg.org/edrdg/licence.html pour les conditions complètes.
 
+### JMdict
+
+Fichier XML complet des ~170 000 entrées lexicales japonaises avec traductions
+en anglais. Distribué par EDRDG depuis ftp.edrdg.org.
+https://www.edrdg.org/jmddict/j_jmdict.html
+
 ### jlpt_kanji.json
 
 Les données de mapping kanji → niveau JLPT (N5→N1, nouveau système 2010)
 proviennent de [Bluskyo/JLPT_Vocabulary](https://github.com/Bluskyo/JLPT_Vocabulary)
 (MIT), elles-mêmes basées sur les listes de [tanos.co.uk](https://www.tanos.co.uk/jlpt/)
 (CC-BY, Jonathan Waller).
+
+### Japanese subtitle frequency list
+
+Fréquences de mots depuis 12 277 sous-titres japonais (anime, drama, films).
+Projet de Chris Kempson. https://github.com/chriskempson/japanese-subtitles-word-kanji-frequency-lists
+
+## Sources téléchargées mais pas encore traitées
+
+Les fichiers suivants sont présents dans `_sources/` mais aucun script ne les
+exploite encore :
+
+- `jmdict_e.xml` — dictionnaire lexical japonais-anglais (pour générer les cards)
+- `radkfile` / `radkfile2` — inverse de KRADFILE (radical → kanji)
+- `kradfile2` — décompositions pour kanji JIS X 0212 étendus (déjà mergé par enrich-catalog)
+
+La liste de fréquences de Chris Kempson n'est pas téléchargée dans le repo ;
+suivre le lien GitHub pour l'obtenir si nécessaire.
 
 ## Procédure de regénération
 
