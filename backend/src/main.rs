@@ -103,7 +103,7 @@ async fn main() {
 
     let llm_client = LlmClient::new();
 
-    let data_dir = env::var("DATA_DIR").unwrap_or_else(|_| "../data".to_string());
+    let data_dir = env::var("DATA_DIR").unwrap_or_else(|_| "data".to_string());
     let catalog = catalog::load_catalog(&PathBuf::from(&data_dir)).unwrap_or_else(|e| {
         panic!("❌ Erreur chargement catalogue: {}", e);
     });
