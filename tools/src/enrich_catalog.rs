@@ -1,11 +1,19 @@
 use anyhow::{Context, Result};
 use quick_xml::events::Event;
 use quick_xml::Reader;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fs;
 use std::io::Write;
 use std::path::Path;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct Radical {
+    number: u8,
+    char: String,
+    meaning: String,
+    stroke_count: u8,
+}
 
 /// Output struct for our enriched JSONL
 #[derive(Debug, Clone, Serialize)]
@@ -20,6 +28,7 @@ struct KanjiEntry {
     jlpt_level: u8,
     grade: Option<u8>,
     radical_number: Option<u8>,
+    radical_char: Option<String>,
 }
 
 fn parse_kanjidic2(path: &Path) -> Result<HashMap<String, KanjiEntry>> {
@@ -127,6 +136,7 @@ fn parse_kanjidic2(path: &Path) -> Result<HashMap<String, KanjiEntry>> {
                                     jlpt_level: 0,
                                     grade,
                                     radical_number,
+                                    radical_char: None,
                                 },
                             );
                         }
@@ -261,6 +271,29 @@ fn main() -> Result<()> {
         m
     };
 
+    // Load radicals index for radical_char enrichment
+    let radicals_path = project_root
+        .parent()
+        .unwrap()
+        .join("backend")
+        .join("data")
+        .join("radicals")
+        .join("kangxi.json");
+    let radicals: Vec<Radical> = if radicals_path.exists() {
+        let raw = fs::read_to_string(&radicals_path)?;
+        serde_json::from_str(&raw)?
+    } else {
+        Vec::new()
+    };
+    let radical_map: HashMap<u8, String> = radicals
+        .iter()
+        .map(|r| (r.number, r.char.clone()))
+        .collect();
+    println!(
+        "   {} radicaux KangXi chargés",
+        radical_map.len()
+    );
+
     // 4. Build output per JLPT level
     let mut not_found: Vec<String> = Vec::new();
     let mut no_krad: Vec<String> = Vec::new();
@@ -286,6 +319,12 @@ fn main() -> Result<()> {
         };
 
         entry.jlpt_level = level;
+
+        // Add radical character from radicals index
+        entry.radical_char = entry
+            .radical_number
+            .and_then(|n| radical_map.get(&n))
+            .cloned();
 
         // Add components from KRADFILE
         if let Some(comps) = kradfile_combined.get(kanji_char) {
