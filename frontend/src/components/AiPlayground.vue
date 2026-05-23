@@ -482,10 +482,7 @@
               >
                 <span
                   class="config-item-name"
-                  @click="
-                    activeConfigName = cfg.config_name
-                    activateConfig(cfg.config_name)
-                  "
+                  @click="activateConfig(cfg.config_name)"
                 >
                   {{ cfg.is_active ? '✅' : '🤖' }}
                   <strong>{{ cfg.config_name }}</strong>
@@ -1039,6 +1036,7 @@ const saveUserSettings = async () => {
 
 const activateConfig = async (configName: string) => {
   if (!user.value) return
+  activeConfigName.value = configName
   editingConfigName.value = null
   try {
     const response = await fetch(`${API_BASE}/user/llm-settings/activate`, {

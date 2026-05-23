@@ -136,7 +136,6 @@ impl LlmClient {
     pub async fn evaluate_answer(&self, req: &EvaluateRequest) -> Result<EvaluateResponse, String> {
         let api_url_to_use = req.api_url.clone().unwrap_or_else(|| self.api_url.clone());
         let endpoint = format!("{}/chat/completions", api_url_to_use.trim_end_matches('/'));
-
         let system_prompt = "Tu es un tuteur de japonais bienveillant pour l'application LearnWithAnime. \
 Évalue la réponse de l'utilisateur pour le mot ou l'expression japonaise. \
 Réponds UNIQUEMENT sous forme d'un objet JSON strict avec exactement ces clés : \
@@ -231,7 +230,6 @@ Ne mets aucun texte explicatif avant ou après le JSON. N'utilise pas de blocs m
     pub async fn generate_hint(&self, req: &HintRequest) -> Result<HintResponse, String> {
         let api_url_to_use = req.api_url.clone().unwrap_or_else(|| self.api_url.clone());
         let endpoint = format!("{}/chat/completions", api_url_to_use.trim_end_matches('/'));
-
         let system_prompt = "Tu es un tuteur de japonais pour l'application LearnWithAnime. \
 Donne un indice court pour aider l'utilisateur à deviner le mot ou l'expression japonaise demandé(e). \
 Ne donne JAMAIS directement le mot ou sa traduction complète. \

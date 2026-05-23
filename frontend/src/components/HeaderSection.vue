@@ -21,16 +21,7 @@
             <select
               id="header-config-select"
               :value="activeConfigName"
-              @change="
-                $emit(
-                  'update:activeConfigName',
-                  ($event.target as HTMLSelectElement).value,
-                )
-                $emit(
-                  'activate-config',
-                  ($event.target as HTMLSelectElement).value,
-                )
-              "
+              @change="onConfigChange"
               class="header-config-select"
               title="Configuration de l'IA active"
             >
@@ -125,7 +116,7 @@ defineProps<{
   isAdmin: boolean
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   'update:activeConfigName': [value: string]
   'activate-config': [configName: string]
   'go-to-settings': []
@@ -133,6 +124,12 @@ defineEmits<{
   'go-to-admin': []
   'sign-out': []
 }>()
+
+const onConfigChange = (event: Event) => {
+  const value = (event.target as HTMLSelectElement).value
+  emit('update:activeConfigName', value)
+  emit('activate-config', value)
+}
 </script>
 
 <style scoped>
