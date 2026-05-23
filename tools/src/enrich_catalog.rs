@@ -87,7 +87,16 @@ fn parse_kanjidic2(path: &Path) -> Result<HashMap<String, KanjiEntry>> {
                     b"grade" if in_misc => in_grade = true,
                     b"reading_meaning" if in_character => in_reading_meaning = true,
                     b"rmgroup" if in_reading_meaning => in_rmgroup = true,
-                    b"meaning" if in_rmgroup => in_meaning = true,
+                    b"meaning" if in_rmgroup => {
+                        in_meaning = true;
+                        // Only accept meanings without m_lang (English)
+                        for attr in e.attributes().flatten() {
+                            if attr.key.as_ref() == b"m_lang" {
+                                in_meaning = false;
+                                break;
+                            }
+                        }
+                    }
                     b"reading" if in_rmgroup => {
                         in_reading = true;
                         reading_type.clear();
