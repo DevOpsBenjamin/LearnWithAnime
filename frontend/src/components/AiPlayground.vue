@@ -18,6 +18,14 @@
       @sign-out="handleSignOut"
     />
 
+    <div v-if="apiUrlError" class="api-url-error-banner">
+      <span class="alert-icon">🚨</span>
+      <div>
+        <strong>Mauvaise configuration de VITE_API_URL</strong>
+        <p>{{ apiUrlError }}</p>
+      </div>
+    </div>
+
     <HomeView
       v-if="currentView === 'playground'"
       :api-url="apiUrl"
@@ -29,6 +37,7 @@
       :max-tokens="maxTokens"
       :frequency-penalty="frequencyPenalty"
     />
+
 
     <!-- Vue Paramètres (Page dédiée) -->
     <div v-else-if="currentView === 'settings'" class="settings-grid">
@@ -451,6 +460,7 @@ import { supabase } from '../supabase'
 import HeaderSection from './HeaderSection.vue'
 import AdminPanel from './AdminPanel.vue'
 import HomeView from '../views/HomeView.vue'
+import { getApiUrlError } from '../services/api'
 
 interface UserLlmSettings {
   user_id: string
@@ -465,6 +475,8 @@ interface UserLlmSettings {
   max_tokens: number
   is_active: boolean
 }
+
+const apiUrlError = ref<string | null>(getApiUrlError())
 
 const userConfigs = ref<UserLlmSettings[]>([])
 const activeConfigName = ref<string>('')
@@ -1926,5 +1938,32 @@ onMounted(() => {
 
 .edit-config-btn:hover {
   opacity: 1;
+}
+
+.api-url-error-banner {
+  background: rgba(239, 68, 68, 0.12);
+  border: 2px solid rgba(239, 68, 68, 0.4);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  color: #fca5a5;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.api-url-error-banner .alert-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.api-url-error-banner strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #f87171;
+}
+.api-url-error-banner p {
+  margin: 0;
+  white-space: pre-wrap;
 }
 </style>

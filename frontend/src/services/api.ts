@@ -1,5 +1,26 @@
-export const API_BASE =
-  import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+export function getApiUrl(): string {
+  const raw = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+  const trimmed = raw.replace(/\/+$/, '')
+  if (!trimmed.endsWith('/api')) {
+    console.warn(
+      `⚠️ VITE_API_URL="${raw}" ne se termine pas par /api. ` +
+        'Ajout automatique de "/api". Corrige dans Cloudflare Pages :',
+      'VITE_API_URL doit être ex: https://ton-backend.up.railway.app/api',
+    )
+    return `${trimmed}/api`
+  }
+  return trimmed
+}
+
+export function getApiUrlError(): string | null {
+  const raw = import.meta.env.VITE_API_URL
+  if (!raw) return null
+  const trimmed = raw.replace(/\/+$/, '')
+  if (trimmed.endsWith('/api')) return null
+  return `VITE_API_URL="${raw}" ne se termine pas par /api. Ajoute "/api" à la fin.`
+}
+
+export const API_BASE = getApiUrl()
 
 export interface PresetItem {
   vocab: string
