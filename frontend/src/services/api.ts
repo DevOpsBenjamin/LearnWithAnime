@@ -1,15 +1,6 @@
 export function getApiUrl(): string {
   const raw = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
-  const trimmed = raw.replace(/\/+$/, '')
-  if (!trimmed.endsWith('/api')) {
-    console.warn(
-      `⚠️ VITE_API_URL="${raw}" ne se termine pas par /api. ` +
-        'Ajout automatique de "/api". Corrige dans Cloudflare Pages :',
-      'VITE_API_URL doit être ex: https://ton-backend.up.railway.app/api',
-    )
-    return `${trimmed}/api`
-  }
-  return trimmed
+  return raw.replace(/\/+$/, '')
 }
 
 export function getApiUrlError(): string | null {
@@ -17,7 +8,8 @@ export function getApiUrlError(): string | null {
   if (!raw) return null
   const trimmed = raw.replace(/\/+$/, '')
   if (trimmed.endsWith('/api')) return null
-  return `VITE_API_URL="${raw}" ne se termine pas par /api. Ajoute "/api" à la fin.`
+  const corrected = `${trimmed}/api`
+  return `VITE_API_URL="${raw}" ne se termine pas par /api.\nAjoute "/api" à la fin :\n${corrected}`
 }
 
 export const API_BASE = getApiUrl()
