@@ -34,7 +34,7 @@
                 title="Configuration de l'IA active"
               >
                 <option v-for="cfg in userConfigs" :key="cfg.config_name" :value="cfg.config_name">
-                  🤖 {{ cfg.config_name }} ({{ cfg.model.replace('mlx/', '') }})
+                  🤖 {{ cfg.config_name }}
                 </option>
               </select>
             </div>
@@ -342,6 +342,8 @@
           <div class="panel-header">
             <span class="step-num">02</span>
             <h2>Configuration du modèle</h2>
+            <span v-if="isEditing" class="edit-badge">✏️ Édition de « {{ editingConfigName }} »</span>
+            <span v-else class="edit-badge create-badge">🆕 Nouvelle configuration</span>
           </div>
 
           <!-- Succès -->
@@ -375,13 +377,23 @@
             />
           </div>
 
-          <button 
-            @click="saveUserSettings" 
-            class="btn btn-primary btn-block btn-save"
-            style="margin-top: 25px;"
-          >
-            💾 Enregistrer la configuration
-          </button>
+          <div class="save-config-row" style="margin-top: 25px; display: flex; gap: 10px;">
+            <button 
+              v-if="isEditing"
+              @click="cancelEditing" 
+              class="btn btn-secondary"
+              style="flex: 0 0 auto;"
+            >
+              ✖ Annuler
+            </button>
+            <button 
+              @click="saveUserSettings" 
+              class="btn btn-primary btn-block btn-save"
+              style="flex: 1;"
+            >
+              {{ isEditing ? '💾 Mettre à jour la configuration' : '💾 Créer la configuration' }}
+            </button>
+          </div>
 
           <!-- Liste des profils sauvegardés -->
           <div v-if="userConfigs.length > 0" class="input-group" style="margin-top: 25px;">
@@ -389,16 +401,25 @@
             <div class="saved-configs-list">
               <div v-for="cfg in userConfigs" :key="cfg.config_name" class="config-list-item" :class="{ 'active-item': cfg.is_active }">
                 <span class="config-item-name" @click="activeConfigName = cfg.config_name; activateConfig(cfg.config_name)">
-                  {{ cfg.is_active ? '✅' : '🤖' }} <strong>{{ cfg.config_name }}</strong> ({{ cfg.model.replace('mlx/', '') }})
+                  {{ cfg.is_active ? '✅' : '🤖' }} <strong>{{ cfg.config_name }}</strong>
                 </span>
-                <button 
-                  v-if="userConfigs.length > 1" 
-                  @click="deleteConfig(cfg.config_name)" 
-                  class="delete-config-btn" 
-                  title="Supprimer ce profil"
-                >
-                  🗑️
-                </button>
+                <div class="config-item-actions">
+                  <button 
+                    @click="loadConfigForEditing(cfg)" 
+                    class="edit-config-btn" 
+                    title="Modifier ce profil"
+                  >
+                    ✏️
+                  </button>
+                  <button 
+                    v-if="userConfigs.length > 1" 
+                    @click="deleteConfig(cfg.config_name)" 
+                    class="delete-config-btn" 
+                    title="Supprimer ce profil"
+                  >
+                    🗑️
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -552,7 +573,9 @@ interface UserLlmSettings {
 const userConfigs = ref<UserLlmSettings[]>([])
 const activeConfigName = ref<string>('')
 const configNameInput = ref<string>('Défaut')
+const editingConfigName = ref<string | null>(null)
 const hasActiveConfig = ref<boolean>(false)
+const isEditing = computed(() => editingConfigName.value !== null)
 
 const handleSignOut = async () => {
   await supabase.auth.signOut()
@@ -822,6 +845,7 @@ const saveUserSettings = async () => {
     }
     
     // Recharge les paramètres
+    editingConfigName.value = null
     await fetchUserSettings(user.value.id)
     currentView.value = 'playground'
   } catch (err: any) {
@@ -831,6 +855,7 @@ const saveUserSettings = async () => {
 
 const activateConfig = async (configName: string) => {
   if (!user.value) return
+  editingConfigName.value = null
   try {
     const response = await fetch(`${API_BASE}/user/llm-settings/activate`, {
       method: 'POST',
@@ -863,10 +888,38 @@ const deleteConfig = async (configName: string) => {
     if (!response.ok) {
       throw new Error(`Code ${response.status}`)
     }
+    // Si on était en train d'éditer la config supprimée, annuler l'édition
+    if (editingConfigName.value === configName) {
+      editingConfigName.value = null
+    }
     // Recharge
     await fetchUserSettings(user.value.id)
   } catch (err: any) {
     alert(`Impossible de supprimer la configuration : ${err.message}`)
+  }
+}
+
+const loadConfigForEditing = (cfg: UserLlmSettings) => {
+  apiUrl.value = cfg.api_url
+  apiKey.value = cfg.api_key || ''
+  selectedModel.value = cfg.model
+  configNameInput.value = cfg.config_name
+  temperatureEval.value = cfg.temperature_eval
+  temperatureHint.value = cfg.temperature_hint
+  topP.value = cfg.top_p
+  frequencyPenalty.value = cfg.frequency_penalty
+  maxTokens.value = cfg.max_tokens
+  editingConfigName.value = cfg.config_name
+  if (models.value.length === 0) {
+    testLlmConnection()
+  }
+}
+
+const cancelEditing = () => {
+  editingConfigName.value = null
+  // Recharger la config active dans le formulaire
+  if (user.value) {
+    fetchUserSettings(user.value.id)
   }
 }
 
@@ -2240,6 +2293,44 @@ const getScoreClass = (score: number) => {
 }
 
 .delete-config-btn:hover {
+  opacity: 1;
+}
+
+.edit-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.edit-badge.create-badge {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.config-item-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.edit-config-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 0.9rem;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.edit-config-btn:hover {
   opacity: 1;
 }
 </style>
