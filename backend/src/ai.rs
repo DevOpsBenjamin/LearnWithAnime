@@ -184,11 +184,11 @@ Ne mets aucun texte explicatif avant ou après le JSON. N'utilise pas de blocs m
         let mut request_builder = self.client.post(&endpoint).json(&chat_request);
 
         let api_key_to_use = req.api_key.clone().or_else(|| env::var("LLM_API_KEY").ok());
-        if let Some(ref key) = api_key_to_use {
-            if !key.trim().is_empty() {
-                request_builder =
-                    request_builder.header("Authorization", format!("Bearer {}", key));
-            }
+        if let Some(ref key) = api_key_to_use
+            && !key.trim().is_empty()
+        {
+            request_builder =
+                request_builder.header("Authorization", format!("Bearer {}", key));
         }
 
         let response = request_builder
@@ -271,11 +271,11 @@ Sois très concis (1-2 phrases maximum) et réponds directement en français.";
         let mut request_builder = self.client.post(&endpoint).json(&chat_request);
 
         let api_key_to_use = req.api_key.clone().or_else(|| env::var("LLM_API_KEY").ok());
-        if let Some(ref key) = api_key_to_use {
-            if !key.trim().is_empty() {
-                request_builder =
-                    request_builder.header("Authorization", format!("Bearer {}", key));
-            }
+        if let Some(ref key) = api_key_to_use
+            && !key.trim().is_empty()
+        {
+            request_builder =
+                request_builder.header("Authorization", format!("Bearer {}", key));
         }
 
         let response = request_builder
@@ -314,11 +314,11 @@ Sois très concis (1-2 phrases maximum) et réponds directement en français.";
         let mut request_builder = self.client.get(&endpoint);
 
         let api_key_to_use = req.api_key.clone().or_else(|| env::var("LLM_API_KEY").ok());
-        if let Some(ref key) = api_key_to_use {
-            if !key.trim().is_empty() {
-                request_builder =
-                    request_builder.header("Authorization", format!("Bearer {}", key));
-            }
+        if let Some(ref key) = api_key_to_use
+            && !key.trim().is_empty()
+        {
+            request_builder =
+                request_builder.header("Authorization", format!("Bearer {}", key));
         }
 
         let response = request_builder
