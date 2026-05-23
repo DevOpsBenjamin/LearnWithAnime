@@ -6,7 +6,7 @@
   --glass-bg: rgba(20, 15, 35, 0.65);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-border-focus: rgba(236, 72, 153, 0.4); /* Sakura Pink */
-  
+
   --primary: #ec4899; /* Sakura Pink */
   --primary-glow: rgba(236, 72, 153, 0.35);
   --secondary: #8b5cf6; /* Electric Violet */
@@ -15,12 +15,19 @@
   --accent-glow: rgba(16, 185, 129, 0.2);
   --error: #ef4444; /* Neon red for incorrect answers */
   --error-glow: rgba(239, 68, 68, 0.2);
-  
+
   --text-main: #f3f4f6;
   --text-muted: #9ca3af;
   --text-dark: #111827;
-  
-  font-family: 'Outfit', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  font-family:
+    'Outfit',
+    'Noto Sans JP',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
   color: var(--text-main);
   background: var(--bg-gradient);
   min-height: 100vh;
@@ -39,7 +46,8 @@ body {
 
 /* Animations globales */
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 15px var(--primary-glow);
   }
   50% {
@@ -48,7 +56,8 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {

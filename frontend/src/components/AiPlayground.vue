@@ -31,11 +31,13 @@
           <!-- Presets -->
           <div class="preset-selector">
             <div class="preset-header-inline">
-              <label class="section-label">Sélection depuis la base de données :</label>
-              <button 
-                v-if="!isSeeded" 
-                @click="seedDatabase" 
-                class="seed-btn" 
+              <label class="section-label"
+                >Sélection depuis la base de données :</label
+              >
+              <button
+                v-if="!isSeeded"
+                @click="seedDatabase"
+                class="seed-btn"
                 :disabled="loadingCards"
                 title="Initialiser la base PostgreSQL/Supabase avec nos exemples cultes"
               >
@@ -44,22 +46,30 @@
             </div>
 
             <div v-if="loadingCards" class="presets-loader">
-              <span class="spinner"></span> <span>Chargement des cartes depuis la base...</span>
+              <span class="spinner"></span>
+              <span>Chargement des cartes depuis la base...</span>
             </div>
-            
+
             <div v-else-if="presets.length === 0" class="empty-presets-alert">
               <p>La base de données est connectée mais vide.</p>
-              <button @click="seedDatabase" class="btn btn-secondary btn-sm" style="margin-top: 10px;">
+              <button
+                @click="seedDatabase"
+                class="btn btn-secondary btn-sm"
+                style="margin-top: 10px"
+              >
                 🌱 Charger le deck 'Animés Légendaires'
               </button>
             </div>
 
             <div v-else class="presets-grid">
-              <button 
-                v-for="item in presets" 
+              <button
+                v-for="item in presets"
                 :key="item.vocab"
                 @click="selectPreset(item)"
-                :class="['preset-btn', { active: currentVocab === item.vocab && !isCustom }]"
+                :class="[
+                  'preset-btn',
+                  { active: currentVocab === item.vocab && !isCustom },
+                ]"
               >
                 <div class="preset-vocab">{{ item.vocab }}</div>
                 <div class="preset-meta">{{ item.anime }}</div>
@@ -69,8 +79,8 @@
 
           <!-- Custom Input Toggle -->
           <div class="custom-toggle-container">
-            <button 
-              @click="toggleCustom" 
+            <button
+              @click="toggleCustom"
               :class="['custom-toggle-btn', { active: isCustom }]"
             >
               ⌨️ Saisir mon propre mot / expression
@@ -82,19 +92,19 @@
             <div v-if="isCustom" class="custom-inputs">
               <div class="input-group">
                 <label>Expression / Mot Japonais</label>
-                <input 
-                  type="text" 
-                  v-model="customVocab" 
-                  placeholder="Ex: 螺旋丸 ou 諦める..." 
+                <input
+                  type="text"
+                  v-model="customVocab"
+                  placeholder="Ex: 螺旋丸 ou 諦める..."
                   class="glass-input"
                 />
               </div>
               <div class="input-group">
                 <label>Manga de référence (facultatif)</label>
-                <input 
-                  type="text" 
-                  v-model="customAnime" 
-                  placeholder="Ex: Naruto, Shingeki no Kyojin..." 
+                <input
+                  type="text"
+                  v-model="customAnime"
+                  placeholder="Ex: Naruto, Shingeki no Kyojin..."
                   class="glass-input"
                 />
               </div>
@@ -106,19 +116,21 @@
 
           <!-- Hints System -->
           <div class="hints-system">
-            <label class="section-label">Besoin d'aide ? Demandez des indices progressifs :</label>
+            <label class="section-label"
+              >Besoin d'aide ? Demandez des indices progressifs :</label
+            >
             <div class="hints-buttons">
-              <button 
-                @click="fetchHint(1)" 
+              <button
+                @click="fetchHint(1)"
                 :disabled="loadingHint1 || !activeVocab"
                 class="btn btn-secondary"
               >
                 <span v-if="loadingHint1" class="spinner"></span>
                 <span v-else>💡 Indice Tier 1 (Lecture)</span>
               </button>
-              
-              <button 
-                @click="fetchHint(2)" 
+
+              <button
+                @click="fetchHint(2)"
                 :disabled="loadingHint2 || !activeVocab"
                 class="btn btn-secondary"
               >
@@ -134,10 +146,12 @@
                 <p>{{ hint1 }}</p>
               </div>
             </Transition>
-            
+
             <Transition name="fade">
               <div v-if="hint2" class="hint-bubble tier2">
-                <div class="bubble-header">🟡 Phrase d'exemple en contexte :</div>
+                <div class="bubble-header">
+                  🟡 Phrase d'exemple en contexte :
+                </div>
                 <p class="japanese-font">{{ hint2 }}</p>
               </div>
             </Transition>
@@ -155,13 +169,19 @@
 
           <div class="active-card-display">
             <span class="card-sub">Expression ciblée :</span>
-            <div class="card-main-vocab japanese-font">{{ activeVocab || 'Aucune sélection' }}</div>
-            <div v-if="activeAnime" class="card-anime-ref">🎬 Manga : {{ activeAnime }}</div>
+            <div class="card-main-vocab japanese-font">
+              {{ activeVocab || 'Aucune sélection' }}
+            </div>
+            <div v-if="activeAnime" class="card-anime-ref">
+              🎬 Manga : {{ activeAnime }}
+            </div>
           </div>
 
           <div class="input-group">
-            <label for="user-answer">Votre traduction ou explication en français :</label>
-            <textarea 
+            <label for="user-answer"
+              >Votre traduction ou explication en français :</label
+            >
+            <textarea
               id="user-answer"
               v-model="userAnswer"
               placeholder="Ex: renoncer, abandonner... ou donnez une phrase explicative"
@@ -171,8 +191,8 @@
             ></textarea>
           </div>
 
-          <button 
-            @click="evaluateAnswer" 
+          <button
+            @click="evaluateAnswer"
             :disabled="loadingEval || !userAnswer.trim() || !activeVocab"
             class="btn btn-primary btn-block btn-eval"
           >
@@ -193,7 +213,7 @@
           <Transition name="slide-up">
             <div v-if="evaluation" class="evaluation-result">
               <div class="divider"></div>
-              
+
               <div class="result-header">
                 <h3>Résultat de l'évaluation</h3>
                 <div :class="['score-badge', getScoreClass(evaluation.score)]">
@@ -203,8 +223,17 @@
               </div>
 
               <!-- Status Banner -->
-              <div :class="['status-banner', evaluation.is_correct ? 'success' : 'failure']">
-                <span class="status-icon">{{ evaluation.is_correct ? '✅ Réponse Validée !' : '❌ À corriger' }}</span>
+              <div
+                :class="[
+                  'status-banner',
+                  evaluation.is_correct ? 'success' : 'failure',
+                ]"
+              >
+                <span class="status-icon">{{
+                  evaluation.is_correct
+                    ? '✅ Réponse Validée !'
+                    : '❌ À corriger'
+                }}</span>
               </div>
 
               <!-- Explanation -->
@@ -215,9 +244,14 @@
                 </div>
 
                 <!-- Correction -->
-                <div v-if="evaluation.correction" class="result-block correction-block">
+                <div
+                  v-if="evaluation.correction"
+                  class="result-block correction-block"
+                >
                   <h4>✍️ Correction suggérée :</h4>
-                  <p class="correction-text japanese-font">{{ evaluation.correction }}</p>
+                  <p class="correction-text japanese-font">
+                    {{ evaluation.correction }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -236,41 +270,79 @@
         </div>
 
         <div class="input-group">
-          <label for="api-url-input">URL du point d'accès API (Endpoint) :</label>
-          <input 
-            id="api-url-input" 
-            type="text" 
-            v-model="apiUrl" 
-            placeholder="Ex: http://localhost:1337/v1" 
+          <label for="api-url-input"
+            >URL du point d'accès API (Endpoint) :</label
+          >
+          <input
+            id="api-url-input"
+            type="text"
+            v-model="apiUrl"
+            placeholder="Ex: http://localhost:1337/v1"
             class="glass-input"
           />
           <!-- Presets Row -->
           <div class="presets-row">
-            <button type="button" @click="apiUrl = 'http://localhost:11434/v1'" class="preset-badge">🦙 Ollama (Local)</button>
-            <button type="button" @click="apiUrl = 'https://api.openai.com/v1'" class="preset-badge">⚡ OpenAI</button>
-            <button type="button" @click="apiUrl = 'https://api.x.ai/v1'" class="preset-badge">🤖 xAI (Grok)</button>
-            <button type="button" @click="apiUrl = 'https://openrouter.ai/api/v1'" class="preset-badge">🔮 OpenRouter</button>
-            <button type="button" @click="apiUrl = 'https://api.mistral.ai/v1'" class="preset-badge">🌀 Mistral AI</button>
-            <button type="button" @click="apiUrl = 'https://api.groq.com/openai/v1'" class="preset-badge">⚡ Groq</button>
+            <button
+              type="button"
+              @click="apiUrl = 'http://localhost:11434/v1'"
+              class="preset-badge"
+            >
+              🦙 Ollama (Local)
+            </button>
+            <button
+              type="button"
+              @click="apiUrl = 'https://api.openai.com/v1'"
+              class="preset-badge"
+            >
+              ⚡ OpenAI
+            </button>
+            <button
+              type="button"
+              @click="apiUrl = 'https://api.x.ai/v1'"
+              class="preset-badge"
+            >
+              🤖 xAI (Grok)
+            </button>
+            <button
+              type="button"
+              @click="apiUrl = 'https://openrouter.ai/api/v1'"
+              class="preset-badge"
+            >
+              🔮 OpenRouter
+            </button>
+            <button
+              type="button"
+              @click="apiUrl = 'https://api.mistral.ai/v1'"
+              class="preset-badge"
+            >
+              🌀 Mistral AI
+            </button>
+            <button
+              type="button"
+              @click="apiUrl = 'https://api.groq.com/openai/v1'"
+              class="preset-badge"
+            >
+              ⚡ Groq
+            </button>
           </div>
         </div>
 
-        <div class="input-group" style="margin-top: 20px;">
+        <div class="input-group" style="margin-top: 20px">
           <label for="api-key-input">Clé API secrète (Optionnelle) :</label>
-          <input 
-            id="api-key-input" 
-            type="password" 
-            v-model="apiKey" 
-            placeholder="Ex: sk-... (laissez vide pour un LLM local)" 
+          <input
+            id="api-key-input"
+            type="password"
+            v-model="apiKey"
+            placeholder="Ex: sk-... (laissez vide pour un LLM local)"
             class="glass-input"
           />
         </div>
 
-        <button 
-          @click="testLlmConnection" 
-          :disabled="loadingModels" 
+        <button
+          @click="testLlmConnection"
+          :disabled="loadingModels"
           class="btn btn-primary btn-block btn-connect"
-          style="margin-top: 25px;"
+          style="margin-top: 25px"
         >
           <span v-if="loadingModels" class="spinner"></span>
           <span v-else>🔌 Se connecter &amp; Tester l'API</span>
@@ -278,26 +350,42 @@
 
         <!-- Error Alert if failed connection -->
         <Transition name="fade">
-          <div v-if="connectionError" class="error-alert" style="margin-top: 20px;">
+          <div
+            v-if="connectionError"
+            class="error-alert"
+            style="margin-top: 20px"
+          >
             <span class="alert-icon">⚠️</span>
             <div>
               <strong>Échec de connexion :</strong> {{ connectionError }}
-              <p style="margin: 5px 0 0 0; font-size: 0.8rem; opacity: 0.85;">Vérifiez l'URL de votre API et que votre serveur local ou cloud est en ligne.</p>
+              <p style="margin: 5px 0 0 0; font-size: 0.8rem; opacity: 0.85">
+                Vérifiez l'URL de votre API et que votre serveur local ou cloud
+                est en ligne.
+              </p>
             </div>
           </div>
         </Transition>
       </div>
 
       <!-- Invitation Admin (si l'email est invité mais pas encore lié) -->
-      <div v-if="user && hasPendingAdminInvite" class="glass-panel settings-card" style="margin-top: 20px;">
+      <div
+        v-if="user && hasPendingAdminInvite"
+        class="glass-panel settings-card"
+        style="margin-top: 20px"
+      >
         <div class="panel-header">
           <span class="step-num">👑</span>
           <h2>Invitation administrateur</h2>
         </div>
-        <p style="color: var(--text-muted); margin-bottom: 15px;">
-          Tu as été invité en tant qu'administrateur. Lie ton compte pour accéder au panneau d'administration.
+        <p style="color: var(--text-muted); margin-bottom: 15px">
+          Tu as été invité en tant qu'administrateur. Lie ton compte pour
+          accéder au panneau d'administration.
         </p>
-        <button @click="linkAdminAccount" :disabled="linkingAdmin" class="btn btn-primary btn-block">
+        <button
+          @click="linkAdminAccount"
+          :disabled="linkingAdmin"
+          class="btn btn-primary btn-block"
+        >
           <span v-if="linkingAdmin" class="spinner"></span>
           <span v-else>🔗 Lier mon compte administrateur</span>
         </button>
@@ -305,24 +393,31 @@
 
       <!-- Encart 2 : Configuration du modèle (Affiché uniquement si connecté) -->
       <Transition name="slide-up">
-        <div v-if="isConnectionVerified" class="glass-panel settings-card success-border">
+        <div
+          v-if="isConnectionVerified"
+          class="glass-panel settings-card success-border"
+        >
           <div class="panel-header">
             <span class="step-num">02</span>
             <h2>Configuration du modèle</h2>
-            <span v-if="isEditing" class="edit-badge">✏️ Édition de « {{ editingConfigName }} »</span>
-            <span v-else class="edit-badge create-badge">🆕 Nouvelle configuration</span>
+            <span v-if="isEditing" class="edit-badge"
+              >✏️ Édition de « {{ editingConfigName }} »</span
+            >
+            <span v-else class="edit-badge create-badge"
+              >🆕 Nouvelle configuration</span
+            >
           </div>
 
           <!-- Succès -->
-          <div class="status-banner success" style="margin-bottom: 20px;">
+          <div class="status-banner success" style="margin-bottom: 20px">
             <span>✅ Connexion établie avec succès !</span>
           </div>
 
           <div class="input-group">
             <label for="model-select">Modèle LLM ciblé :</label>
-            <select 
-              id="model-select" 
-              v-model="selectedModel" 
+            <select
+              id="model-select"
+              v-model="selectedModel"
               class="glass-select"
             >
               <option value="">-- Choisir un modèle détecté --</option>
@@ -333,55 +428,80 @@
           </div>
 
           <!-- Nom de la configuration -->
-          <div class="input-group" style="margin-top: 20px;">
-            <label for="config-name-input">Nom de cette configuration d'API :</label>
-            <input 
-              id="config-name-input" 
-              type="text" 
-              v-model="configNameInput" 
-              placeholder="ex: Ollama Local, OpenAI Pro, Groq Fast..." 
+          <div class="input-group" style="margin-top: 20px">
+            <label for="config-name-input"
+              >Nom de cette configuration d'API :</label
+            >
+            <input
+              id="config-name-input"
+              type="text"
+              v-model="configNameInput"
+              placeholder="ex: Ollama Local, OpenAI Pro, Groq Fast..."
               class="glass-input"
             />
           </div>
 
-          <div class="save-config-row" style="margin-top: 25px; display: flex; gap: 10px;">
-            <button 
+          <div
+            class="save-config-row"
+            style="margin-top: 25px; display: flex; gap: 10px"
+          >
+            <button
               v-if="isEditing"
-              @click="cancelEditing" 
+              @click="cancelEditing"
               class="btn btn-secondary"
-              style="flex: 0 0 auto;"
+              style="flex: 0 0 auto"
             >
               ✖ Annuler
             </button>
-            <button 
-              @click="saveUserSettings" 
+            <button
+              @click="saveUserSettings"
               class="btn btn-primary btn-block btn-save"
-              style="flex: 1;"
+              style="flex: 1"
             >
-              {{ isEditing ? '💾 Mettre à jour la configuration' : '💾 Créer la configuration' }}
+              {{
+                isEditing
+                  ? '💾 Mettre à jour la configuration'
+                  : '💾 Créer la configuration'
+              }}
             </button>
           </div>
 
           <!-- Liste des profils sauvegardés -->
-          <div v-if="userConfigs.length > 0" class="input-group" style="margin-top: 25px;">
-            <label style="opacity: 0.85;">Profils IA enregistrés :</label>
+          <div
+            v-if="userConfigs.length > 0"
+            class="input-group"
+            style="margin-top: 25px"
+          >
+            <label style="opacity: 0.85">Profils IA enregistrés :</label>
             <div class="saved-configs-list">
-              <div v-for="cfg in userConfigs" :key="cfg.config_name" class="config-list-item" :class="{ 'active-item': cfg.is_active }">
-                <span class="config-item-name" @click="activeConfigName = cfg.config_name; activateConfig(cfg.config_name)">
-                  {{ cfg.is_active ? '✅' : '🤖' }} <strong>{{ cfg.config_name }}</strong>
+              <div
+                v-for="cfg in userConfigs"
+                :key="cfg.config_name"
+                class="config-list-item"
+                :class="{ 'active-item': cfg.is_active }"
+              >
+                <span
+                  class="config-item-name"
+                  @click="
+                    activeConfigName = cfg.config_name
+                    activateConfig(cfg.config_name)
+                  "
+                >
+                  {{ cfg.is_active ? '✅' : '🤖' }}
+                  <strong>{{ cfg.config_name }}</strong>
                 </span>
                 <div class="config-item-actions">
-                  <button 
-                    @click="loadConfigForEditing(cfg)" 
-                    class="edit-config-btn" 
+                  <button
+                    @click="loadConfigForEditing(cfg)"
+                    class="edit-config-btn"
                     title="Modifier ce profil"
                   >
                     ✏️
                   </button>
-                  <button 
-                    v-if="userConfigs.length > 1" 
-                    @click="deleteConfig(cfg.config_name)" 
-                    class="delete-config-btn" 
+                  <button
+                    v-if="userConfigs.length > 1"
+                    @click="deleteConfig(cfg.config_name)"
+                    class="delete-config-btn"
                     title="Supprimer ce profil"
                   >
                     🗑️
@@ -395,17 +515,23 @@
 
       <!-- Encart 3 : Paramètres Avancés (Affiché si connecté) -->
       <Transition name="slide-up">
-        <div v-if="isConnectionVerified" class="glass-panel settings-card" style="grid-column: span 2; width: 100%; margin-top: 20px;">
+        <div
+          v-if="isConnectionVerified"
+          class="glass-panel settings-card"
+          style="grid-column: span 2; width: 100%; margin-top: 20px"
+        >
           <div class="panel-header">
             <span class="step-num">03</span>
             <h2>Paramètres avancés de l'IA</h2>
           </div>
 
           <!-- Avertissement de Sécurité -->
-          <div class="warning-alert-box" style="margin-bottom: 25px;">
+          <div class="warning-alert-box" style="margin-bottom: 25px">
             <span class="alert-icon">⚠️</span>
             <p class="warning-text">
-              <strong>Attention :</strong> Des valeurs par défaut existent. Seuls ceux qui savent quoi faire de ces options et pourquoi leur modèle a besoin de les changer devraient y toucher.
+              <strong>Attention :</strong> Des valeurs par défaut existent.
+              Seuls ceux qui savent quoi faire de ces options et pourquoi leur
+              modèle a besoin de les changer devraient y toucher.
             </p>
           </div>
 
@@ -413,103 +539,127 @@
             <!-- Double Contrôle des Températures -->
             <div class="input-group">
               <div class="slider-label-row">
-                <label for="temp-eval-slider">Température d'Évaluation (JSON Strict) :</label>
-                <span class="temp-value">{{ temperatureEval }} ({{ getTempLabel(temperatureEval) }})</span>
+                <label for="temp-eval-slider"
+                  >Température d'Évaluation (JSON Strict) :</label
+                >
+                <span class="temp-value"
+                  >{{ temperatureEval }} ({{
+                    getTempLabel(temperatureEval)
+                  }})</span
+                >
               </div>
-              <input 
-                id="temp-eval-slider" 
-                type="range" 
-                v-model.number="temperatureEval" 
-                min="0.0" 
-                max="1.0" 
-                step="0.1" 
+              <input
+                id="temp-eval-slider"
+                type="range"
+                v-model.number="temperatureEval"
+                min="0.0"
+                max="1.0"
+                step="0.1"
                 class="glass-slider"
               />
               <p class="slider-desc">
-                Recommandé : 0.0 - 0.1. Maintient le tuteur logique et évite les erreurs de format JSON.
+                Recommandé : 0.0 - 0.1. Maintient le tuteur logique et évite les
+                erreurs de format JSON.
               </p>
             </div>
 
             <div class="input-group">
               <div class="slider-label-row">
-                <label for="temp-hint-slider">Température des Indices (Créativité) :</label>
-                <span class="temp-value">{{ temperatureHint }} ({{ getTempLabel(temperatureHint) }})</span>
+                <label for="temp-hint-slider"
+                  >Température des Indices (Créativité) :</label
+                >
+                <span class="temp-value"
+                  >{{ temperatureHint }} ({{
+                    getTempLabel(temperatureHint)
+                  }})</span
+                >
               </div>
-              <input 
-                id="temp-hint-slider" 
-                type="range" 
-                v-model.number="temperatureHint" 
-                min="0.0" 
-                max="1.0" 
-                step="0.1" 
+              <input
+                id="temp-hint-slider"
+                type="range"
+                v-model.number="temperatureHint"
+                min="0.0"
+                max="1.0"
+                step="0.1"
                 class="glass-slider"
               />
               <p class="slider-desc">
-                Recommandé : 0.6 - 0.8. Favorise la variété et l'imagination pour les phrases d'exemples.
+                Recommandé : 0.6 - 0.8. Favorise la variété et l'imagination
+                pour les phrases d'exemples.
               </p>
             </div>
 
             <!-- Top P Slider -->
-            <div class="input-group" style="margin-top: 20px;">
+            <div class="input-group" style="margin-top: 20px">
               <div class="slider-label-row">
                 <label for="top-p-slider">Top P (Nucleus Sampling) :</label>
                 <span class="temp-value">{{ topP }}</span>
               </div>
-              <input 
-                id="top-p-slider" 
-                type="range" 
-                v-model.number="topP" 
-                min="0.0" 
-                max="1.0" 
-                step="0.05" 
+              <input
+                id="top-p-slider"
+                type="range"
+                v-model.number="topP"
+                min="0.0"
+                max="1.0"
+                step="0.05"
                 class="glass-slider"
               />
               <p class="slider-desc">
-                Recommandé : 1.0 (neutre) ou 0.9. Contrôle la diversité des jetons retenus.
+                Recommandé : 1.0 (neutre) ou 0.9. Contrôle la diversité des
+                jetons retenus.
               </p>
             </div>
 
             <!-- Frequency Penalty Slider -->
-            <div class="input-group" style="margin-top: 20px;">
+            <div class="input-group" style="margin-top: 20px">
               <div class="slider-label-row">
-                <label for="freq-penalty-slider">Pénalité de Répétition (Frequency Penalty) :</label>
+                <label for="freq-penalty-slider"
+                  >Pénalité de Répétition (Frequency Penalty) :</label
+                >
                 <span class="temp-value">{{ frequencyPenalty }}</span>
               </div>
-              <input 
-                id="freq-penalty-slider" 
-                type="range" 
-                v-model.number="frequencyPenalty" 
-                min="-2.0" 
-                max="2.0" 
-                step="0.1" 
+              <input
+                id="freq-penalty-slider"
+                type="range"
+                v-model.number="frequencyPenalty"
+                min="-2.0"
+                max="2.0"
+                step="0.1"
                 class="glass-slider"
               />
               <p class="slider-desc">
-                Recommandé : 0.0 (neutre) à 1.0. Évite les boucles de répétitions de mots.
+                Recommandé : 0.0 (neutre) à 1.0. Évite les boucles de
+                répétitions de mots.
               </p>
             </div>
 
             <!-- Max Tokens Input -->
-            <div class="input-group" style="margin-top: 20px; grid-column: span 2;">
-              <label for="max-tokens-input">Nombre maximal de jetons générés (Max Tokens) :</label>
-              <input 
-                id="max-tokens-input" 
-                type="number" 
-                v-model.number="maxTokens" 
-                min="1" 
-                max="8192" 
+            <div
+              class="input-group"
+              style="margin-top: 20px; grid-column: span 2"
+            >
+              <label for="max-tokens-input"
+                >Nombre maximal de jetons générés (Max Tokens) :</label
+              >
+              <input
+                id="max-tokens-input"
+                type="number"
+                v-model.number="maxTokens"
+                min="1"
+                max="8192"
                 class="glass-input"
               />
               <p class="slider-desc">
-                Recommandé : 2048. Limite supérieure de la taille de la réponse du modèle.
+                Recommandé : 2048. Limite supérieure de la taille de la réponse
+                du modèle.
               </p>
             </div>
           </div>
 
-          <button 
-            @click="saveUserSettings" 
+          <button
+            @click="saveUserSettings"
             class="btn btn-primary btn-block btn-save"
-            style="margin-top: 25px;"
+            style="margin-top: 25px"
           >
             💾 Enregistrer les paramètres avancés
           </button>
@@ -518,11 +668,12 @@
     </div>
 
     <!-- Vue Admin -->
-    <div v-else-if="currentView === 'admin'" class="playground-grid" style="display: flex; justify-content: center; padding-top: 20px;">
-      <AdminPanel
-        :user="user"
-        @admin-updated="checkAdminStatus"
-      />
+    <div
+      v-else-if="currentView === 'admin'"
+      class="playground-grid"
+      style="display: flex; justify-content: center; padding-top: 20px"
+    >
+      <AdminPanel :user="user" @admin-updated="checkAdminStatus" />
     </div>
   </div>
 </template>
@@ -534,17 +685,17 @@ import HeaderSection from './HeaderSection.vue'
 import AdminPanel from './AdminPanel.vue'
 
 interface UserLlmSettings {
-  user_id: string;
-  config_name: string;
-  api_url: string;
-  api_key: string;
-  model: string;
-  temperature_eval: number;
-  temperature_hint: number;
-  top_p: number;
-  frequency_penalty: number;
-  max_tokens: number;
-  is_active: boolean;
+  user_id: string
+  config_name: string
+  api_url: string
+  api_key: string
+  model: string
+  temperature_eval: number
+  temperature_hint: number
+  top_p: number
+  frequency_penalty: number
+  max_tokens: number
+  is_active: boolean
 }
 
 const userConfigs = ref<UserLlmSettings[]>([])
@@ -570,10 +721,10 @@ const checkAdminStatus = async () => {
     const userEmail = user.value.email
     const userId = user.value.id
     isAdmin.value = admins.some(
-      (a: any) => (a.user_id === userId) || (a.email === userEmail)
+      (a: any) => a.user_id === userId || a.email === userEmail,
     )
     hasPendingAdminInvite.value = admins.some(
-      (a: any) => a.email === userEmail && !a.user_id
+      (a: any) => a.email === userEmail && !a.user_id,
     )
   } catch {
     isAdmin.value = false
@@ -590,8 +741,8 @@ const linkAdminAccount = async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         user_id: user.value.id,
-        email: user.value.email
-      })
+        email: user.value.email,
+      }),
     })
     if (!res.ok) {
       alert('Impossible de lier le compte')
@@ -607,9 +758,9 @@ const linkAdminAccount = async () => {
 }
 
 interface PresetItem {
-  vocab: string;
-  anime: string;
-  defaultAnswer: string;
+  vocab: string
+  anime: string
+  defaultAnswer: string
 }
 
 // État dynamique pour les presets (cartes lues en base de données)
@@ -720,10 +871,10 @@ const loadingModels = ref(false)
 const loadingModelsError = ref('')
 
 interface EvalData {
-  is_correct: boolean;
-  score: number;
-  explanation: string;
-  correction: string | null;
+  is_correct: boolean
+  score: number
+  explanation: string
+  correction: string | null
 }
 const evaluation = ref<EvalData | null>(null)
 
@@ -738,12 +889,12 @@ const fetchModels = async () => {
     const response = await fetch(`${API_BASE}/ai/models`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         api_url: apiUrl.value || null,
-        api_key: apiKey.value || null
-      })
+        api_key: apiKey.value || null,
+      }),
     })
     if (!response.ok) {
       throw new Error(`Serveur injoignable (${response.status})`)
@@ -763,37 +914,39 @@ const testLlmConnection = async () => {
   loadingModels.value = true
   connectionError.value = ''
   isConnectionVerified.value = false
-  
+
   try {
     const response = await fetch(`${API_BASE}/ai/models`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         api_url: apiUrl.value || null,
-        api_key: apiKey.value || null
-      })
+        api_key: apiKey.value || null,
+      }),
     })
-    
+
     if (!response.ok) {
       const text = await response.text()
       throw new Error(text || `Erreur serveur (${response.status})`)
     }
-    
+
     const data: string[] = await response.json()
     models.value = data
-    
+
     // Essaye de présélectionner le modèle MiniMax
     if (!selectedModel.value || !data.includes(selectedModel.value)) {
-      const defaultModel = data.find((m: string) => m.toLowerCase().includes('minimax'))
+      const defaultModel = data.find((m: string) =>
+        m.toLowerCase().includes('minimax'),
+      )
       if (defaultModel) {
         selectedModel.value = defaultModel
       } else if (data.length > 0) {
         selectedModel.value = data[0]
       }
     }
-    
+
     isConnectionVerified.value = true
   } catch (err: any) {
     connectionError.value = err.message || "Impossible de contacter l'API."
@@ -830,12 +983,17 @@ const fetchUserSettings = async (userId: string) => {
     }
 
     // 2. Récupération de l'intégralité des profils IA
-    const allResponse = await fetch(`${API_BASE}/user/llm-settings/${userId}/all`)
+    const allResponse = await fetch(
+      `${API_BASE}/user/llm-settings/${userId}/all`,
+    )
     if (allResponse.ok) {
       userConfigs.value = await allResponse.json()
     }
   } catch (err) {
-    console.error("Erreur lors de la récupération des paramètres utilisateur:", err)
+    console.error(
+      'Erreur lors de la récupération des paramètres utilisateur:',
+      err,
+    )
     hasActiveConfig.value = false
   } finally {
     isLoadingSettings.value = false
@@ -844,12 +1002,12 @@ const fetchUserSettings = async (userId: string) => {
 
 const saveUserSettings = async () => {
   if (!user.value) return
-  
+
   try {
     const response = await fetch(`${API_BASE}/user/llm-settings`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         user_id: user.value.id,
@@ -862,14 +1020,14 @@ const saveUserSettings = async () => {
         top_p: topP.value,
         frequency_penalty: frequencyPenalty.value,
         max_tokens: maxTokens.value,
-        is_active: true
-      })
+        is_active: true,
+      }),
     })
-    
+
     if (!response.ok) {
       throw new Error(`Erreur serveur (${response.status})`)
     }
-    
+
     // Recharge les paramètres
     editingConfigName.value = null
     await fetchUserSettings(user.value.id)
@@ -886,12 +1044,12 @@ const activateConfig = async (configName: string) => {
     const response = await fetch(`${API_BASE}/user/llm-settings/activate`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         user_id: user.value.id,
-        config_name: configName
-      })
+        config_name: configName,
+      }),
     })
     if (!response.ok) {
       throw new Error(`Code ${response.status}`)
@@ -905,12 +1063,20 @@ const activateConfig = async (configName: string) => {
 
 const deleteConfig = async (configName: string) => {
   if (!user.value) return
-  if (!confirm(`Voulez-vous vraiment supprimer la configuration "${configName}" ?`)) return
-  
+  if (
+    !confirm(
+      `Voulez-vous vraiment supprimer la configuration "${configName}" ?`,
+    )
+  )
+    return
+
   try {
-    const response = await fetch(`${API_BASE}/user/llm-settings/${user.value.id}/${encodeURIComponent(configName)}`, {
-      method: 'DELETE'
-    })
+    const response = await fetch(
+      `${API_BASE}/user/llm-settings/${user.value.id}/${encodeURIComponent(configName)}`,
+      {
+        method: 'DELETE',
+      },
+    )
     if (!response.ok) {
       throw new Error(`Code ${response.status}`)
     }
@@ -956,13 +1122,13 @@ const fetchCards = async () => {
     const response = await fetch(`${API_BASE}/cards`)
     if (!response.ok) throw new Error()
     const data = await response.json()
-    
+
     presets.value = data.map((c: any) => ({
       vocab: c.vocab,
       anime: c.anime_reference || 'Général',
-      defaultAnswer: c.french_translation
+      defaultAnswer: c.french_translation,
     }))
-    
+
     if (presets.value.length > 0) {
       isSeeded.value = true
       // Sélectionne le premier mot par défaut si rien n'est sélectionné
@@ -974,7 +1140,7 @@ const fetchCards = async () => {
       isSeeded.value = false
     }
   } catch (err) {
-    console.warn("Échec du chargement des cartes de la base de données.")
+    console.warn('Échec du chargement des cartes de la base de données.')
     isSeeded.value = false
   } finally {
     loadingCards.value = false
@@ -988,7 +1154,7 @@ const seedDatabase = async () => {
   try {
     const response = await fetch(`${API_BASE}/db/seed`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     })
     if (!response.ok) {
       throw new Error(`Erreur serveur (${response.status})`)
@@ -1003,14 +1169,14 @@ const seedDatabase = async () => {
 
 onMounted(() => {
   fetchCards()
-  
+
   // Récupérer les données de l'utilisateur connecté et charger ses paramètres
   supabase.auth.getUser().then(async ({ data }) => {
     if (data.user) {
       user.value = data.user
       await fetchUserSettings(data.user.id)
       await checkAdminStatus()
-      
+
       // Auto-vérifier la connexion au montage uniquement si pas déjà vérifié par fetchUserSettings
       if (apiUrl.value && !isConnectionVerified.value) {
         await testLlmConnection()
@@ -1021,7 +1187,7 @@ onMounted(() => {
 
 const fetchHint = async (tier: number) => {
   if (!activeVocab.value) return
-  
+
   if (tier === 1) {
     loadingHint1.value = true
     hint1.value = ''
@@ -1044,8 +1210,8 @@ const fetchHint = async (tier: number) => {
         api_key: apiKey.value || null,
         top_p: topP.value,
         max_tokens: maxTokens.value,
-        frequency_penalty: frequencyPenalty.value
-      })
+        frequency_penalty: frequencyPenalty.value,
+      }),
     })
 
     if (!response.ok) {
@@ -1068,7 +1234,7 @@ const fetchHint = async (tier: number) => {
 
 const evaluateAnswer = async () => {
   if (!activeVocab.value || !userAnswer.value.trim()) return
-  
+
   loadingEval.value = true
   evaluation.value = null
   errorMessage.value = ''
@@ -1080,15 +1246,17 @@ const evaluateAnswer = async () => {
       body: JSON.stringify({
         vocab: activeVocab.value,
         user_answer: userAnswer.value,
-        context: activeAnime.value ? `Manga de référence: ${activeAnime.value}` : null,
+        context: activeAnime.value
+          ? `Manga de référence: ${activeAnime.value}`
+          : null,
         model: selectedModel.value || null,
         temperature: temperatureEval.value,
         api_url: apiUrl.value || null,
         api_key: apiKey.value || null,
         top_p: topP.value,
         max_tokens: maxTokens.value,
-        frequency_penalty: frequencyPenalty.value
-      })
+        frequency_penalty: frequencyPenalty.value,
+      }),
     })
 
     if (!response.ok) {
@@ -1202,7 +1370,6 @@ const getScoreClass = (score: number) => {
 }
 
 /* Header Actions & Profile */
-
 
 /* Modal Styling */
 .modal-overlay {
@@ -1654,7 +1821,11 @@ const getScoreClass = (score: number) => {
 /* Divider */
 .divider {
   height: 1px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   margin: 25px 0;
 }
 
@@ -1709,7 +1880,11 @@ const getScoreClass = (score: number) => {
 
 /* Active card display */
 .active-card-display {
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.08) 0%,
+    rgba(139, 92, 246, 0.08) 100%
+  );
   border: 1px solid rgba(236, 72, 153, 0.15);
   border-radius: 16px;
   padding: 20px;
@@ -1753,7 +1928,9 @@ const getScoreClass = (score: number) => {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .eval-loading-wrapper {
@@ -2083,9 +2260,18 @@ const getScoreClass = (score: number) => {
 }
 
 @keyframes pulse-blinking {
-  0% { opacity: 0.8; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-  50% { opacity: 1; box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
-  100% { opacity: 0.8; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+  0% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+  100% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
 }
 
 .header-config-selector-wrapper {

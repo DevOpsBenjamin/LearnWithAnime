@@ -7,11 +7,19 @@
       </div>
 
       <!-- Claim Admin (first-time setup) -->
-      <div v-if="!isAdmin && canClaim" class="input-group" style="margin-bottom: 20px;">
-        <p style="color: var(--text-muted); margin-bottom: 12px;">
+      <div
+        v-if="!isAdmin && canClaim"
+        class="input-group"
+        style="margin-bottom: 20px"
+      >
+        <p style="color: var(--text-muted); margin-bottom: 12px">
           Aucun administrateur n'existe encore. Tu peux réclamer le rôle !
         </p>
-        <button @click="claimAdmin" :disabled="claiming" class="btn btn-primary btn-block">
+        <button
+          @click="claimAdmin"
+          :disabled="claiming"
+          class="btn btn-primary btn-block"
+        >
           <span v-if="claiming" class="spinner"></span>
           <span v-else>👑 Devenir administrateur</span>
         </button>
@@ -20,8 +28,10 @@
       <!-- Admin content -->
       <template v-if="isAdmin">
         <!-- Add admin by email -->
-        <div class="input-group" style="margin-bottom: 20px;">
-          <label for="admin-email-input">Ajouter un administrateur par email :</label>
+        <div class="input-group" style="margin-bottom: 20px">
+          <label for="admin-email-input"
+            >Ajouter un administrateur par email :</label
+          >
           <div class="add-admin-row">
             <input
               id="admin-email-input"
@@ -29,9 +39,13 @@
               v-model="newAdminEmail"
               placeholder="ex: utilisateur@email.com"
               class="glass-input"
-              style="flex: 1;"
+              style="flex: 1"
             />
-            <button @click="addAdmin" :disabled="!newAdminEmail.trim() || addingAdmin" class="btn btn-primary">
+            <button
+              @click="addAdmin"
+              :disabled="!newAdminEmail.trim() || addingAdmin"
+              class="btn btn-primary"
+            >
               <span v-if="addingAdmin" class="spinner"></span>
               <span v-else>➕ Ajouter</span>
             </button>
@@ -41,12 +55,16 @@
 
         <!-- Admin list -->
         <div class="input-group">
-          <label style="opacity: 0.85;">Administrateurs actuels :</label>
+          <label style="opacity: 0.85">Administrateurs actuels :</label>
           <div v-if="admins.length === 0" class="empty-state">
             Aucun administrateur
           </div>
           <div v-else class="admin-list">
-            <div v-for="admin in admins" :key="admin.email" class="admin-list-item">
+            <div
+              v-for="admin in admins"
+              :key="admin.email"
+              class="admin-list-item"
+            >
               <div class="admin-info">
                 <span class="admin-email">{{ admin.email }}</span>
                 <span v-if="admin.user_id" class="admin-linked">✅ Lié</span>
@@ -65,11 +83,19 @@
       </template>
 
       <!-- Link invited admin -->
-      <div v-if="!isAdmin && !canClaim && canLink" class="input-group" style="margin-top: 20px;">
-        <p style="color: var(--text-muted); margin-bottom: 12px;">
+      <div
+        v-if="!isAdmin && !canClaim && canLink"
+        class="input-group"
+        style="margin-top: 20px"
+      >
+        <p style="color: var(--text-muted); margin-bottom: 12px">
           Tu as été invité en tant qu'administrateur. Lie ton compte :
         </p>
-        <button @click="linkAdmin" :disabled="linking" class="btn btn-primary btn-block">
+        <button
+          @click="linkAdmin"
+          :disabled="linking"
+          class="btn btn-primary btn-block"
+        >
           <span v-if="linking" class="spinner"></span>
           <span v-else>🔗 Lier mon compte admin</span>
         </button>
@@ -114,15 +140,15 @@ const fetchAdmins = async () => {
     if (!res.ok) throw new Error()
     const data: AdminUser[] = await res.json()
     admins.value = data
-    
+
     const userEmail = props.user?.email
     const userId = props.user?.id
-    
+
     isAdmin.value = data.some(
-      a => (a.user_id === userId) || (a.email === userEmail)
+      (a) => a.user_id === userId || a.email === userEmail,
     )
     canClaim.value = data.length === 0
-    canLink.value = data.some(a => a.email === userEmail && !a.user_id)
+    canLink.value = data.some((a) => a.email === userEmail && !a.user_id)
   } catch {
     admins.value = []
     isAdmin.value = false
@@ -137,8 +163,8 @@ const claimAdmin = async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         user_id: props.user.id,
-        email: props.user.email
-      })
+        email: props.user.email,
+      }),
     })
     if (!res.ok) {
       const text = await res.text()
@@ -161,7 +187,7 @@ const addAdmin = async () => {
     const res = await fetch(`${API_BASE}/admin/admins`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: newAdminEmail.value.trim() })
+      body: JSON.stringify({ email: newAdminEmail.value.trim() }),
     })
     if (!res.ok) {
       const text = await res.text()
@@ -180,9 +206,12 @@ const addAdmin = async () => {
 const removeAdmin = async (email: string) => {
   if (!confirm(`Retirer les droits admin de ${email} ?`)) return
   try {
-    const res = await fetch(`${API_BASE}/admin/admins/${encodeURIComponent(email)}`, {
-      method: 'DELETE'
-    })
+    const res = await fetch(
+      `${API_BASE}/admin/admins/${encodeURIComponent(email)}`,
+      {
+        method: 'DELETE',
+      },
+    )
     if (!res.ok) throw new Error()
     await fetchAdmins()
     // If removed self
@@ -203,8 +232,8 @@ const linkAdmin = async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         user_id: props.user.id,
-        email: props.user.email
-      })
+        email: props.user.email,
+      }),
     })
     if (!res.ok) {
       alert('Impossible de lier le compte')
@@ -411,6 +440,8 @@ onMounted(fetchAdmins)
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

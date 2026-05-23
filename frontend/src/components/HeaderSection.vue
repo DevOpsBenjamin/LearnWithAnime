@@ -9,7 +9,8 @@
       <div class="header-actions">
         <!-- Sélecteur de Configuration IA ou Alerte d'Absence -->
         <div v-if="user">
-          <div v-if="!hasActiveConfig"
+          <div
+            v-if="!hasActiveConfig"
             @click="$emit('go-to-settings')"
             class="blinking-badge"
             title="Aucune configuration LLM active ! Cliquez pour en configurer une."
@@ -20,11 +21,24 @@
             <select
               id="header-config-select"
               :value="activeConfigName"
-              @change="$emit('update:activeConfigName', ($event.target as HTMLSelectElement).value); $emit('activate-config', ($event.target as HTMLSelectElement).value)"
+              @change="
+                $emit(
+                  'update:activeConfigName',
+                  ($event.target as HTMLSelectElement).value,
+                )
+                $emit(
+                  'activate-config',
+                  ($event.target as HTMLSelectElement).value,
+                )
+              "
               class="header-config-select"
               title="Configuration de l'IA active"
             >
-              <option v-for="cfg in userConfigs" :key="cfg.config_name" :value="cfg.config_name">
+              <option
+                v-for="cfg in userConfigs"
+                :key="cfg.config_name"
+                :value="cfg.config_name"
+              >
                 🤖 {{ cfg.config_name }}
               </option>
             </select>
@@ -61,13 +75,22 @@
 
         <!-- Profil Utilisateur -->
         <div v-if="user" class="user-profile">
-          <img v-if="avatarUrl" :src="avatarUrl" class="user-avatar" alt="Avatar" />
+          <img
+            v-if="avatarUrl"
+            :src="avatarUrl"
+            class="user-avatar"
+            alt="Avatar"
+          />
           <div v-else class="user-avatar-placeholder">{{ userInitial }}</div>
           <span class="user-display-name">{{ userDisplayName }}</span>
         </div>
 
         <!-- Bouton Déconnexion -->
-        <button @click="$emit('sign-out')" class="logout-btn" title="Se déconnecter de votre compte">
+        <button
+          @click="$emit('sign-out')"
+          class="logout-btn"
+          title="Se déconnecter de votre compte"
+        >
           🚪
         </button>
       </div>
@@ -77,38 +100,38 @@
 
 <script setup lang="ts">
 interface UserLlmSettings {
-  user_id: string;
-  config_name: string;
-  api_url: string;
-  api_key: string;
-  model: string;
-  temperature_eval: number;
-  temperature_hint: number;
-  top_p: number;
-  frequency_penalty: number;
-  max_tokens: number;
-  is_active: boolean;
+  user_id: string
+  config_name: string
+  api_url: string
+  api_key: string
+  model: string
+  temperature_eval: number
+  temperature_hint: number
+  top_p: number
+  frequency_penalty: number
+  max_tokens: number
+  is_active: boolean
 }
 
 defineProps<{
-  user: any;
-  avatarUrl: string | null;
-  userInitial: string;
-  userDisplayName: string;
-  hasActiveConfig: boolean;
-  userConfigs: UserLlmSettings[];
-  activeConfigName: string;
-  currentView: 'playground' | 'settings' | 'admin';
-  isAdmin: boolean;
+  user: any
+  avatarUrl: string | null
+  userInitial: string
+  userDisplayName: string
+  hasActiveConfig: boolean
+  userConfigs: UserLlmSettings[]
+  activeConfigName: string
+  currentView: 'playground' | 'settings' | 'admin'
+  isAdmin: boolean
 }>()
 
 defineEmits<{
-  'update:activeConfigName': [value: string];
-  'activate-config': [configName: string];
-  'go-to-settings': [];
-  'go-to-playground': [];
-  'go-to-admin': [];
-  'sign-out': [];
+  'update:activeConfigName': [value: string]
+  'activate-config': [configName: string]
+  'go-to-settings': []
+  'go-to-playground': []
+  'go-to-admin': []
+  'sign-out': []
 }>()
 </script>
 
@@ -165,7 +188,9 @@ defineEmits<{
     flex-direction: column;
     width: 100%;
   }
-  .user-profile, .action-icon-btn, .logout-btn {
+  .user-profile,
+  .action-icon-btn,
+  .logout-btn {
     width: 100%;
     justify-content: center;
     box-sizing: border-box;
@@ -283,9 +308,18 @@ defineEmits<{
 }
 
 @keyframes pulse-blinking {
-  0% { opacity: 0.8; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-  50% { opacity: 1; box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
-  100% { opacity: 0.8; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+  0% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+  100% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
 }
 
 .header-config-selector-wrapper {
