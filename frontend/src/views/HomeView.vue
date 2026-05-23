@@ -7,39 +7,30 @@
           <h2>Choisissez un défi japonais</h2>
         </div>
 
-        <div class="preset-selector">
-          <div class="preset-header-inline">
-            <label class="section-label"
-              >Sélection depuis la base de données :</label
-            >
-            <button
-              v-if="!isSeeded"
-              @click="handleSeed"
-              class="seed-btn"
-              :disabled="loadingCards"
-              title="Initialiser la base PostgreSQL/Supabase avec nos exemples cultes"
-            >
-              🌱 Remplir la BDD
-            </button>
-          </div>
-
+        <div class="deck-selector">
+          <label class="section-label"
+            >Sélectionnez un deck d'apprentissage :</label
+          >
           <div v-if="loadingCards" class="presets-loader">
             <span class="spinner"></span>
-            <span>Chargement des cartes depuis la base...</span>
+            <span>Chargement des decks...</span>
           </div>
-
-          <div v-else-if="presets.length === 0" class="empty-presets-alert">
-            <p>La base de données est connectée mais vide.</p>
+          <div v-else class="deck-buttons">
             <button
-              @click="handleSeed"
-              class="btn btn-secondary btn-sm"
-              style="margin-top: 10px"
+              v-for="deck in decks"
+              :key="deck.slug"
+              @click="selectDeck(deck.slug)"
+              :class="['deck-btn', { active: selectedDeckSlug === deck.slug }]"
             >
-              🌱 Charger le deck 'Animés Légendaires'
+              <div class="deck-name">{{ deck.name }}</div>
+              <div class="deck-meta">{{ deck.card_count }} cartes</div>
             </button>
           </div>
+        </div>
 
-          <div v-else class="presets-grid">
+        <div v-if="presets.length > 0" class="preset-selector">
+          <label class="section-label">Choisissez une carte du deck :</label>
+          <div class="presets-grid">
             <button
               v-for="item in presets"
               :key="item.vocab"
@@ -222,7 +213,12 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
 import { PresetItem, EvalData } from '../services/api'
-import { fetchCards, seedDatabase } from '../services/cards'
+import {
+  fetchDecks,
+  fetchDeckBySlug,
+  deckCardsAsPresets,
+} from '../services/cards'
+import type { DeckMeta } from '../services/cards'
 import { fetchHint, evaluateAnswer } from '../services/llm'
 
 const props = defineProps<{
@@ -236,9 +232,10 @@ const props = defineProps<{
   frequencyPenalty: number
 }>()
 
+const decks = ref<DeckMeta[]>([])
+const selectedDeckSlug = ref('')
 const presets = ref<PresetItem[]>([])
 const loadingCards = ref(false)
-const isSeeded = ref(false)
 
 const currentVocab = ref('')
 const currentAnime = ref('')
@@ -280,33 +277,30 @@ function toggleCustom() {
   isCustom.value = !isCustom.value
 }
 
-async function loadCards() {
+async function loadDecks() {
   loadingCards.value = true
   try {
-    const result = await fetchCards()
-    presets.value = result.presets
-    isSeeded.value = result.isSeeded
-    if (result.isSeeded && !currentVocab.value) {
-      currentVocab.value = result.presets[0].vocab
-      currentAnime.value = result.presets[0].anime
-    }
+    decks.value = await fetchDecks()
   } catch {
-    isSeeded.value = false
+    decks.value = []
   } finally {
     loadingCards.value = false
   }
 }
 
-async function handleSeed() {
-  loadingCards.value = true
-  errorMessage.value = ''
+async function selectDeck(slug: string) {
+  selectedDeckSlug.value = slug
+  presets.value = []
+  currentVocab.value = ''
+  currentAnime.value = ''
   try {
-    await seedDatabase()
-    await loadCards()
+    const deck = await fetchDeckBySlug(slug)
+    presets.value = deckCardsAsPresets(deck)
+    if (presets.value.length > 0) {
+      selectPreset(presets.value[0])
+    }
   } catch (err: any) {
-    errorMessage.value = `Impossible d'initialiser la base de données : ${err.message}.`
-  } finally {
-    loadingCards.value = false
+    errorMessage.value = `Impossible de charger le deck : ${err.message}.`
   }
 }
 
@@ -379,7 +373,7 @@ function getScoreClass(score: number) {
 }
 
 onMounted(() => {
-  loadCards()
+  loadDecks()
 })
 </script>
 
@@ -445,30 +439,6 @@ onMounted(() => {
   margin: 0;
 }
 
-.preset-header-inline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  gap: 8px;
-}
-.seed-btn {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: var(--accent);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-}
-.seed-btn:hover:not(:disabled) {
-  background: rgba(16, 185, 129, 0.22);
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
 .presets-loader {
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -480,15 +450,6 @@ onMounted(() => {
   border-radius: 16px;
   justify-content: center;
   border: 1px solid var(--glass-border);
-}
-.empty-presets-alert {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  border: 1px dashed rgba(255, 255, 255, 0.1);
-  padding: 24px;
-  border-radius: 16px;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.1);
 }
 .presets-grid {
   display: grid;
