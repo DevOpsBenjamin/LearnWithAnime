@@ -32,14 +32,48 @@ struct CardsFile {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+struct DeckFileMeta {
+    slug: String,
+    name: String,
+    description: Option<String>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
 struct DeckFile {
-    deck: Deck,
+    deck: DeckFileMeta,
+    cards: Vec<DeckCardLink>,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct KanjiEntry {
+    pub char: String,
+    pub on_yomi: Vec<String>,
+    pub kun_yomi: Vec<String>,
+    pub meanings_en: Vec<String>,
+    pub components: Vec<String>,
+    pub stroke_count: Option<u8>,
+    pub frequency_rank: Option<u32>,
+    pub jlpt_level: u8,
+    pub grade: Option<u8>,
+    pub radical_number: Option<u8>,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct Radical {
+    pub number: u8,
+    pub char: String,
+    pub meaning: String,
+    pub stroke_count: u8,
+    #[serde(default)]
+    pub variants: Vec<String>,
 }
 
 #[derive(Debug, Clone)]
 pub struct CardCatalog {
     pub cards: HashMap<String, Card>,
     pub decks: HashMap<String, Deck>,
+    pub kanji: HashMap<String, KanjiEntry>,
+    pub radicals: HashMap<u8, Radical>,
 }
 
 #[derive(Debug)]
@@ -135,6 +169,8 @@ fn load_json_files<T: for<'de> serde::Deserialize<'de>>(
 pub fn load_catalog(data_dir: &Path) -> Result<CardCatalog, LoadError> {
     let cards_dir = data_dir.join("cards");
     let decks_dir = data_dir.join("decks");
+    let kanji_dir = data_dir.join("kanji");
+    let radicals_path = data_dir.join("radicals").join("kangxi.json");
 
     // Load all cards
     let mut cards_map: HashMap<String, (String, Card)> = HashMap::new();
@@ -169,7 +205,12 @@ pub fn load_catalog(data_dir: &Path) -> Result<CardCatalog, LoadError> {
     let deck_files = load_json_files::<DeckFile>(&decks_dir)?;
 
     for (fname, deck_file) in &deck_files {
-        let deck = &deck_file.deck;
+        let deck = Deck {
+            slug: deck_file.deck.slug.clone(),
+            name: deck_file.deck.name.clone(),
+            description: deck_file.deck.description.clone(),
+            cards: deck_file.cards.clone(),
+        };
 
         if !validate_slug(&deck.slug) {
             return Err(LoadError::InvalidSlug {
@@ -196,7 +237,7 @@ pub fn load_catalog(data_dir: &Path) -> Result<CardCatalog, LoadError> {
             }
         }
 
-        decks_map.insert(deck.slug.clone(), (fname.clone(), deck.clone()));
+        decks_map.insert(deck.slug.clone(), (fname.clone(), deck));
     }
 
     let decks: HashMap<String, Deck> = decks_map
@@ -204,7 +245,60 @@ pub fn load_catalog(data_dir: &Path) -> Result<CardCatalog, LoadError> {
         .map(|(_, deck)| (deck.slug.clone(), deck))
         .collect();
 
-    Ok(CardCatalog { cards, decks })
+    // Load kanji from JSONL files
+    let mut kanji: HashMap<String, KanjiEntry> = HashMap::new();
+    if kanji_dir.exists() {
+        let entries = fs::read_dir(&kanji_dir)
+            .map_err(|e| LoadError::Io(format!("Cannot read kanji dir: {}", e)))?;
+        for entry in entries {
+            let entry = entry.map_err(|e| LoadError::Io(e.to_string()))?;
+            let path = entry.path();
+            if path.extension().and_then(|e| e.to_str()) != Some("jsonl") {
+                continue;
+            }
+            let content = fs::read_to_string(&path)
+                .map_err(|e| LoadError::Io(format!("Cannot read {}: {}", path.display(), e)))?;
+            for (line_num, line) in content.lines().enumerate() {
+                let line = line.trim();
+                if line.is_empty() {
+                    continue;
+                }
+                let k: KanjiEntry = serde_json::from_str(line).map_err(|e| {
+                    LoadError::Io(format!(
+                        "JSONL parse error in {} line {}: {}",
+                        path.display(),
+                        line_num + 1,
+                        e
+                    ))
+                })?;
+                if kanji.contains_key(&k.char) {
+                    return Err(LoadError::Io(format!(
+                        "Duplicate kanji '{}' in JSONL files",
+                        k.char
+                    )));
+                }
+                kanji.insert(k.char.clone(), k);
+            }
+        }
+    }
+
+    // Load radicals
+    let radicals: HashMap<u8, Radical> = if radicals_path.exists() {
+        let content = fs::read_to_string(&radicals_path)
+            .map_err(|e| LoadError::Io(format!("Cannot read kangxi.json: {}", e)))?;
+        let list: Vec<Radical> = serde_json::from_str(&content)
+            .map_err(|e| LoadError::Io(format!("Cannot parse kangxi.json: {}", e)))?;
+        list.into_iter().map(|r| (r.number, r)).collect()
+    } else {
+        HashMap::new()
+    };
+
+    Ok(CardCatalog {
+        cards,
+        decks,
+        kanji,
+        radicals,
+    })
 }
 
 #[derive(Debug, Clone, Serialize)]

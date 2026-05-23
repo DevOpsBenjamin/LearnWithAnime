@@ -108,9 +108,11 @@ async fn main() {
         panic!("❌ Erreur chargement catalogue: {}", e);
     });
     println!(
-        "📚 Catalogue chargé: {} cartes, {} decks",
+        "📚 Catalogue chargé: {} cartes, {} decks, {} kanji, {} radicaux",
         catalog.cards.len(),
-        catalog.decks.len()
+        catalog.decks.len(),
+        catalog.kanji.len(),
+        catalog.radicals.len()
     );
 
     let shared_state = Arc::new(AppState {
@@ -133,6 +135,10 @@ async fn main() {
         // Routes Catalogue (JSON)
         .route("/api/decks", get(handle_get_decks))
         .route("/api/decks/:slug", get(handle_get_deck_by_slug))
+        .route("/api/kanji", get(handle_list_kanji))
+        .route("/api/kanji/:kanji_char", get(handle_get_kanji))
+        .route("/api/radicals", get(handle_list_radicals))
+        .route("/api/radicals/:number", get(handle_get_radical))
         .route(
             "/api/user/llm-settings/:user_id",
             get(handle_get_user_settings),
@@ -711,4 +717,74 @@ struct DeckMeta {
     name: String,
     description: Option<String>,
     card_count: usize,
+}
+
+// ==========================================
+// Handlers Kanji
+// ==========================================
+
+/// Lister tous les kanji (métadonnées légères : char + jlpt_level + radical_number)
+async fn handle_list_kanji(
+    State(state): State<Arc<AppState>>,
+) -> Result<Json<Vec<KanjiMeta>>, (StatusCode, String)> {
+    let mut list: Vec<KanjiMeta> = state
+        .catalog
+        .kanji
+        .values()
+        .map(|k| KanjiMeta {
+            char: k.char.clone(),
+            jlpt_level: k.jlpt_level,
+            radical_number: k.radical_number,
+            stroke_count: k.stroke_count,
+            frequency_rank: k.frequency_rank,
+        })
+        .collect();
+    list.sort_by_key(|k| k.frequency_rank.unwrap_or(u32::MAX));
+    Ok(Json(list))
+}
+
+/// Récupérer un kanji complet par son caractère
+async fn handle_get_kanji(
+    State(state): State<Arc<AppState>>,
+    Path(kanji_char): Path<String>,
+) -> Result<Json<catalog::KanjiEntry>, (StatusCode, String)> {
+    let k = state.catalog.kanji.get(&kanji_char).ok_or_else(|| {
+        (
+            StatusCode::NOT_FOUND,
+            format!("Kanji '{}' introuvable", kanji_char),
+        )
+    })?;
+    Ok(Json(k.clone()))
+}
+
+/// Lister tous les radicaux
+async fn handle_list_radicals(
+    State(state): State<Arc<AppState>>,
+) -> Result<Json<Vec<catalog::Radical>>, (StatusCode, String)> {
+    let mut list: Vec<catalog::Radical> = state.catalog.radicals.values().cloned().collect();
+    list.sort_by_key(|r| r.number);
+    Ok(Json(list))
+}
+
+/// Récupérer un radical par son numéro
+async fn handle_get_radical(
+    State(state): State<Arc<AppState>>,
+    Path(number): Path<u8>,
+) -> Result<Json<catalog::Radical>, (StatusCode, String)> {
+    let r = state.catalog.radicals.get(&number).ok_or_else(|| {
+        (
+            StatusCode::NOT_FOUND,
+            format!("Radical {} introuvable", number),
+        )
+    })?;
+    Ok(Json(r.clone()))
+}
+
+#[derive(Debug, Serialize)]
+struct KanjiMeta {
+    char: String,
+    jlpt_level: u8,
+    radical_number: Option<u8>,
+    stroke_count: Option<u8>,
+    frequency_rank: Option<u32>,
 }
