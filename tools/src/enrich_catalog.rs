@@ -7,7 +7,6 @@ use std::fs;
 use std::io::Write;
 use std::path::Path;
 
-/// Output struct for our enriched JSONL
 #[derive(Debug, Clone, Serialize)]
 struct KanjiEntry {
     char: String,
