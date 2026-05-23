@@ -83,7 +83,7 @@ async fn main() {
     let _ = dotenvy::dotenv();
 
     let database_url = env::var("DATABASE_URL").unwrap_or_else(|_| {
-        "postgres://postgres:postgrespassword@localhost:5432/learnwithmanga".to_string()
+        "postgres://postgres:postgrespassword@localhost:5432/learnwithanime".to_string()
     });
 
     // Initialisation de la base de données
@@ -162,7 +162,7 @@ async fn main() {
         .unwrap_or(3000);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], port));
-    println!("🚀 Serveur backend LearnWithManga démarré sur http://{}", addr);
+    println!("🚀 Serveur backend LearnWithAnime démarré sur http://{}", addr);
 
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();

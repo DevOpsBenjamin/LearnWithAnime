@@ -1,7 +1,7 @@
-# LearnWithManga
+# LearnWithAnime
 
-LearnWithManga is a long‑term project aimed at turning the passive Japanese vocabulary
-picked up from watching manga and anime into active language skills. The app mixes
+LearnWithAnime is a long‑term project aimed at turning the passive Japanese vocabulary
+picked up from watching anime into active language skills. The app mixes
 AI‑assisted flashcards, adaptive practice, and gamified progression so that users can
 train kanji recognition, vocabulary usage, listening, and pronunciation.
 
@@ -10,7 +10,7 @@ train kanji recognition, vocabulary usage, listening, and pronunciation.
 * **Activate existing knowledge:** Help fans convert words and phrases they have heard
   repeatedly in VOSTFR/VOSTEN media into usable Japanese.
 * **Personalized learning:** AI agents evaluate answers, provide hints, and adjust
-  difficulty based on user performance and declared manga preferences.
+  difficulty based on user performance and declared anime preferences.
 * **Cross‑platform availability:** Responsive web app (desktop & mobile) with a cloud
   backend scalable from a single VPS to Kubernetes.
 
@@ -31,13 +31,13 @@ train kanji recognition, vocabulary usage, listening, and pronunciation.
 3. **Speech & Audio** – TTS for sentences, optional pre‑recorded kanji readings,
    speech recognition for user answers.
 4. **Progress & Gamification** – XP, levels, streaks, achievements, daily quests.
-5. **Content Pipeline** – onboarding questionnaire, per‑user context store, manga
+5. **Content Pipeline** – onboarding questionnaire, per‑user context store, anime
    references used as thematic anchors for vocabulary.
 
 ## Repository Layout (planned)
 
 ```
-LearnWithManga/
+LearnWithAnime/
 ├── backend/        # Rust API services
 ├── frontend/       # Vue application
 ├── infra/          # Docker, CI/CD, deployment manifests

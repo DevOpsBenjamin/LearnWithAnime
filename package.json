@@ -1,9 +1,9 @@
 {
-  "name": "learnwithmanga-monorepo",
+  "name": "learnwithanime-monorepo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:front": "pnpm --filter learnwithmanga-frontend build",
+    "build:front": "pnpm --filter learnwithanime-frontend build",
     "build:back": "cd backend && cargo build --release",
     "build": "pnpm build:front && pnpm build:back",
     "dev": "cd backend && cargo run",
