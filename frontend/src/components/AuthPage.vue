@@ -4,7 +4,7 @@
       <!-- Logo Header -->
       <div class="auth-header">
         <span class="auth-logo-icon">🌸</span>
-        <h1 class="auth-title">LearnWithManga</h1>
+        <h1 class="auth-title">LearnWithAnime</h1>
         <p class="auth-subtitle">Activez vos connaissances de japonais issus de vos animés favoris</p>
       </div>
 

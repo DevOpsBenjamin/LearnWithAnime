@@ -3,7 +3,7 @@
     <div class="header-top-row">
       <div class="logo-wrapper">
         <span class="logo-icon">🌸</span>
-        <h1 class="logo-text">LearnWithManga</h1>
+        <h1 class="logo-text">LearnWithAnime</h1>
       </div>
 
       <div class="header-actions">

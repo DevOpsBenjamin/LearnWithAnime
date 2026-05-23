@@ -1,6 +1,6 @@
 # TODO / Roadmap
 
-This document breaks down the development plan for **LearnWithManga**. Tasks are grouped
+This document breaks down the development plan for **LearnWithAnime**. Tasks are grouped
 by feature to allow different contributors and AIs to work in parallel.
 
 ## 1. Project Scaffolding
