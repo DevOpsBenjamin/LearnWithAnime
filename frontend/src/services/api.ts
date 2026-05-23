@@ -1,5 +1,18 @@
-export const API_BASE =
-  import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+export function getApiUrl(): string {
+  const raw = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+  return raw.replace(/\/+$/, '')
+}
+
+export function getApiUrlError(): string | null {
+  const raw = import.meta.env.VITE_API_URL
+  if (!raw) return null
+  const trimmed = raw.replace(/\/+$/, '')
+  if (trimmed.endsWith('/api')) return null
+  const corrected = `${trimmed}/api`
+  return `VITE_API_URL="${raw}" ne se termine pas par /api.\nAjoute "/api" à la fin :\n${corrected}`
+}
+
+export const API_BASE = getApiUrl()
 
 export interface PresetItem {
   vocab: string
