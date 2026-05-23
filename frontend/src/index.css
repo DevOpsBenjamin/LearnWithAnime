@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg-gradient: radial-gradient(circle at 50% 0%, #1a1528 0%, #0d0a15 100%);
+  --glass-bg: rgba(20, 15, 35, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-focus: rgba(236, 72, 153, 0.4); /* Sakura Pink */
+  
+  --primary: #ec4899; /* Sakura Pink */
+  --primary-glow: rgba(236, 72, 153, 0.35);
+  --secondary: #8b5cf6; /* Electric Violet */
+  --secondary-glow: rgba(139, 92, 246, 0.3);
+  --accent: #10b981; /* Emerald green for correct answers */
+  --accent-glow: rgba(16, 185, 129, 0.2);
+  --error: #ef4444; /* Neon red for incorrect answers */
+  --error-glow: rgba(239, 68, 68, 0.2);
+  
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --text-dark: #111827;
+  
+  font-family: 'Outfit', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Animations globales */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--primary-glow);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Scrollbar stylisée */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0a15;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
