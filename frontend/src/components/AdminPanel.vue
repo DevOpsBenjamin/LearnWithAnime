@@ -81,7 +81,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 
-const API_BASE = 'http://localhost:3000/api'
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
 
 interface AdminUser {
   user_id: string | null
