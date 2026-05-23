@@ -18,247 +18,18 @@
       @sign-out="handleSignOut"
     />
 
-    <div v-if="currentView === 'playground'" class="playground-grid">
-      <!-- Section Gauche : Sélection & Indices -->
-      <section class="card-section">
-        <!-- Panel 1 : Défi -->
-        <div class="glass-panel">
-          <div class="panel-header">
-            <span class="step-num">01</span>
-            <h2>Choisissez un défi japonais</h2>
-          </div>
+    <HomeView
+      v-if="currentView === 'playground'"
+      :api-url="apiUrl"
+      :api-key="apiKey"
+      :selected-model="selectedModel"
+      :temperature-eval="temperatureEval"
+      :temperature-hint="temperatureHint"
+      :top-p="topP"
+      :max-tokens="maxTokens"
+      :frequency-penalty="frequencyPenalty"
+    />
 
-          <!-- Presets -->
-          <div class="preset-selector">
-            <div class="preset-header-inline">
-              <label class="section-label"
-                >Sélection depuis la base de données :</label
-              >
-              <button
-                v-if="!isSeeded"
-                @click="seedDatabase"
-                class="seed-btn"
-                :disabled="loadingCards"
-                title="Initialiser la base PostgreSQL/Supabase avec nos exemples cultes"
-              >
-                🌱 Remplir la BDD
-              </button>
-            </div>
-
-            <div v-if="loadingCards" class="presets-loader">
-              <span class="spinner"></span>
-              <span>Chargement des cartes depuis la base...</span>
-            </div>
-
-            <div v-else-if="presets.length === 0" class="empty-presets-alert">
-              <p>La base de données est connectée mais vide.</p>
-              <button
-                @click="seedDatabase"
-                class="btn btn-secondary btn-sm"
-                style="margin-top: 10px"
-              >
-                🌱 Charger le deck 'Animés Légendaires'
-              </button>
-            </div>
-
-            <div v-else class="presets-grid">
-              <button
-                v-for="item in presets"
-                :key="item.vocab"
-                @click="selectPreset(item)"
-                :class="[
-                  'preset-btn',
-                  { active: currentVocab === item.vocab && !isCustom },
-                ]"
-              >
-                <div class="preset-vocab">{{ item.vocab }}</div>
-                <div class="preset-meta">{{ item.anime }}</div>
-              </button>
-            </div>
-          </div>
-
-          <!-- Custom Input Toggle -->
-          <div class="custom-toggle-container">
-            <button
-              @click="toggleCustom"
-              :class="['custom-toggle-btn', { active: isCustom }]"
-            >
-              ⌨️ Saisir mon propre mot / expression
-            </button>
-          </div>
-
-          <!-- Custom Input Fields -->
-          <Transition name="expand">
-            <div v-if="isCustom" class="custom-inputs">
-              <div class="input-group">
-                <label>Expression / Mot Japonais</label>
-                <input
-                  type="text"
-                  v-model="customVocab"
-                  placeholder="Ex: 螺旋丸 ou 諦める..."
-                  class="glass-input"
-                />
-              </div>
-              <div class="input-group">
-                <label>Manga de référence (facultatif)</label>
-                <input
-                  type="text"
-                  v-model="customAnime"
-                  placeholder="Ex: Naruto, Shingeki no Kyojin..."
-                  class="glass-input"
-                />
-              </div>
-            </div>
-          </Transition>
-
-          <!-- Divider -->
-          <div class="divider"></div>
-
-          <!-- Hints System -->
-          <div class="hints-system">
-            <label class="section-label"
-              >Besoin d'aide ? Demandez des indices progressifs :</label
-            >
-            <div class="hints-buttons">
-              <button
-                @click="fetchHint(1)"
-                :disabled="loadingHint1 || !activeVocab"
-                class="btn btn-secondary"
-              >
-                <span v-if="loadingHint1" class="spinner"></span>
-                <span v-else>💡 Indice Tier 1 (Lecture)</span>
-              </button>
-
-              <button
-                @click="fetchHint(2)"
-                :disabled="loadingHint2 || !activeVocab"
-                class="btn btn-secondary"
-              >
-                <span v-if="loadingHint2" class="spinner"></span>
-                <span v-else>🎭 Indice Tier 2 (Contexte)</span>
-              </button>
-            </div>
-
-            <!-- Hints Display -->
-            <Transition name="fade">
-              <div v-if="hint1" class="hint-bubble tier1">
-                <div class="bubble-header">🟢 Indice de lecture / traits :</div>
-                <p>{{ hint1 }}</p>
-              </div>
-            </Transition>
-
-            <Transition name="fade">
-              <div v-if="hint2" class="hint-bubble tier2">
-                <div class="bubble-header">
-                  🟡 Phrase d'exemple en contexte :
-                </div>
-                <p class="japanese-font">{{ hint2 }}</p>
-              </div>
-            </Transition>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section Droite : Réponse & Évaluation -->
-      <section class="answer-section">
-        <div class="glass-panel">
-          <div class="panel-header">
-            <span class="step-num">02</span>
-            <h2>Saisissez votre traduction</h2>
-          </div>
-
-          <div class="active-card-display">
-            <span class="card-sub">Expression ciblée :</span>
-            <div class="card-main-vocab japanese-font">
-              {{ activeVocab || 'Aucune sélection' }}
-            </div>
-            <div v-if="activeAnime" class="card-anime-ref">
-              🎬 Manga : {{ activeAnime }}
-            </div>
-          </div>
-
-          <div class="input-group">
-            <label for="user-answer"
-              >Votre traduction ou explication en français :</label
-            >
-            <textarea
-              id="user-answer"
-              v-model="userAnswer"
-              placeholder="Ex: renoncer, abandonner... ou donnez une phrase explicative"
-              rows="3"
-              class="glass-textarea"
-              :disabled="!activeVocab"
-            ></textarea>
-          </div>
-
-          <button
-            @click="evaluateAnswer"
-            :disabled="loadingEval || !userAnswer.trim() || !activeVocab"
-            class="btn btn-primary btn-block btn-eval"
-          >
-            <div v-if="loadingEval" class="eval-loading-wrapper">
-              <span class="pulsing-ring"></span>
-              <span>Analyse IA en cours...</span>
-            </div>
-            <span v-else>🌸 Évaluer avec l'IA locale</span>
-          </button>
-
-          <!-- Error Alert -->
-          <div v-if="errorMessage" class="error-alert">
-            <span class="alert-icon">⚠️</span>
-            <p>{{ errorMessage }}</p>
-          </div>
-
-          <!-- Evaluation Results -->
-          <Transition name="slide-up">
-            <div v-if="evaluation" class="evaluation-result">
-              <div class="divider"></div>
-
-              <div class="result-header">
-                <h3>Résultat de l'évaluation</h3>
-                <div :class="['score-badge', getScoreClass(evaluation.score)]">
-                  <div class="score-num">{{ evaluation.score }}</div>
-                  <div class="score-label">/100</div>
-                </div>
-              </div>
-
-              <!-- Status Banner -->
-              <div
-                :class="[
-                  'status-banner',
-                  evaluation.is_correct ? 'success' : 'failure',
-                ]"
-              >
-                <span class="status-icon">{{
-                  evaluation.is_correct
-                    ? '✅ Réponse Validée !'
-                    : '❌ À corriger'
-                }}</span>
-              </div>
-
-              <!-- Explanation -->
-              <div class="result-body">
-                <div class="result-block">
-                  <h4>💡 Analyse du tuteur :</h4>
-                  <p class="explanation-text">{{ evaluation.explanation }}</p>
-                </div>
-
-                <!-- Correction -->
-                <div
-                  v-if="evaluation.correction"
-                  class="result-block correction-block"
-                >
-                  <h4>✍️ Correction suggérée :</h4>
-                  <p class="correction-text japanese-font">
-                    {{ evaluation.correction }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Transition>
-        </div>
-      </section>
-    </div>
 
     <!-- Vue Paramètres (Page dédiée) -->
     <div v-else-if="currentView === 'settings'" class="settings-grid">
@@ -680,6 +451,7 @@ import { ref, computed, watch, onMounted } from 'vue'
 import { supabase } from '../supabase'
 import HeaderSection from './HeaderSection.vue'
 import AdminPanel from './AdminPanel.vue'
+import HomeView from '../views/HomeView.vue'
 
 interface UserLlmSettings {
   user_id: string
@@ -754,17 +526,6 @@ const linkAdminAccount = async () => {
   }
 }
 
-interface PresetItem {
-  vocab: string
-  anime: string
-  defaultAnswer: string
-}
-
-// État dynamique pour les presets (cartes lues en base de données)
-const presets = ref<PresetItem[]>([])
-const loadingCards = ref(false)
-const isSeeded = ref(false)
-
 // Profil Utilisateur
 const user = ref<any>(null)
 const showSettings = ref(false)
@@ -816,95 +577,14 @@ const getTempLabel = (temp: number) => {
   return 'Très Imaginatif'
 }
 
-// Sélection
-const currentVocab = ref('')
-const currentAnime = ref('')
-const isCustom = ref(false)
-
-const customVocab = ref('')
-const customAnime = ref('')
-
-const activeVocab = computed(() => {
-  return isCustom.value ? customVocab.value : currentVocab.value
-})
-
-const activeAnime = computed(() => {
-  return isCustom.value ? customAnime.value : currentAnime.value
-})
-
-// Vider les réponses et indices en cas de changement de mot
-watch(activeVocab, () => {
-  hint1.value = ''
-  hint2.value = ''
-  userAnswer.value = ''
-  evaluation.value = null
-  errorMessage.value = ''
-})
-
-const selectPreset = (item: PresetItem) => {
-  isCustom.value = false
-  currentVocab.value = item.vocab
-  currentAnime.value = item.anime
-}
-
-const toggleCustom = () => {
-  isCustom.value = !isCustom.value
-}
-
-// État des API
-const userAnswer = ref('')
-const loadingHint1 = ref(false)
-const loadingHint2 = ref(false)
-const loadingEval = ref(false)
-
-const hint1 = ref('')
-const hint2 = ref('')
-const errorMessage = ref('')
-
 // Configuration IA Dynamique
 const models = ref<string[]>([])
 const selectedModel = ref<string>('')
 const loadingModels = ref(false)
 const loadingModelsError = ref('')
 
-interface EvalData {
-  is_correct: boolean
-  score: number
-  explanation: string
-  correction: string | null
-}
-const evaluation = ref<EvalData | null>(null)
-
 // API Host (Backend local Rust)
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
-
-// Récupération des modèles (utilisé en arrière-plan)
-const fetchModels = async () => {
-  loadingModels.value = true
-  loadingModelsError.value = ''
-  try {
-    const response = await fetch(`${API_BASE}/ai/models`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        api_url: apiUrl.value || null,
-        api_key: apiKey.value || null,
-      }),
-    })
-    if (!response.ok) {
-      throw new Error(`Serveur injoignable (${response.status})`)
-    }
-    const data: string[] = await response.json()
-    models.value = data
-  } catch (err: any) {
-    loadingModelsError.value = `Impossible de récupérer les modèles.`
-    console.error(err)
-  } finally {
-    loadingModels.value = false
-  }
-}
 
 // Validation de connexion et récupération des modèles (Encart 1)
 const testLlmConnection = async () => {
@@ -1113,169 +793,19 @@ const cancelEditing = () => {
   }
 }
 
-// Récupération des cartes de vocabulaire en BDD
-const fetchCards = async () => {
-  loadingCards.value = true
-  try {
-    const response = await fetch(`${API_BASE}/cards`)
-    if (!response.ok) throw new Error()
-    const data = await response.json()
-
-    presets.value = data.map((c: any) => ({
-      vocab: c.vocab,
-      anime: c.anime_reference || 'Général',
-      defaultAnswer: c.french_translation,
-    }))
-
-    if (presets.value.length > 0) {
-      isSeeded.value = true
-      // Sélectionne le premier mot par défaut si rien n'est sélectionné
-      if (!currentVocab.value) {
-        currentVocab.value = presets.value[0].vocab
-        currentAnime.value = presets.value[0].anime
-      }
-    } else {
-      isSeeded.value = false
-    }
-  } catch (err) {
-    console.warn('Échec du chargement des cartes de la base de données.')
-    isSeeded.value = false
-  } finally {
-    loadingCards.value = false
-  }
-}
-
-// Remplir / Seeder la base de données
-const seedDatabase = async () => {
-  loadingCards.value = true
-  errorMessage.value = ''
-  try {
-    const response = await fetch(`${API_BASE}/db/seed`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    })
-    if (!response.ok) {
-      throw new Error(`Erreur serveur (${response.status})`)
-    }
-    await fetchCards()
-  } catch (err: any) {
-    errorMessage.value = `Impossible d'initialiser la base de données : ${err.message}. \nVeuillez configurer DATABASE_URL dans votre backend/.env avec vos identifiants Supabase.`
-  } finally {
-    loadingCards.value = false
-  }
-}
-
 onMounted(() => {
-  fetchCards()
-
-  // Récupérer les données de l'utilisateur connecté et charger ses paramètres
   supabase.auth.getUser().then(async ({ data }) => {
     if (data.user) {
       user.value = data.user
       await fetchUserSettings(data.user.id)
       await checkAdminStatus()
 
-      // Auto-vérifier la connexion au montage uniquement si pas déjà vérifié par fetchUserSettings
       if (apiUrl.value && !isConnectionVerified.value) {
         await testLlmConnection()
       }
     }
   })
 })
-
-const fetchHint = async (tier: number) => {
-  if (!activeVocab.value) return
-
-  if (tier === 1) {
-    loadingHint1.value = true
-    hint1.value = ''
-  } else {
-    loadingHint2.value = true
-    hint2.value = ''
-  }
-  errorMessage.value = ''
-
-  try {
-    const response = await fetch(`${API_BASE}/ai/hint`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        vocab: activeVocab.value,
-        tier,
-        model: selectedModel.value || null,
-        temperature: temperatureHint.value,
-        api_url: apiUrl.value || null,
-        api_key: apiKey.value || null,
-        top_p: topP.value,
-        max_tokens: maxTokens.value,
-        frequency_penalty: frequencyPenalty.value,
-      }),
-    })
-
-    if (!response.ok) {
-      throw new Error(`Erreur serveur (${response.status})`)
-    }
-
-    const data = await response.json()
-    if (tier === 1) {
-      hint1.value = data.hint
-    } else {
-      hint2.value = data.hint
-    }
-  } catch (err: any) {
-    errorMessage.value = `Impossible d'obtenir l'indice : ${err.message}. Assurez-vous que le backend Rust (port 3000) et votre LLM local/distant sont configurés et démarrés.`
-  } finally {
-    loadingHint1.value = false
-    loadingHint2.value = false
-  }
-}
-
-const evaluateAnswer = async () => {
-  if (!activeVocab.value || !userAnswer.value.trim()) return
-
-  loadingEval.value = true
-  evaluation.value = null
-  errorMessage.value = ''
-
-  try {
-    const response = await fetch(`${API_BASE}/ai/evaluate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        vocab: activeVocab.value,
-        user_answer: userAnswer.value,
-        context: activeAnime.value
-          ? `Manga de référence: ${activeAnime.value}`
-          : null,
-        model: selectedModel.value || null,
-        temperature: temperatureEval.value,
-        api_url: apiUrl.value || null,
-        api_key: apiKey.value || null,
-        top_p: topP.value,
-        max_tokens: maxTokens.value,
-        frequency_penalty: frequencyPenalty.value,
-      }),
-    })
-
-    if (!response.ok) {
-      const errText = await response.text()
-      throw new Error(errText || `Erreur serveur (${response.status})`)
-    }
-
-    const data = await response.json()
-    evaluation.value = data
-  } catch (err: any) {
-    errorMessage.value = `Échec de l'évaluation : ${err.message}. \n\nNote : Votre LLM doit renvoyer un format JSON strict. Vérifiez vos paramètres d'API et la disponibilité du modèle.`
-  } finally {
-    loadingEval.value = false
-  }
-}
-
-const getScoreClass = (score: number) => {
-  if (score >= 80) return 'score-success'
-  if (score >= 50) return 'score-warning'
-  return 'score-danger'
-}
 </script>
 
 <style scoped>
