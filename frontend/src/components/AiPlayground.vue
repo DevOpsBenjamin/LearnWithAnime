@@ -16,6 +16,24 @@
             <span class="user-display-name">{{ userDisplayName }}</span>
           </div>
 
+          <!-- Bouton Paramètres -->
+          <button 
+            v-if="currentView === 'playground'" 
+            @click="currentView = 'settings'" 
+            class="action-icon-btn btn-settings" 
+            title="Paramètres de l'IA"
+          >
+            ⚙️ Paramètres
+          </button>
+          <button 
+            v-else 
+            @click="currentView = 'playground'" 
+            class="action-icon-btn btn-settings" 
+            title="Retour au défi de japonais"
+          >
+            ◀️ Retour au Défi
+          </button>
+
           <!-- Sélecteur de Configuration IA ou Alerte d'Absence -->
           <div v-if="user">
             <div v-if="!hasActiveConfig" 
@@ -39,24 +57,6 @@
               </select>
             </div>
           </div>
-
-          <!-- Bouton Paramètres -->
-          <button 
-            v-if="currentView === 'playground'" 
-            @click="currentView = 'settings'" 
-            class="action-icon-btn btn-settings" 
-            title="Paramètres de l'IA"
-          >
-            ⚙️ Paramètres
-          </button>
-          <button 
-            v-else 
-            @click="currentView = 'playground'" 
-            class="action-icon-btn btn-settings" 
-            title="Retour au défi de japonais"
-          >
-            ◀️ Retour au Défi
-          </button>
 
           <!-- Bouton Déconnexion -->
           <button @click="handleSignOut" class="logout-btn" title="Se déconnecter de votre compte">
@@ -1251,10 +1251,10 @@ const getScoreClass = (score: number) => {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--glass-border);
-  padding: 6px 14px;
-  border-radius: 20px;
+  padding: 8px 16px;
+  border-radius: 12px;
 }
 
 .user-avatar {
@@ -2213,25 +2213,26 @@ const getScoreClass = (score: number) => {
 .header-config-selector-wrapper {
   display: flex;
   align-items: center;
-  margin-right: 15px;
 }
 
 .header-config-select {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
   color: #e2e8f0;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 16px;
+  border-radius: 12px;
   font-size: 0.85rem;
+  font-weight: 600;
   outline: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  max-width: 200px;
+  min-width: 180px;
 }
 
 .header-config-select:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
 
 .header-config-select option {
