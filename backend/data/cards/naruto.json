@@ -1,0 +1,28 @@
+{
+  "cards": [
+    {
+      "id": "rasengan",
+      "kanji": "螺旋丸",
+      "romaji": "rasengan",
+      "fr": "orbe tourbillonnant"
+    },
+    {
+      "id": "shinobi",
+      "kanji": "忍",
+      "romaji": "shinobi",
+      "fr": "ninja"
+    },
+    {
+      "id": "katon",
+      "kanji": "火遁",
+      "romaji": "katon",
+      "fr": "technique de feu"
+    },
+    {
+      "id": "akirameru",
+      "kanji": "諦める",
+      "romaji": "akirameru",
+      "fr": "renoncer / abandonner"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "deck": {
+    "slug": "shingeki",
+    "name": "Shingeki no Kyojin",
+    "description": "Vocabulaire de l'Attaque des Titans"
+  },
+  "cards": [
+    {
+      "card_id": "tomodachi",
+      "anime_reference": "Shingeki S01E01",
+      "context_sentence": "エレンとアルミンは幼い頃からの友達だ。"
+    },
+    {
+      "card_id": "nakama",
+      "anime_reference": "Shingeki S02E06",
+      "context_sentence": "お前ら、仲間を信じろ！"
+    },
+    {
+      "card_id": "sensei",
+      "anime_reference": "Shingeki S01E02",
+      "context_sentence": "シャディス先生は厳しい。"
+    }
+  ]
+}
