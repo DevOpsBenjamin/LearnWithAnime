@@ -6,3 +6,10 @@ CREATE TABLE IF NOT EXISTS user_roles (
     granted_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (email)
 );
+
+-- Activation de la Row Level Security (RLS)
+ALTER TABLE user_roles ENABLE ROW LEVEL SECURITY;
+
+-- Blocage de tout accès public REST direct via Supabase (PostgREST)
+-- Notre serveur Rust (connecté en superutilisateur postgres) outrepasse RLS et manipule cette table directement.
+CREATE POLICY "Deny all public access" ON user_roles FOR ALL TO public USING (false);
