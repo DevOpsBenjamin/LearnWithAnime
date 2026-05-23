@@ -1,4 +1,5 @@
 mod ai;
+mod catalog;
 mod db;
 
 use ai::{EvaluateRequest, HintRequest, LlmClient, ModelsRequest};
@@ -11,30 +12,14 @@ use axum::{
 use serde::{Deserialize, Serialize};
 use std::env;
 use std::net::SocketAddr;
+use std::path::PathBuf;
 use std::sync::Arc;
 use tower_http::cors::CorsLayer;
 
 struct AppState {
     llm_client: LlmClient,
     db_pool: sqlx::PgPool,
-}
-
-#[derive(Debug, Serialize, sqlx::FromRow)]
-struct Deck {
-    id: uuid::Uuid,
-    name: String,
-    description: Option<String>,
-}
-
-#[derive(Debug, Serialize, sqlx::FromRow)]
-struct Card {
-    id: uuid::Uuid,
-    deck_id: uuid::Uuid,
-    vocab: String,
-    reading: Option<String>,
-    french_translation: String,
-    anime_reference: Option<String>,
-    context_sentence: Option<String>,
+    catalog: catalog::CardCatalog,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -117,9 +102,21 @@ async fn main() {
     }
 
     let llm_client = LlmClient::new();
+
+    let data_dir = env::var("DATA_DIR").unwrap_or_else(|_| "../data".to_string());
+    let catalog = catalog::load_catalog(&PathBuf::from(&data_dir)).unwrap_or_else(|e| {
+        panic!("❌ Erreur chargement catalogue: {}", e);
+    });
+    println!(
+        "📚 Catalogue chargé: {} cartes, {} decks",
+        catalog.cards.len(),
+        catalog.decks.len()
+    );
+
     let shared_state = Arc::new(AppState {
         llm_client,
         db_pool,
+        catalog,
     });
 
     // Configuration des CORS pour autoriser le frontend (port 5173 ou autre)
@@ -133,11 +130,9 @@ async fn main() {
         .route("/api/ai/evaluate", post(handle_evaluate))
         .route("/api/ai/hint", post(handle_hint))
         .route("/api/ai/models", post(handle_get_models))
-        // Routes Base de Données
-        .route("/api/db/seed", post(handle_seed_db))
+        // Routes Catalogue (JSON)
         .route("/api/decks", get(handle_get_decks))
-        .route("/api/cards", get(handle_get_all_cards))
-        .route("/api/decks/:id/cards", get(handle_get_deck_cards))
+        .route("/api/decks/:slug", get(handle_get_deck_by_slug))
         .route(
             "/api/user/llm-settings/:user_id",
             get(handle_get_user_settings),
@@ -672,160 +667,48 @@ async fn handle_link_admin(
 }
 
 // ==========================================
-// Handlers Base de Données
+// Handlers Catalogue (JSON)
 // ==========================================
 
-/// Seeder la base de données avec nos exemples favoris
-async fn handle_seed_db(
-    State(state): State<Arc<AppState>>,
-) -> Result<Json<serde_json::Value>, (StatusCode, String)> {
-    println!("📥 Requête de seeding de la base de données");
-
-    // Vérifie s'il y a déjà des paquets en base
-    let deck_count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM decks")
-        .fetch_one(&state.db_pool)
-        .await
-        .map_err(|e| {
-            (
-                StatusCode::INTERNAL_SERVER_ERROR,
-                format!("Erreur comptage decks: {}", e),
-            )
-        })?;
-
-    if deck_count > 0 {
-        println!("ℹ️ La base de données contient déjà des decks. Seeding annulé.");
-        return Ok(Json(serde_json::json!({
-            "status": "success",
-            "message": "La base de données est déjà initialisée."
-        })));
-    }
-
-    // Crée le premier deck
-    let deck_id = uuid::Uuid::new_v4();
-    sqlx::query(
-        "INSERT INTO decks (id, name, description) VALUES ($1, $2, $3)"
-    )
-    .bind(deck_id)
-    .bind("Animés Légendaires")
-    .bind("Un paquet contenant les expressions cultes et mots clés issus de vos mangas et animés préférés.")
-    .execute(&state.db_pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Échec création deck: {}", e)))?;
-
-    // Insère nos 4 mots phares
-    let seed_cards = vec![
-        (
-            "諦める",
-            "あきらめる",
-            "renoncer / abandonner",
-            "Général / Commun",
-            "Ce verbe est couramment utilisé dans les animés lors des moments dramatiques, souvent sous la forme de négation (諦めるな - Akirameruna - N'abandonne pas !)",
-        ),
-        (
-            "お前はもう死んでいる",
-            "おまえはもうしんでいる",
-            "tu es déjà mort",
-            "Hokuto no Ken",
-            "La réplique mythique de Kenshiro juste avant l'explosion de son adversaire.",
-        ),
-        (
-            "心臓を捧げよ",
-            "しんぞうをささげよ",
-            "offrez vos cœurs / dédiez vos cœurs",
-            "Shingeki no Kyojin",
-            "Le cri de ralliement emblématique du Bataillon d'exploration mené par Erwin Smith.",
-        ),
-        (
-            "螺旋丸",
-            "らせんがん",
-            "l'orbe tourbillonnant",
-            "Naruto",
-            "Une technique ninja surpuissante créée par Minato Namikaze et perfectionnée par Naruto Uzumaki.",
-        ),
-    ];
-
-    let mut inserted_count = 0;
-    for (vocab, reading, french, anime, context) in seed_cards {
-        sqlx::query(
-            "INSERT INTO cards (id, deck_id, vocab, reading, french_translation, anime_reference, context_sentence) \
-             VALUES ($1, $2, $3, $4, $5, $6, $7)"
-        )
-        .bind(uuid::Uuid::new_v4())
-        .bind(deck_id)
-        .bind(vocab)
-        .bind(reading)
-        .bind(french)
-        .bind(anime)
-        .bind(context)
-        .execute(&state.db_pool)
-        .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Échec insertion carte {}: {}", vocab, e)))?;
-
-        inserted_count += 1;
-    }
-
-    println!("✅ Seeding complété ! {} cartes insérées.", inserted_count);
-    Ok(Json(serde_json::json!({
-        "status": "success",
-        "message": format!("Base de données initialisée avec {} cartes dans le deck 'Animés Légendaires'.", inserted_count)
-    })))
-}
-
-/// Récupérer tous les Decks
+/// Récupérer tous les Decks (métadonnées seulement)
 async fn handle_get_decks(
     State(state): State<Arc<AppState>>,
-) -> Result<Json<Vec<Deck>>, (StatusCode, String)> {
-    println!("📥 Récupération des paquets de cartes");
-
-    let decks = sqlx::query_as::<_, Deck>("SELECT id, name, description FROM decks ORDER BY name")
-        .fetch_all(&state.db_pool)
-        .await
-        .map_err(|e| {
-            (
-                StatusCode::INTERNAL_SERVER_ERROR,
-                format!("Impossible de charger les decks: {}", e),
-            )
-        })?;
-
+) -> Result<Json<Vec<DeckMeta>>, (StatusCode, String)> {
+    let mut decks: Vec<DeckMeta> = state
+        .catalog
+        .decks
+        .values()
+        .map(|d| DeckMeta {
+            slug: d.slug.clone(),
+            name: d.name.clone(),
+            description: d.description.clone(),
+            card_count: d.cards.len(),
+        })
+        .collect();
+    decks.sort_by(|a, b| a.name.cmp(&b.name));
     Ok(Json(decks))
 }
 
-/// Récupérer toutes les cartes
-async fn handle_get_all_cards(
+/// Récupérer un deck avec ses cartes hydratées
+async fn handle_get_deck_by_slug(
     State(state): State<Arc<AppState>>,
-) -> Result<Json<Vec<Card>>, (StatusCode, String)> {
-    println!("📥 Récupération de l'intégralité des cartes");
-
-    let cards = sqlx::query_as::<_, Card>(
-        "SELECT id, deck_id, vocab, reading, french_translation, anime_reference, context_sentence FROM cards"
-    )
-    .fetch_all(&state.db_pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Impossible de charger les cartes: {}", e)))?;
-
-    Ok(Json(cards))
-}
-
-/// Récupérer les cartes d'un deck précis
-async fn handle_get_deck_cards(
-    State(state): State<Arc<AppState>>,
-    Path(deck_id): Path<uuid::Uuid>,
-) -> Result<Json<Vec<Card>>, (StatusCode, String)> {
-    println!("📥 Récupération des cartes pour le deck: {}", deck_id);
-
-    let cards = sqlx::query_as::<_, Card>(
-        "SELECT id, deck_id, vocab, reading, french_translation, anime_reference, context_sentence \
-         FROM cards WHERE deck_id = $1",
-    )
-    .bind(deck_id)
-    .fetch_all(&state.db_pool)
-    .await
-    .map_err(|e| {
+    Path(slug): Path<String>,
+) -> Result<Json<catalog::HydratedDeck>, (StatusCode, String)> {
+    let deck = state.catalog.decks.get(&slug).ok_or_else(|| {
         (
-            StatusCode::INTERNAL_SERVER_ERROR,
-            format!("Impossible de charger les cartes du deck: {}", e),
+            StatusCode::NOT_FOUND,
+            format!("Deck '{}' introuvable", slug),
         )
     })?;
 
-    Ok(Json(cards))
+    let hydrated = catalog::HydratedDeck::from_deck(deck, &state.catalog);
+    Ok(Json(hydrated))
+}
+
+#[derive(Debug, Serialize)]
+struct DeckMeta {
+    slug: String,
+    name: String,
+    description: Option<String>,
+    card_count: usize,
 }

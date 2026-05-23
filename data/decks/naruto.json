@@ -1,0 +1,44 @@
+{
+  "deck": {
+    "slug": "naruto",
+    "name": "Naruto",
+    "description": "Vocabulaire tiré de l'univers Naruto"
+  },
+  "cards": [
+    {
+      "card_id": "rasengan",
+      "anime_reference": "Naruto EP01",
+      "context_sentence": "ナルトの螺旋丸は最強の技だ。"
+    },
+    {
+      "card_id": "shinobi",
+      "anime_reference": "Naruto EP01",
+      "context_sentence": "忍の世界へようこそ！"
+    },
+    {
+      "card_id": "katon",
+      "anime_reference": "Naruto EP101",
+      "context_sentence": "サスケが火遁の術を使った。"
+    },
+    {
+      "card_id": "akirameru",
+      "anime_reference": "Naruto EP133",
+      "context_sentence": "ナルトは決して諦めない！"
+    },
+    {
+      "card_id": "tomodachi",
+      "anime_reference": "Naruto EP01",
+      "context_sentence": "サスケはナルトの大事な友達だ。"
+    },
+    {
+      "card_id": "nakama",
+      "anime_reference": "Naruto EP02",
+      "context_sentence": "仲間を守るのが忍の道だ。"
+    },
+    {
+      "card_id": "sensei",
+      "anime_reference": "Naruto EP03",
+      "context_sentence": "イルカ先生は優しい。"
+    }
+  ]
+}
