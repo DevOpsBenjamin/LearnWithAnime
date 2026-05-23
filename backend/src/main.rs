@@ -3,10 +3,10 @@ mod db;
 
 use ai::{EvaluateRequest, HintRequest, LlmClient, ModelsRequest};
 use axum::{
+    Json, Router,
     extract::{Path, State},
     http::{Method, StatusCode},
     routing::{delete, get, post},
-    Json, Router,
 };
 use serde::{Deserialize, Serialize};
 use std::env;
@@ -91,7 +91,9 @@ async fn main() {
         Ok(pool) => pool,
         Err(e) => {
             eprintln!("⚠️ Impossible de démarrer la base de données : {}", e);
-            eprintln!("⚠️ Le serveur fonctionnera SANS base de données (seuls les appels IA directs fonctionneront).");
+            eprintln!(
+                "⚠️ Le serveur fonctionnera SANS base de données (seuls les appels IA directs fonctionneront)."
+            );
             // Crée un pool temporaire ou panique ? On préfère paniquer ou forcer l'arrêt pour que l'utilisateur ajuste sa conf.
             panic!("Arrêt du serveur en raison de l'absence de base de données.");
         }
@@ -100,7 +102,7 @@ async fn main() {
     // Seed default admin on first startup
     let admin_email = "devops.benjamin@gmail.com";
     let result = sqlx::query(
-        "INSERT INTO user_roles (email, role) VALUES ($1, 'admin') ON CONFLICT (email) DO NOTHING"
+        "INSERT INTO user_roles (email, role) VALUES ($1, 'admin') ON CONFLICT (email) DO NOTHING",
     )
     .bind(admin_email)
     .execute(&db_pool)
@@ -136,11 +138,23 @@ async fn main() {
         .route("/api/decks", get(handle_get_decks))
         .route("/api/cards", get(handle_get_all_cards))
         .route("/api/decks/:id/cards", get(handle_get_deck_cards))
-        .route("/api/user/llm-settings/:user_id", get(handle_get_user_settings))
-        .route("/api/user/llm-settings/:user_id/all", get(handle_get_all_user_settings))
+        .route(
+            "/api/user/llm-settings/:user_id",
+            get(handle_get_user_settings),
+        )
+        .route(
+            "/api/user/llm-settings/:user_id/all",
+            get(handle_get_all_user_settings),
+        )
         .route("/api/user/llm-settings", post(handle_save_user_settings))
-        .route("/api/user/llm-settings/activate", post(handle_activate_user_setting))
-        .route("/api/user/llm-settings/:user_id/:config_name", delete(handle_delete_user_setting))
+        .route(
+            "/api/user/llm-settings/activate",
+            post(handle_activate_user_setting),
+        )
+        .route(
+            "/api/user/llm-settings/:user_id/:config_name",
+            delete(handle_delete_user_setting),
+        )
         // Routes Admin
         .route("/api/admin/admins", get(handle_list_admins))
         .route("/api/admin/admins", post(handle_add_admin))
@@ -150,8 +164,9 @@ async fn main() {
         // Servir les fichiers statiques du frontend Vue
         .nest_service(
             "/",
-            tower_http::services::ServeDir::new("../frontend/dist")
-                .fallback(tower_http::services::ServeFile::new("../frontend/dist/index.html")),
+            tower_http::services::ServeDir::new("../frontend/dist").fallback(
+                tower_http::services::ServeFile::new("../frontend/dist/index.html"),
+            ),
         )
         .layer(cors)
         .with_state(shared_state);
@@ -162,7 +177,10 @@ async fn main() {
         .unwrap_or(3000);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], port));
-    println!("🚀 Serveur backend LearnWithAnime démarré sur http://{}", addr);
+    println!(
+        "🚀 Serveur backend LearnWithAnime démarré sur http://{}",
+        addr
+    );
 
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
@@ -176,8 +194,11 @@ async fn handle_evaluate(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<EvaluateRequest>,
 ) -> Result<Json<ai::EvaluateResponse>, (StatusCode, String)> {
-    println!("📥 Évaluation requise pour: \"{}\" | Réponse: \"{}\" | Modèle: {:?}", payload.vocab, payload.user_answer, payload.model);
-    
+    println!(
+        "📥 Évaluation requise pour: \"{}\" | Réponse: \"{}\" | Modèle: {:?}",
+        payload.vocab, payload.user_answer, payload.model
+    );
+
     match state.llm_client.evaluate_answer(&payload).await {
         Ok(eval) => {
             println!("✅ Évaluation réussie: score={}", eval.score);
@@ -194,8 +215,11 @@ async fn handle_hint(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<HintRequest>,
 ) -> Result<Json<ai::HintResponse>, (StatusCode, String)> {
-    println!("📥 Indice requis pour: \"{}\" | Tier: {} | Modèle: {:?}", payload.vocab, payload.tier, payload.model);
-    
+    println!(
+        "📥 Indice requis pour: \"{}\" | Tier: {} | Modèle: {:?}",
+        payload.vocab, payload.tier, payload.model
+    );
+
     match state.llm_client.generate_hint(&payload).await {
         Ok(hint) => {
             println!("💡 Indice généré avec succès");
@@ -213,7 +237,7 @@ async fn handle_get_models(
     Json(payload): Json<ModelsRequest>,
 ) -> Result<Json<Vec<String>>, (StatusCode, String)> {
     println!("📥 Requête pour récupérer la liste des modèles (dynamique)");
-    
+
     match state.llm_client.get_models(&payload).await {
         Ok(models) => {
             println!("✅ Récupération réussie de {} modèles", models.len());
@@ -230,8 +254,11 @@ async fn handle_get_user_settings(
     State(state): State<Arc<AppState>>,
     Path(user_id): Path<uuid::Uuid>,
 ) -> Result<Json<UserLlmSettings>, (StatusCode, String)> {
-    println!("📥 Récupération des paramètres LLM actifs pour l'utilisateur: {}", user_id);
-    
+    println!(
+        "📥 Récupération des paramètres LLM actifs pour l'utilisateur: {}",
+        user_id
+    );
+
     let settings = sqlx::query_as::<_, UserLlmSettings>(
         "SELECT user_id, config_name, api_url, api_key, model, temperature_eval, temperature_hint, top_p, frequency_penalty, max_tokens, is_active \
          FROM user_llm_settings WHERE user_id = $1 AND is_active = true"
@@ -253,7 +280,7 @@ async fn handle_get_user_settings(
             .fetch_optional(&state.db_pool)
             .await
             .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD fallback: {}", e)))?;
-            
+
             if let Some(mut fs) = fallback_settings {
                 let _ = sqlx::query("UPDATE user_llm_settings SET is_active = true WHERE user_id = $1 AND config_name = $2")
                     .bind(user_id)
@@ -263,7 +290,10 @@ async fn handle_get_user_settings(
                 fs.is_active = true;
                 Ok(Json(fs))
             } else {
-                Err((StatusCode::NOT_FOUND, "Aucune configuration LLM existante".to_string()))
+                Err((
+                    StatusCode::NOT_FOUND,
+                    "Aucune configuration LLM existante".to_string(),
+                ))
             }
         }
     }
@@ -273,8 +303,11 @@ async fn handle_get_all_user_settings(
     State(state): State<Arc<AppState>>,
     Path(user_id): Path<uuid::Uuid>,
 ) -> Result<Json<Vec<UserLlmSettings>>, (StatusCode, String)> {
-    println!("📥 Récupération de toutes les configurations LLM pour l'utilisateur: {}", user_id);
-    
+    println!(
+        "📥 Récupération de toutes les configurations LLM pour l'utilisateur: {}",
+        user_id
+    );
+
     let configs = sqlx::query_as::<_, UserLlmSettings>(
         "SELECT user_id, config_name, api_url, api_key, model, temperature_eval, temperature_hint, top_p, frequency_penalty, max_tokens, is_active \
          FROM user_llm_settings WHERE user_id = $1 ORDER BY updated_at DESC"
@@ -283,7 +316,7 @@ async fn handle_get_all_user_settings(
     .fetch_all(&state.db_pool)
     .await
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD lors du chargement de la liste: {}", e)))?;
-    
+
     Ok(Json(configs))
 }
 
@@ -291,18 +324,28 @@ async fn handle_save_user_settings(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<UserLlmSettings>,
 ) -> Result<Json<UserLlmSettings>, (StatusCode, String)> {
-    println!("📥 Enregistrement des paramètres LLM pour l'utilisateur: {} | Config: {}", payload.user_id, payload.config_name);
-    
-    let mut tx = state.db_pool.begin().await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Transaction error: {}", e)))?;
-        
-    sqlx::query(
-        "UPDATE user_llm_settings SET is_active = false WHERE user_id = $1"
-    )
-    .bind(payload.user_id)
-    .execute(&mut *tx)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur de désactivation des configurations: {}", e)))?;
+    println!(
+        "📥 Enregistrement des paramètres LLM pour l'utilisateur: {} | Config: {}",
+        payload.user_id, payload.config_name
+    );
+
+    let mut tx = state.db_pool.begin().await.map_err(|e| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Transaction error: {}", e),
+        )
+    })?;
+
+    sqlx::query("UPDATE user_llm_settings SET is_active = false WHERE user_id = $1")
+        .bind(payload.user_id)
+        .execute(&mut *tx)
+        .await
+        .map_err(|e| {
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Erreur de désactivation des configurations: {}", e),
+            )
+        })?;
 
     sqlx::query(
         "INSERT INTO user_llm_settings (user_id, config_name, api_url, api_key, model, temperature_eval, temperature_hint, top_p, frequency_penalty, max_tokens, is_active, updated_at) \
@@ -333,8 +376,12 @@ async fn handle_save_user_settings(
     .await
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Impossible d'enregistrer la configuration: {}", e)))?;
 
-    tx.commit().await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur commit transaction: {}", e)))?;
+    tx.commit().await.map_err(|e| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Erreur commit transaction: {}", e),
+        )
+    })?;
 
     let mut response_payload = payload.clone();
     response_payload.is_active = true;
@@ -351,61 +398,96 @@ async fn handle_activate_user_setting(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<ActivateConfigRequest>,
 ) -> Result<Json<serde_json::Value>, (StatusCode, String)> {
-    println!("📥 Activation de la configuration LLM: {} pour l'utilisateur: {}", payload.config_name, payload.user_id);
-    
-    let mut tx = state.db_pool.begin().await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Transaction error: {}", e)))?;
-        
-    sqlx::query(
-        "UPDATE user_llm_settings SET is_active = false WHERE user_id = $1"
-    )
-    .bind(payload.user_id)
-    .execute(&mut *tx)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur de désactivation globale: {}", e)))?;
+    println!(
+        "📥 Activation de la configuration LLM: {} pour l'utilisateur: {}",
+        payload.config_name, payload.user_id
+    );
+
+    let mut tx = state.db_pool.begin().await.map_err(|e| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Transaction error: {}", e),
+        )
+    })?;
+
+    sqlx::query("UPDATE user_llm_settings SET is_active = false WHERE user_id = $1")
+        .bind(payload.user_id)
+        .execute(&mut *tx)
+        .await
+        .map_err(|e| {
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Erreur de désactivation globale: {}", e),
+            )
+        })?;
 
     let rows_affected = sqlx::query(
-        "UPDATE user_llm_settings SET is_active = true WHERE user_id = $1 AND config_name = $2"
+        "UPDATE user_llm_settings SET is_active = true WHERE user_id = $1 AND config_name = $2",
     )
     .bind(payload.user_id)
     .bind(&payload.config_name)
     .execute(&mut *tx)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur d'activation du profil: {}", e)))?
+    .map_err(|e| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Erreur d'activation du profil: {}", e),
+        )
+    })?
     .rows_affected();
 
     if rows_affected == 0 {
-        return Err((StatusCode::NOT_FOUND, "Configuration introuvable".to_string()));
+        return Err((
+            StatusCode::NOT_FOUND,
+            "Configuration introuvable".to_string(),
+        ));
     }
 
-    tx.commit().await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur commit: {}", e)))?;
+    tx.commit().await.map_err(|e| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Erreur commit: {}", e),
+        )
+    })?;
 
-    Ok(Json(serde_json::json!({ "status": "success", "activated": payload.config_name })))
+    Ok(Json(
+        serde_json::json!({ "status": "success", "activated": payload.config_name }),
+    ))
 }
 
 async fn handle_delete_user_setting(
     State(state): State<Arc<AppState>>,
     Path((user_id, config_name)): Path<(uuid::Uuid, String)>,
 ) -> Result<Json<serde_json::Value>, (StatusCode, String)> {
-    println!("📥 Suppression de la configuration LLM: {} pour l'utilisateur: {}", config_name, user_id);
-    
-    sqlx::query(
-        "DELETE FROM user_llm_settings WHERE user_id = $1 AND config_name = $2"
-    )
-    .bind(user_id)
-    .bind(&config_name)
-    .execute(&state.db_pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD lors de la suppression: {}", e)))?;
+    println!(
+        "📥 Suppression de la configuration LLM: {} pour l'utilisateur: {}",
+        config_name, user_id
+    );
+
+    sqlx::query("DELETE FROM user_llm_settings WHERE user_id = $1 AND config_name = $2")
+        .bind(user_id)
+        .bind(&config_name)
+        .execute(&state.db_pool)
+        .await
+        .map_err(|e| {
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Erreur BDD lors de la suppression: {}", e),
+            )
+        })?;
 
     let remaining_active_count: i64 = sqlx::query_scalar(
-        "SELECT COUNT(*) FROM user_llm_settings WHERE user_id = $1 AND is_active = true"
+        "SELECT COUNT(*) FROM user_llm_settings WHERE user_id = $1 AND is_active = true",
     )
     .bind(user_id)
     .fetch_one(&state.db_pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD comptage configurations actives: {}", e)))?;
+    .map_err(|e| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Erreur BDD comptage configurations actives: {}", e),
+        )
+    })?;
 
     if remaining_active_count == 0 {
         let newest_config: Option<String> = sqlx::query_scalar(
@@ -428,7 +510,9 @@ async fn handle_delete_user_setting(
         }
     }
 
-    Ok(Json(serde_json::json!({ "status": "success", "deleted": config_name })))
+    Ok(Json(
+        serde_json::json!({ "status": "success", "deleted": config_name }),
+    ))
 }
 
 // ==========================================
@@ -439,7 +523,7 @@ async fn handle_list_admins(
     State(state): State<Arc<AppState>>,
 ) -> Result<Json<Vec<UserRole>>, (StatusCode, String)> {
     println!("📥 Liste des administrateurs");
-    
+
     let admins = sqlx::query_as::<_, (Option<uuid::Uuid>, String, String, chrono::DateTime<chrono::Utc>)>(
         "SELECT user_id, email, role, granted_at FROM user_roles WHERE role = 'admin' ORDER BY granted_at"
     )
@@ -449,7 +533,7 @@ async fn handle_list_admins(
     .into_iter()
     .map(|(user_id, email, role, granted_at)| UserRole { user_id, email, role, granted_at })
     .collect();
-    
+
     Ok(Json(admins))
 }
 
@@ -458,7 +542,7 @@ async fn handle_add_admin(
     Json(payload): Json<AddAdminRequest>,
 ) -> Result<Json<UserRole>, (StatusCode, String)> {
     println!("📥 Ajout d'un administrateur par email: {}", payload.email);
-    
+
     let row = sqlx::query_as::<_, (Option<uuid::Uuid>, String, String, chrono::DateTime<chrono::Utc>)>(
         "INSERT INTO user_roles (email, role) VALUES ($1, 'admin') ON CONFLICT (email) DO UPDATE SET role = 'admin' RETURNING user_id, email, role, granted_at"
     )
@@ -466,9 +550,14 @@ async fn handle_add_admin(
     .fetch_one(&state.db_pool)
     .await
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?;
-    
+
     println!("✅ Administrateur ajouté: {}", payload.email);
-    Ok(Json(UserRole { user_id: row.0, email: row.1, role: row.2, granted_at: row.3 }))
+    Ok(Json(UserRole {
+        user_id: row.0,
+        email: row.1,
+        role: row.2,
+        granted_at: row.3,
+    }))
 }
 
 async fn handle_remove_admin(
@@ -476,39 +565,56 @@ async fn handle_remove_admin(
     Path(email): Path<String>,
 ) -> Result<Json<serde_json::Value>, (StatusCode, String)> {
     println!("📥 Suppression d'un administrateur: {}", email);
-    
+
     let rows = sqlx::query("DELETE FROM user_roles WHERE email = $1 AND role = 'admin'")
         .bind(&email)
         .execute(&state.db_pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?
+        .map_err(|e| {
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Erreur BDD: {}", e),
+            )
+        })?
         .rows_affected();
-    
+
     if rows == 0 {
-        return Err((StatusCode::NOT_FOUND, "Administrateur introuvable".to_string()));
+        return Err((
+            StatusCode::NOT_FOUND,
+            "Administrateur introuvable".to_string(),
+        ));
     }
-    
+
     println!("✅ Administrateur supprimé: {}", email);
-    Ok(Json(serde_json::json!({ "status": "success", "removed": email })))
+    Ok(Json(
+        serde_json::json!({ "status": "success", "removed": email }),
+    ))
 }
 
 async fn handle_claim_admin(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<ClaimAdminRequest>,
 ) -> Result<Json<UserRole>, (StatusCode, String)> {
-    println!("📥 Réclamation du rôle admin: {} ({})", payload.user_id, payload.email);
-    
-    let admin_count: i64 = sqlx::query_scalar(
-        "SELECT COUNT(*) FROM user_roles WHERE role = 'admin'"
-    )
-    .fetch_one(&state.db_pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?;
-    
+    println!(
+        "📥 Réclamation du rôle admin: {} ({})",
+        payload.user_id, payload.email
+    );
+
+    let admin_count: i64 =
+        sqlx::query_scalar("SELECT COUNT(*) FROM user_roles WHERE role = 'admin'")
+            .fetch_one(&state.db_pool)
+            .await
+            .map_err(|e| {
+                (
+                    StatusCode::INTERNAL_SERVER_ERROR,
+                    format!("Erreur BDD: {}", e),
+                )
+            })?;
+
     if admin_count > 0 {
         return Err((StatusCode::FORBIDDEN, "Un administrateur existe déjà. Seul un admin existant peut ajouter de nouveaux admins.".to_string()));
     }
-    
+
     let row = sqlx::query_as::<_, (Option<uuid::Uuid>, String, String, chrono::DateTime<chrono::Utc>)>(
         "INSERT INTO user_roles (user_id, email, role) VALUES ($1, $2, 'admin') RETURNING user_id, email, role, granted_at"
     )
@@ -517,17 +623,28 @@ async fn handle_claim_admin(
     .fetch_one(&state.db_pool)
     .await
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?;
-    
-    println!("✅ Premier administrateur créé: {} ({})", payload.user_id, payload.email);
-    Ok(Json(UserRole { user_id: row.0, email: row.1, role: row.2, granted_at: row.3 }))
+
+    println!(
+        "✅ Premier administrateur créé: {} ({})",
+        payload.user_id, payload.email
+    );
+    Ok(Json(UserRole {
+        user_id: row.0,
+        email: row.1,
+        role: row.2,
+        granted_at: row.3,
+    }))
 }
 
 async fn handle_link_admin(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<LinkAdminRequest>,
 ) -> Result<Json<UserRole>, (StatusCode, String)> {
-    println!("📥 Liaison du compte admin: {} -> {}", payload.email, payload.user_id);
-    
+    println!(
+        "📥 Liaison du compte admin: {} -> {}",
+        payload.email, payload.user_id
+    );
+
     let row = sqlx::query_as::<_, (Option<uuid::Uuid>, String, String, chrono::DateTime<chrono::Utc>)>(
         "UPDATE user_roles SET user_id = $1 WHERE email = $2 AND role = 'admin' AND user_id IS NULL RETURNING user_id, email, role, granted_at"
     )
@@ -536,13 +653,21 @@ async fn handle_link_admin(
     .fetch_optional(&state.db_pool)
     .await
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur BDD: {}", e)))?;
-    
+
     match row {
         Some(r) => {
             println!("✅ Compte lié: {} -> {}", payload.email, payload.user_id);
-            Ok(Json(UserRole { user_id: r.0, email: r.1, role: r.2, granted_at: r.3 }))
+            Ok(Json(UserRole {
+                user_id: r.0,
+                email: r.1,
+                role: r.2,
+                granted_at: r.3,
+            }))
         }
-        None => Err((StatusCode::NOT_FOUND, "Aucune invitation admin trouvée pour cet email ou déjà liée".to_string())),
+        None => Err((
+            StatusCode::NOT_FOUND,
+            "Aucune invitation admin trouvée pour cet email ou déjà liée".to_string(),
+        )),
     }
 }
 
@@ -560,7 +685,12 @@ async fn handle_seed_db(
     let deck_count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM decks")
         .fetch_one(&state.db_pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Erreur comptage decks: {}", e)))?;
+        .map_err(|e| {
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Erreur comptage decks: {}", e),
+            )
+        })?;
 
     if deck_count > 0 {
         println!("ℹ️ La base de données contient déjà des decks. Seeding annulé.");
@@ -589,29 +719,29 @@ async fn handle_seed_db(
             "あきらめる",
             "renoncer / abandonner",
             "Général / Commun",
-            "Ce verbe est couramment utilisé dans les animés lors des moments dramatiques, souvent sous la forme de négation (諦めるな - Akirameruna - N'abandonne pas !)"
+            "Ce verbe est couramment utilisé dans les animés lors des moments dramatiques, souvent sous la forme de négation (諦めるな - Akirameruna - N'abandonne pas !)",
         ),
         (
             "お前はもう死んでいる",
             "おまえはもうしんでいる",
             "tu es déjà mort",
             "Hokuto no Ken",
-            "La réplique mythique de Kenshiro juste avant l'explosion de son adversaire."
+            "La réplique mythique de Kenshiro juste avant l'explosion de son adversaire.",
         ),
         (
             "心臓を捧げよ",
             "しんぞうをささげよ",
             "offrez vos cœurs / dédiez vos cœurs",
             "Shingeki no Kyojin",
-            "Le cri de ralliement emblématique du Bataillon d'exploration mené par Erwin Smith."
+            "Le cri de ralliement emblématique du Bataillon d'exploration mené par Erwin Smith.",
         ),
         (
             "螺旋丸",
             "らせんがん",
             "l'orbe tourbillonnant",
             "Naruto",
-            "Une technique ninja surpuissante créée par Minato Namikaze et perfectionnée par Naruto Uzumaki."
-        )
+            "Une technique ninja surpuissante créée par Minato Namikaze et perfectionnée par Naruto Uzumaki.",
+        ),
     ];
 
     let mut inserted_count = 0;
@@ -630,7 +760,7 @@ async fn handle_seed_db(
         .execute(&state.db_pool)
         .await
         .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Échec insertion carte {}: {}", vocab, e)))?;
-        
+
         inserted_count += 1;
     }
 
@@ -646,11 +776,16 @@ async fn handle_get_decks(
     State(state): State<Arc<AppState>>,
 ) -> Result<Json<Vec<Deck>>, (StatusCode, String)> {
     println!("📥 Récupération des paquets de cartes");
-    
+
     let decks = sqlx::query_as::<_, Deck>("SELECT id, name, description FROM decks ORDER BY name")
         .fetch_all(&state.db_pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Impossible de charger les decks: {}", e)))?;
+        .map_err(|e| {
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Impossible de charger les decks: {}", e),
+            )
+        })?;
 
     Ok(Json(decks))
 }
@@ -660,7 +795,7 @@ async fn handle_get_all_cards(
     State(state): State<Arc<AppState>>,
 ) -> Result<Json<Vec<Card>>, (StatusCode, String)> {
     println!("📥 Récupération de l'intégralité des cartes");
-    
+
     let cards = sqlx::query_as::<_, Card>(
         "SELECT id, deck_id, vocab, reading, french_translation, anime_reference, context_sentence FROM cards"
     )
@@ -677,15 +812,20 @@ async fn handle_get_deck_cards(
     Path(deck_id): Path<uuid::Uuid>,
 ) -> Result<Json<Vec<Card>>, (StatusCode, String)> {
     println!("📥 Récupération des cartes pour le deck: {}", deck_id);
-    
+
     let cards = sqlx::query_as::<_, Card>(
         "SELECT id, deck_id, vocab, reading, french_translation, anime_reference, context_sentence \
-         FROM cards WHERE deck_id = $1"
+         FROM cards WHERE deck_id = $1",
     )
     .bind(deck_id)
     .fetch_all(&state.db_pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Impossible de charger les cartes du deck: {}", e)))?;
+    .map_err(|e| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Impossible de charger les cartes du deck: {}", e),
+        )
+    })?;
 
     Ok(Json(cards))
 }
