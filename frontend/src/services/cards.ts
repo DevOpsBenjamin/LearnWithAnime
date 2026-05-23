@@ -1,6 +1,9 @@
 import { API_BASE, PresetItem } from './api'
 
-export async function fetchCards(): Promise<{ presets: PresetItem[]; isSeeded: boolean }> {
+export async function fetchCards(): Promise<{
+  presets: PresetItem[]
+  isSeeded: boolean
+}> {
   const response = await fetch(`${API_BASE}/cards`)
   if (!response.ok) throw new Error('Failed to fetch cards')
   const data = await response.json()
