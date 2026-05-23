@@ -187,8 +187,7 @@ Ne mets aucun texte explicatif avant ou après le JSON. N'utilise pas de blocs m
         if let Some(ref key) = api_key_to_use
             && !key.trim().is_empty()
         {
-            request_builder =
-                request_builder.header("Authorization", format!("Bearer {}", key));
+            request_builder = request_builder.header("Authorization", format!("Bearer {}", key));
         }
 
         let response = request_builder
@@ -274,8 +273,7 @@ Sois très concis (1-2 phrases maximum) et réponds directement en français.";
         if let Some(ref key) = api_key_to_use
             && !key.trim().is_empty()
         {
-            request_builder =
-                request_builder.header("Authorization", format!("Bearer {}", key));
+            request_builder = request_builder.header("Authorization", format!("Bearer {}", key));
         }
 
         let response = request_builder
@@ -317,8 +315,7 @@ Sois très concis (1-2 phrases maximum) et réponds directement en français.";
         if let Some(ref key) = api_key_to_use
             && !key.trim().is_empty()
         {
-            request_builder =
-                request_builder.header("Authorization", format!("Bearer {}", key));
+            request_builder = request_builder.header("Authorization", format!("Bearer {}", key));
         }
 
         let response = request_builder
