@@ -14,6 +14,7 @@
       @activate-config="activateConfig"
       @go-to-settings="currentView = 'settings'"
       @go-to-playground="currentView = 'playground'"
+      @go-to-kanji="currentView = 'kanji'"
       @go-to-admin="currentView = 'admin'"
       @sign-out="handleSignOut"
     />
@@ -442,6 +443,9 @@
       </Transition>
     </div>
 
+    <!-- Vue Kanji -->
+    <KanjiView v-else-if="currentView === 'kanji'" />
+
     <!-- Vue Admin -->
     <div
       v-else-if="currentView === 'admin'"
@@ -459,6 +463,7 @@ import { supabase } from '../supabase'
 import HeaderSection from './HeaderSection.vue'
 import AdminPanel from './AdminPanel.vue'
 import HomeView from '../views/HomeView.vue'
+import KanjiView from '../views/KanjiView.vue'
 import { getApiUrlError } from '../services/api'
 
 interface UserLlmSettings {
@@ -548,7 +553,9 @@ const apiUrl = ref('http://localhost:1337/v1')
 const apiKey = ref('')
 
 // Navigation et validation d'API
-const currentView = ref<'playground' | 'settings' | 'admin'>('playground')
+const currentView = ref<'playground' | 'settings' | 'admin' | 'kanji'>(
+  'playground',
+)
 const isAdmin = ref(false)
 const isConnectionVerified = ref(false)
 const connectionError = ref('')
@@ -1097,34 +1104,6 @@ onMounted(() => {
   color: #a78bfa;
   font-weight: 600;
   word-break: break-all;
-}
-
-/* Preset Selector Styles (SQL) */
-.preset-header-inline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  gap: 8px;
-}
-
-.seed-btn {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: var(--accent);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-}
-
-.seed-btn:hover:not(:disabled) {
-  background: rgba(16, 185, 129, 0.22);
-  border-color: var(--accent);
-  transform: translateY(-1px);
 }
 
 .presets-loader {

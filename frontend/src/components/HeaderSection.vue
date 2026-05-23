@@ -38,7 +38,7 @@
 
         <!-- Bouton Paramètres -->
         <button
-          v-if="currentView === 'playground'"
+          v-if="currentView === 'playground' || currentView === 'kanji'"
           @click="$emit('go-to-settings')"
           class="action-icon-btn btn-settings"
           title="Paramètres de l'IA"
@@ -46,7 +46,7 @@
           ⚙️
         </button>
         <button
-          v-else
+          v-if="currentView === 'settings' || currentView === 'admin'"
           @click="$emit('go-to-playground')"
           class="action-icon-btn btn-settings"
           title="Retour au défi de japonais"
@@ -86,6 +86,28 @@
         </button>
       </div>
     </div>
+    <nav class="nav-tabs">
+      <button
+        :class="[
+          'nav-tab',
+          {
+            active:
+              currentView === 'playground' ||
+              currentView === 'settings' ||
+              currentView === 'admin',
+          },
+        ]"
+        @click="$emit('go-to-playground')"
+      >
+        🎴 Playground
+      </button>
+      <button
+        :class="['nav-tab', { active: currentView === 'kanji' }]"
+        @click="$emit('go-to-kanji')"
+      >
+        📖 Dico Kanji
+      </button>
+    </nav>
   </header>
 </template>
 
@@ -112,7 +134,7 @@ defineProps<{
   hasActiveConfig: boolean
   userConfigs: UserLlmSettings[]
   activeConfigName: string
-  currentView: 'playground' | 'settings' | 'admin'
+  currentView: 'playground' | 'settings' | 'admin' | 'kanji'
   isAdmin: boolean
 }>()
 
@@ -121,6 +143,7 @@ const emit = defineEmits<{
   'activate-config': [configName: string]
   'go-to-settings': []
   'go-to-playground': []
+  'go-to-kanji': []
   'go-to-admin': []
   'sign-out': []
 }>()
@@ -349,5 +372,42 @@ const onConfigChange = (event: Event) => {
 .header-config-select option {
   background: #1e293b;
   color: #f1f5f9;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 4px;
+}
+
+.nav-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  outline: none;
+}
+
+.nav-tab:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-tab.active {
+  color: white;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  box-shadow: 0 2px 8px var(--primary-glow);
 }
 </style>
