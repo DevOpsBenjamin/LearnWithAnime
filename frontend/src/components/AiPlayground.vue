@@ -38,7 +38,6 @@
       :frequency-penalty="frequencyPenalty"
     />
 
-
     <!-- Vue Paramètres (Page dédiée) -->
     <div v-else-if="currentView === 'settings'" class="settings-grid">
       <!-- Encart 1 : Connexion au LLM -->
