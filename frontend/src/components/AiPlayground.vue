@@ -1,70 +1,20 @@
 <template>
   <div class="playground-container">
-    <!-- Header -->
-    <header class="playground-header">
-      <div class="header-top-row">
-        <div class="logo-wrapper">
-          <span class="logo-icon">🌸</span>
-          <h1 class="logo-text">LearnWithManga <span class="badge">AI Playground</span></h1>
-        </div>
-        
-        <div class="header-actions">
-          <!-- Profil Utilisateur -->
-          <div v-if="user" class="user-profile">
-            <img v-if="avatarUrl" :src="avatarUrl" class="user-avatar" alt="Avatar" />
-            <div v-else class="user-avatar-placeholder">{{ userInitial }}</div>
-            <span class="user-display-name">{{ userDisplayName }}</span>
-          </div>
-
-          <!-- Bouton Paramètres -->
-          <button 
-            v-if="currentView === 'playground'" 
-            @click="currentView = 'settings'" 
-            class="action-icon-btn btn-settings" 
-            title="Paramètres de l'IA"
-          >
-            ⚙️ Paramètres
-          </button>
-          <button 
-            v-else 
-            @click="currentView = 'playground'" 
-            class="action-icon-btn btn-settings" 
-            title="Retour au défi de japonais"
-          >
-            ◀️ Retour au Défi
-          </button>
-
-          <!-- Sélecteur de Configuration IA ou Alerte d'Absence -->
-          <div v-if="user">
-            <div v-if="!hasActiveConfig" 
-              @click="currentView = 'settings'" 
-              class="blinking-badge"
-              title="Aucune configuration LLM active ! Cliquez pour en configurer une."
-            >
-              ⚠️ Configuration IA manquante - Cliquer ici
-            </div>
-            <div v-else class="header-config-selector-wrapper">
-              <select 
-                id="header-config-select" 
-                v-model="activeConfigName" 
-                @change="activateConfig(activeConfigName)" 
-                class="header-config-select"
-                title="Configuration de l'IA active"
-              >
-                <option v-for="cfg in userConfigs" :key="cfg.config_name" :value="cfg.config_name">
-                  🤖 {{ cfg.config_name }}
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Bouton Déconnexion -->
-          <button @click="handleSignOut" class="logout-btn" title="Se déconnecter de votre compte">
-            🚪 Déconnexion
-          </button>
-        </div>
-      </div>
-    </header>
+    <HeaderSection
+      :user="user"
+      :avatarUrl="avatarUrl"
+      :userInitial="userInitial"
+      :userDisplayName="userDisplayName"
+      :hasActiveConfig="hasActiveConfig"
+      :userConfigs="userConfigs"
+      :activeConfigName="activeConfigName"
+      :currentView="currentView"
+      @update:activeConfigName="activeConfigName = $event"
+      @activate-config="activateConfig"
+      @go-to-settings="currentView = 'settings'"
+      @go-to-playground="currentView = 'playground'"
+      @sign-out="handleSignOut"
+    />
 
     <div v-if="currentView === 'playground'" class="playground-grid">
       <!-- Section Gauche : Sélection & Indices -->
@@ -555,6 +505,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
 import { supabase } from '../supabase'
+import HeaderSection from './HeaderSection.vue'
 
 interface UserLlmSettings {
   user_id: string;
@@ -1087,48 +1038,9 @@ const getScoreClass = (score: number) => {
 
 <style scoped>
 .playground-container {
-  max-width: 1200px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 40px 20px;
-}
-
-.playground-header {
-  margin-bottom: 40px;
-}
-
-.logo-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo-icon {
-  font-size: 2.5rem;
-}
-
-.logo-text {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.badge {
-  font-size: 0.9rem;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(236, 72, 153, 0.15);
-  border: 1px solid rgba(236, 72, 153, 0.3);
-  color: var(--primary);
-  font-weight: 600;
-  -webkit-text-fill-color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .subtitle {
@@ -1214,115 +1126,7 @@ const getScoreClass = (score: number) => {
 }
 
 /* Header Actions & Profile */
-.header-top-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto 12px auto;
-}
 
-@media (max-width: 768px) {
-  .header-top-row {
-    flex-direction: column;
-    gap: 18px;
-  }
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-@media (max-width: 500px) {
-  .header-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-  .user-profile, .action-icon-btn, .logout-btn {
-    width: 100%;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-}
-
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--glass-border);
-  padding: 8px 16px;
-  border-radius: 12px;
-}
-
-.user-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1.5px solid var(--primary);
-  object-fit: cover;
-}
-
-.user-avatar-placeholder {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.user-display-name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-.action-icon-btn {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--glass-border);
-  color: var(--text-main);
-  border-radius: 12px;
-  padding: 8px 16px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
-  outline: none;
-}
-
-.action-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
-}
-
-.logout-btn {
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  color: #fca5a5;
-  border-radius: 12px;
-  padding: 8px 16px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-  font-family: inherit;
-}
-
-.logout-btn:hover {
-  background: rgba(239, 68, 68, 0.18);
-  border-color: #ef4444;
-  transform: translateY(-1px);
-}
 
 /* Modal Styling */
 .modal-overlay {
@@ -2127,8 +1931,6 @@ const getScoreClass = (score: number) => {
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 30px;
   align-items: start;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 .settings-card {
@@ -2219,14 +2021,16 @@ const getScoreClass = (score: number) => {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--glass-border);
   color: #e2e8f0;
-  padding: 8px 16px;
+  padding: 0 14px;
   border-radius: 12px;
+  height: 40px;
   font-size: 0.85rem;
   font-weight: 600;
   outline: none;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 180px;
+  box-sizing: border-box;
 }
 
 .header-config-select:hover {
