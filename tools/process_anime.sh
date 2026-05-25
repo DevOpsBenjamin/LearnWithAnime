@@ -1,16 +1,13 @@
 #!/bin/bash
 set -e
-SOURCE="${1:-_sources/kitsunekko/subtitles/anime_tv}"
+SOURCE="${1:-_sources/merged}"
 MIN_FIXED="${2:-auto}"
 for dir in "$SOURCE"/*/; do
+    [ -d "$dir" ] || continue
     name=$(basename "$dir")
-    files=$(find "$dir" -maxdepth 3 \( -name '*.srt' -o -name '*.ass' \) | wc -l)
-    if [ "$files" -eq 0 ]; then
-        continue
-    fi
+    files=$(find "$dir" -maxdepth 1 -type l | wc -l | tr -d ' ')
     if [ "$MIN_FIXED" = "auto" ]; then
-        if   [ "$files" -lt 50 ];  then min=3
-        elif [ "$files" -lt 200 ]; then min=5
+        if   [ "$files" -lt 200 ]; then min=5
         elif [ "$files" -lt 500 ]; then min=7
         else                            min=10
         fi
