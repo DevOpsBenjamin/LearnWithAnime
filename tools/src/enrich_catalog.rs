@@ -197,10 +197,7 @@ fn parse_kradfile(path: &Path) -> Result<HashMap<String, Vec<String>>> {
         }
         if let Some((kanji, rest)) = line.split_once(':') {
             let kanji = kanji.trim();
-            let components: Vec<String> = rest
-                .split_whitespace()
-                .map(|s| s.to_string())
-                .collect();
+            let components: Vec<String> = rest.split_whitespace().map(|s| s.to_string()).collect();
             if !components.is_empty() {
                 map.insert(kanji.to_string(), components);
             }
@@ -224,15 +221,11 @@ fn main() -> Result<()> {
 
     // 1. Load JLPT mapping
     println!("📖 Chargement du mapping JLPT...");
-    let jlpt_raw: String =
-        fs::read_to_string(sources_dir.join("jlpt_kanji.json"))
-            .context("Cannot read jlpt_kanji.json")?;
+    let jlpt_raw: String = fs::read_to_string(sources_dir.join("jlpt_kanji.json"))
+        .context("Cannot read jlpt_kanji.json")?;
     let jlpt_map: HashMap<String, u8> =
         serde_json::from_str(&jlpt_raw).context("Cannot parse jlpt_kanji.json")?;
-    println!(
-        "   {} kanji dans le mapping JLPT",
-        jlpt_map.len()
-    );
+    println!("   {} kanji dans le mapping JLPT", jlpt_map.len());
 
     // 2. Parse KANJIDIC2
     println!("📖 Parsing de kanjidic2.xml...");
@@ -242,10 +235,7 @@ fn main() -> Result<()> {
     // 3. Parse KRADFILE
     println!("📖 Parsing de kradfile...");
     let kradfile = parse_kradfile(&sources_dir.join("kradfile"))?;
-    println!(
-        "   {} kanji avec décompositions",
-        kradfile.len()
-    );
+    println!("   {} kanji avec décompositions", kradfile.len());
 
     // Merge kradfile2 for extended kanji
     let kradfile2_path = sources_dir.join("kradfile2");
@@ -312,8 +302,8 @@ fn main() -> Result<()> {
         let entries = by_level.get(&level).unwrap();
         let filename = format!("jlpt-n{}.jsonl", level);
         let path = output_dir.join(&filename);
-        let mut file = fs::File::create(&path)
-            .with_context(|| format!("Cannot create {}", filename))?;
+        let mut file =
+            fs::File::create(&path).with_context(|| format!("Cannot create {}", filename))?;
         for entry in entries {
             let line = serde_json::to_string(entry)?;
             writeln!(file, "{}", line)?;
@@ -330,13 +320,29 @@ fn main() -> Result<()> {
     // 7. Report
     println!("\n📊 Rapport final :");
     println!("   Total écrits  : {}", total_written);
-    println!("   Non trouvés   : {} ({})", not_found.len(), if not_found.is_empty() { "✓" } else { "⚠️" });
+    println!(
+        "   Non trouvés   : {} ({})",
+        not_found.len(),
+        if not_found.is_empty() {
+            "✓"
+        } else {
+            "⚠️"
+        }
+    );
     if !not_found.is_empty() {
         for nf in &not_found {
             println!("                    • {}", nf);
         }
     }
-    println!("   Sans KRADFILE : {} ({})", no_krad.len(), if no_krad.len() < 50 { "✓" } else { "ℹ️ > 50" });
+    println!(
+        "   Sans KRADFILE : {} ({})",
+        no_krad.len(),
+        if no_krad.len() < 50 {
+            "✓"
+        } else {
+            "ℹ️ > 50"
+        }
+    );
     if no_krad.len() <= 50 && !no_krad.is_empty() {
         for nk in &no_krad {
             println!("                    • {}", nk);

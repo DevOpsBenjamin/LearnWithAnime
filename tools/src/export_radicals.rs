@@ -248,6 +248,10 @@ fn main() -> Result<()> {
     }
     writeln!(file, "]")?;
 
-    println!("✓ {} radicaux KangXi exportés → {}", RADICALS.len(), path.display());
+    println!(
+        "✓ {} radicaux KangXi exportés → {}",
+        RADICALS.len(),
+        path.display()
+    );
     Ok(())
 }

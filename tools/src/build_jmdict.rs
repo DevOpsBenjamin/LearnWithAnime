@@ -123,19 +123,12 @@ fn main() -> anyhow::Result<()> {
         buf.clear();
     }
 
-    eprintln!(
-        "✅ Parsed {} entries -> {}",
-        count,
-        out_path.display()
-    );
+    eprintln!("✅ Parsed {} entries -> {}", count, out_path.display());
     eprintln!("   ({} entities resolved)", entities.len());
     Ok(())
 }
 
-fn parse_entry(
-    reader: &mut Reader<&[u8]>,
-    buf: &mut Vec<u8>,
-) -> anyhow::Result<JmdictEntry> {
+fn parse_entry(reader: &mut Reader<&[u8]>, buf: &mut Vec<u8>) -> anyhow::Result<JmdictEntry> {
     let mut id = 0u32;
     let mut kanji = Vec::new();
     let mut readings = Vec::new();

@@ -1,0 +1,488 @@
+{"id":"7e03f69a-0c18-5c75-b384-019caf59cd18","kanji":"和行","romaji":"wagyou","fr":"the \"wa\" column of the Japanese syllabary table (wa, wi, we, wo)","readings":["わぎょう"],"jlpt_level":3,"jmdict_seq":2835547,"total_freq":1,"pos":["n"]}
+{"id":"e038267d-57e8-5786-ab33-cce65a14ed7a","kanji":"和司","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"83b8fa27-57e1-5249-b5dd-fe035b8c4928","kanji":"和酒","romaji":"washu","fr":"traditional Japanese alcohol (primarily sake, but also shōchū and fruit wine)","readings":["わしゅ"],"jlpt_level":3,"jmdict_seq":2652130,"total_freq":1,"pos":["n"]}
+{"id":"f6273b3a-3f0c-5cf9-96a5-c58aaba75a45","kanji":"和就","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"cf9bc4e3-eb8a-567c-a253-1adf36e95ce1","kanji":"和成","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"1e74de3f-f9e4-5b84-9592-40d0833eb4c1","kanji":"和泉橋","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"177d008a-4e9d-57ef-afd4-5d6f6572bee5","kanji":"和泉元彌","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"10fe348f-5f22-5b2a-9efd-004e0fc87d4d","kanji":"和中","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"ce2d9ee9-d9ff-5dd3-85b8-801dde689a41","kanji":"和田惟政","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"f21c3f64-9cbe-5565-b4f6-0be04109e10b","kanji":"和田圭","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"adcf5087-d371-51c2-943b-5c8e9a0eb07b","kanji":"和年","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"8cf0e005-f82d-548e-845c-27cf3a5e5f10","kanji":"和八","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"dee617d5-2953-56c1-b8d3-db4a12dbcfdf","kanji":"和柄","romaji":"wagara","fr":"traditional Japanese pattern; traditional Japanese design","readings":["わがら"],"jlpt_level":1,"jmdict_seq":2528310,"total_freq":1,"pos":["n"]}
+{"id":"8cfd7f04-9258-5081-b170-460dfed52000","kanji":"和朋","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"85008503-04f7-5880-84cb-859257ed7c2a","kanji":"和巳","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"41a2b481-3a25-5a3c-b504-5a1d54d891a6","kanji":"和民","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"b6767f3e-2071-5709-96cf-5c91c1a7872b","kanji":"和茂","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"8f87b649-4d03-5c76-baae-2de2e7e8f0d2","kanji":"和霊神社","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"a5bffa6a-b837-5cfe-8568-4f534ef2d2e6","kanji":"和和","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"5fb5e484-cdfd-5ec8-8c56-548f53cdca91","kanji":"和惠","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"afa21424-0f5d-519b-8372-b9810f6830f5","kanji":"話の先","romaji":"hanashinosaki","fr":"sequel of a story","readings":["はなしのさき"],"jlpt_level":5,"jmdict_seq":1902080,"total_freq":1,"pos":["n"]}
+{"id":"d1bb08c0-f6a4-5260-9a82-5dd523da078c","kanji":"話を逸らす","romaji":"hanashiwosorasu","fr":"to change the subject (e.g. away from something awkward or inconvenient)","readings":["はなしをそらす"],"jlpt_level":1,"jmdict_seq":2234430,"total_freq":1,"pos":["exp,v5s"]}
+{"id":"04f68d30-e76e-55e6-94de-0f7074599b88","kanji":"話を遮る","romaji":"hanashiwosaegiru","fr":"to interrupt (a person)","readings":["はなしをさえぎる"],"jlpt_level":1,"jmdict_seq":1902100,"total_freq":1,"pos":["exp,v5r"]}
+{"id":"abc20abd-6972-5e9c-8096-8a4ded5eea62","kanji":"話を付ける","romaji":"hanashiwotsukeru","fr":"to negotiate; to settle a matter; to arrange","readings":["はなしをつける"],"jlpt_level":3,"jmdict_seq":1902110,"total_freq":1,"pos":["exp,v1"]}
+{"id":"368bb1eb-23b1-50f4-af2a-36ca3e18d33c","kanji":"話下手","romaji":"hanashibeta","fr":"being bad at conversation; poor conversationalist; poor talker","readings":["はなしべた"],"jlpt_level":4,"jmdict_seq":1562370,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"e8df9d68-47c5-5d6e-91c2-828f7abdc7ff","kanji":"話合い","romaji":"hanashiai","fr":"discussion; talk; tête-à-tête; conference","readings":["はなしあい"],"jlpt_level":2,"jmdict_seq":1600910,"total_freq":1,"pos":["n,vs"]}
+{"id":"788ddc23-34cb-5a28-b973-8672c20a6f75","kanji":"話上手","romaji":"hanashijouzu","fr":"being good at conversation; good talker; conversationalist","readings":["はなしじょうず"],"jlpt_level":4,"jmdict_seq":1782900,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"4e2cfe3e-4dfa-54fc-9c4a-9546ac9b039c","kanji":"話相手","romaji":"hanashiaite","fr":"person with whom to speak; someone to talk to; companion; advisor; adviser","readings":["はなしあいて"],"jlpt_level":3,"jmdict_seq":1782940,"total_freq":1,"pos":["n"]}
+{"id":"4bf785ee-fe5a-506f-8945-2eb25c1a287b","kanji":"話変わって","romaji":"hanashikawaっte","fr":"meanwhile; in the meantime; on the other hand","readings":["はなしかわって"],"jlpt_level":3,"jmdict_seq":2609360,"total_freq":1,"pos":["exp"]}
+{"id":"18fa26be-f8fb-57bf-92c6-eae96410f44e","kanji":"歪める","romaji":"yugameru","fr":"to bend; to curve; to warp; to distort; to disfigure; to bend (the truth); to falsify; to twist; to corrupt; to sully","readings":["ゆがめる","いがめる"],"jmdict_seq":1585370,"total_freq":1,"pos":["v1,vt"]}
+{"id":"b50ef6ff-ee60-5df3-a151-0978c27dfa3a","kanji":"脇坂安治","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"addb68ec-3bc1-5b5f-9a85-2f334bd1abb4","kanji":"脇息","romaji":"kyousoku","fr":"armrest","readings":["きょうそく"],"jlpt_level":3,"jmdict_seq":1823630,"total_freq":1,"pos":["n"]}
+{"id":"4f7373c0-85ec-5133-9658-c3fbcfecb81a","kanji":"惑星系","romaji":"wakuseikei","fr":"planetary system; star system","readings":["わくせいけい"],"jlpt_level":1,"jmdict_seq":2569240,"total_freq":1,"pos":["n"]}
+{"id":"8f184c36-5b21-5ef9-8304-e987d99b89bf","kanji":"惑星探査","romaji":"wakuseitansa","fr":"planetary exploration","readings":["わくせいたんさ"],"jlpt_level":1,"jmdict_seq":2147440,"total_freq":1,"pos":["n"]}
+{"id":"3005900d-db2a-581a-8a62-f3ebebc36c71","kanji":"枠線","romaji":"wakusen","fr":"grid-line (e.g. in spreadsheet); enclosing line","readings":["わくせん"],"jlpt_level":1,"jmdict_seq":1922550,"total_freq":1,"pos":["n"]}
+{"id":"e9604229-3159-5707-98d3-8def98502730","kanji":"枠組","romaji":"wakugumi","fr":"frame (physical structure); framework; framework (of a plan, system, etc.); structure; outline","readings":["わくぐみ"],"jlpt_level":1,"jmdict_seq":1606690,"total_freq":1,"pos":["n"]}
+{"id":"9a921018-6d2a-5871-b208-2e17cf83e586","kanji":"鷲づかみ","romaji":"washizukami","fr":"grabbing hold; eagle grip; tight hold","readings":["わしづかみ","ワシづかみ"],"jmdict_seq":1733950,"total_freq":1,"pos":["n"]}
+{"id":"966366dc-21a9-51f2-93c9-638259bdae1e","kanji":"詫状","romaji":"wabijou","fr":"letter of apology","readings":["わびじょう"],"jlpt_level":3,"jmdict_seq":1562700,"total_freq":1,"pos":["n"]}
+{"id":"a716093b-fc79-5170-8694-2cb921322bd5","kanji":"藁灰","romaji":"warabai","fr":"straw ashes","readings":["わらばい"],"jlpt_level":2,"jmdict_seq":1819510,"total_freq":1,"pos":["n"]}
+{"id":"c50f35b1-38df-56a9-b87d-d9ed8243e794","kanji":"湾曲部","romaji":"wankyokubu","fr":"bend; flexure; bight","readings":["わんきょくぶ"],"jlpt_level":2,"jmdict_seq":2631560,"total_freq":1,"pos":["n"]}
+{"id":"3aaa12bd-d593-56e7-9229-aa91c67d02e1","kanji":"湾頭","romaji":"wantou","fr":"bay shore","readings":["わんとう"],"jlpt_level":2,"jmdict_seq":1666740,"total_freq":1,"pos":["n"]}
+{"id":"a95fec10-c5d6-5824-861a-44fedd84bff6","kanji":"腕づく","romaji":"udezuku","fr":"main force; brute force; strong-arm","readings":["うでずく","うでづく"],"jlpt_level":2,"jmdict_seq":1665090,"total_freq":1,"pos":["n,adj-no"]}
+{"id":"e6fc35f1-2871-5031-8ae6-f746bd901e8f","kanji":"腕に覚えがある","romaji":"udenioboegaaru","fr":"to have confidence in one's own abilities","readings":["うでにおぼえがある"],"jlpt_level":2,"jmdict_seq":2237320,"total_freq":1,"pos":["exp"]}
+{"id":"16885a4c-9da3-564b-a3fd-2beb5d8a8d61","kanji":"腕の良い","romaji":"udenoii","fr":"skilled; skillful; skilful; competent; capable; good","readings":["うでのいい","うでのよい"],"jlpt_level":2,"jmdict_seq":2540650,"total_freq":1,"pos":["adj-i"]}
+{"id":"8021f2ad-7b02-52aa-abb8-e0a5b9e113af","kanji":"腕を返す","romaji":"kainawokaesu","fr":"to place one's arms under those of the opponent and lift them up, in order to prevent an overhand grip on one's mawashi","readings":["かいなをかえす"],"jlpt_level":2,"jmdict_seq":2139860,"total_freq":1,"pos":["exp,v5s"]}
+{"id":"1dff9e0b-9b41-5d10-9abe-aff4b9b1925c","kanji":"丼勘定","romaji":"donburikanjou","fr":"rough estimate; sloppy accounting; slapdash bookkeeping","readings":["どんぶりかんじょう","ドンブリかんじょう"],"jlpt_level":1,"jmdict_seq":1562980,"total_freq":1,"pos":["n"]}
+{"id":"c0cb3744-1044-57d5-b8b2-94efe756c820","kanji":"丼飯","romaji":"donburimeshi","fr":"bowl of rice","readings":["どんぶりめし"],"jlpt_level":4,"jmdict_seq":1846220,"total_freq":1,"pos":["n"]}
+{"id":"2e9209a1-e2d5-576f-80fb-d5e86196498f","kanji":"丼物","romaji":"donburimono","fr":"bowl of rice with food on top","readings":["どんぶりもの","どんもの"],"jlpt_level":4,"jmdict_seq":1563000,"total_freq":1,"pos":["n"]}
+{"id":"4305320a-f172-5bd6-a04f-41b320c25674","kanji":"舒適","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"d361e0c5-2030-538b-b680-bff63b6e91f0","kanji":"佗び","romaji":"wabi","fr":"taste for the simple and quiet; rustic simplicity; austere refinement; wabi; enjoyment of a quiet life","readings":["わび"],"jmdict_seq":1606760,"total_freq":1,"pos":["iK"]}
+{"id":"c1b89f2d-22c2-5885-a201-5934f8f4ef73","kanji":"佗寝","romaji":"wabine","fr":"lonesome sleep; sleeping alone","readings":["わびね"],"jlpt_level":3,"jmdict_seq":1563160,"total_freq":1,"pos":["n"]}
+{"id":"7e69a6a8-cf15-5038-935f-e951d33fce9d","kanji":"佶","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"e6d3103d-717a-55c1-94a2-cf476e65fc26","kanji":"佩く","romaji":"haku","fr":"to put on (lower-body clothing, e.g. pants, skirt, footwear); to wear; to affix (a sword to one's hip); to affix (a bowstring to a bow)","readings":["はく"],"jmdict_seq":1607260,"total_freq":1,"pos":["v5k,vt"]}
+{"id":"47169513-5d8a-5a51-a952-b841a5dcb44c","kanji":"來見","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"51a7290b-1162-54fb-8c42-de30a4f804da","kanji":"來三","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"4ff2c282-9652-5b0b-8354-382bbb2b19a4","kanji":"來未","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"9e47edc7-0a83-5c8e-9482-e9d7bc5e5813","kanji":"來麗","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"6ca2c84d-5818-5d0f-8b57-d50bacc3c88e","kanji":"俎","romaji":"manaita","fr":"chopping board; cutting board; flat chest; tiny breasts","readings":["まないた"],"jmdict_seq":1604140,"total_freq":1,"pos":["n"]}
+{"id":"0f09f24b-1a18-5e0d-a359-f12b93694d2c","kanji":"俎上","romaji":"sojou","fr":"on the chopping board","readings":["そじょう"],"jlpt_level":5,"jmdict_seq":1563340,"total_freq":1,"pos":["n"]}
+{"id":"3be16dc2-05fd-5ed5-a9cd-2fc3b0dfa313","kanji":"俘虜","romaji":"toriko","fr":"captive; prisoner; victim (of love, etc.); slave (to one's lust, etc.)","readings":["とりこ"],"jlpt_level":1,"jmdict_seq":1585420,"total_freq":1,"pos":["n"]}
+{"id":"d6eece7d-6da6-5d2b-9b8c-e15e4e30959c","kanji":"倔強","romaji":"kuっkyou","fr":"robust; brawny; muscular; strong; sturdy","readings":["くっきょう"],"jlpt_level":4,"jmdict_seq":1592230,"total_freq":1,"pos":["adj-na,n,adj-no"]}
+{"id":"34a642a4-d457-5dbe-8cc9-3bfc8e48e00b","kanji":"會退","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"589c8d26-0d14-5a9e-a977-532e589609fa","kanji":"傀儡政権","romaji":"kairaiseiken","fr":"puppet government; puppet regime","readings":["かいらいせいけん"],"jlpt_level":3,"jmdict_seq":2042670,"total_freq":1,"pos":["n"]}
+{"id":"c1e38dee-03bc-5ed2-9821-52ad63bc9350","kanji":"傲然","romaji":"gouzen","fr":"proud; arrogant; haughty","readings":["ごうぜん"],"jlpt_level":3,"jmdict_seq":1563940,"total_freq":1,"pos":["adj-t,adv-to"]}
+{"id":"4d839654-4b0c-5573-b06a-c7c2f9f70c03","kanji":"傲慢無礼","romaji":"goumanburei","fr":"(arrogance and) insolence","readings":["ごうまんぶれい"],"jlpt_level":1,"jmdict_seq":1742090,"total_freq":1,"pos":["n"]}
+{"id":"55d07f95-6a12-5664-a28e-68ac9805629f","kanji":"傳教","romaji":"","fr":"","jlpt_level":4,"total_freq":1,"pos":["n"]}
+{"id":"e1a7233a-6b16-5273-8990-06f9aaecc445","kanji":"僭王","romaji":"senou","fr":"usurper king","readings":["せんおう"],"jlpt_level":3,"jmdict_seq":1564050,"total_freq":1,"pos":["n"]}
+{"id":"8e2f1d1f-becd-5c5a-872b-39296d29bf53","kanji":"僭称","romaji":"senshou","fr":"pretension; assumption (of a title)","readings":["せんしょう"],"jlpt_level":1,"jmdict_seq":1564080,"total_freq":1,"pos":["n,vs"]}
+{"id":"9c0cc3b1-b14f-5000-baa2-e0973d1ff2bc","kanji":"兀頭","romaji":"koっtou","fr":"bald head; baldness","readings":["こっとう"],"jlpt_level":3,"jmdict_seq":2578260,"total_freq":1,"pos":["n"]}
+{"id":"c7fe1023-5e4e-5bff-bb69-6d49e3e4cb12","kanji":"冱えない","romaji":"saenai","fr":"dull; dreary; sullen; depressed; dissatisfying; disappointing; lackluster; inadequate; unattractive; unappealing; boring; uninteresting","readings":["さえない"],"jmdict_seq":2576510,"total_freq":1,"pos":["exp,adj-i"]}
+{"id":"be436023-9db4-5193-affd-2602bd6bafed","kanji":"冱え冱え","romaji":"saezae","fr":"clearly; brightly; freshly","readings":["さえざえ"],"jmdict_seq":2443480,"total_freq":1,"pos":["adv-to,adv,vs"]}
+{"id":"73fc0690-4417-57e7-9eb3-7442e87e9bb5","kanji":"凉","romaji":"ryou","fr":"cool breeze; cool air; refreshing coolness","readings":["りょう"],"jmdict_seq":2729660,"total_freq":1,"pos":["n"]}
+{"id":"3d0dafc4-3d30-5d87-a0f1-43862bb3ca87","kanji":"凩","romaji":"kogarashi","fr":"cold wintry wind","readings":["こがらし"],"jmdict_seq":1593140,"total_freq":1,"pos":["n"]}
+{"id":"57c56f90-6c8f-522f-a814-6b45fc9dc8d9","kanji":"凭せ掛ける","romaji":"motasekakeru","fr":"to lean against; to set against","readings":["もたせかける"],"jlpt_level":3,"jmdict_seq":1564370,"total_freq":1,"pos":["v1,vt"]}
+{"id":"193b0d57-9bf5-579c-8993-a8e661e62b99","kanji":"刎頚","romaji":"funkei","fr":"decapitation","readings":["ふんけい"],"jmdict_seq":1564440,"total_freq":1,"pos":["n"]}
+{"id":"0bebc708-5760-5033-86ad-3198298d3409","kanji":"刮げる","romaji":"kosogeru","fr":"to scrape off; to shave off","readings":["こそげる"],"jmdict_seq":2008070,"total_freq":1,"pos":["v1,vt"]}
+{"id":"f2d8b839-1aab-5286-9e8c-06eaed6f7064","kanji":"刮げ取る","romaji":"kosogetoru","fr":"to scrape off","readings":["こそげとる"],"jlpt_level":3,"jmdict_seq":2398330,"total_freq":1,"pos":["v5r,vt"]}
+{"id":"2b3c9c0d-611a-54fd-b6a2-c23f924d1e26","kanji":"刹那主義","romaji":"setsunashugi","fr":"principle of living only for the moment","readings":["せつなしゅぎ"],"jlpt_level":1,"jmdict_seq":1755090,"total_freq":1,"pos":["n"]}
+{"id":"7807dcaf-efa0-5beb-89a0-d514a0408f37","kanji":"剔","romaji":"teki","fr":"cutting","readings":["てき"],"jmdict_seq":1564540,"total_freq":1,"pos":["n"]}
+{"id":"b284156d-8721-597d-986f-3bb90f3b6c03","kanji":"剪毛","romaji":"senmou","fr":"wool shearing","readings":["せんもう"],"jlpt_level":2,"jmdict_seq":1564690,"total_freq":1,"pos":["n,vs"]}
+{"id":"a2f04763-18bf-5448-ae6d-9e94304ab20d","kanji":"劔","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"fafa3456-9704-54f6-9a0c-77377604f7cd","kanji":"劈","romaji":"heki","fr":"break; tear; pierce; split; burst","readings":["へき"],"jmdict_seq":1564800,"total_freq":1,"pos":["n"]}
+{"id":"d094b150-ad1e-5822-b1e9-d18104cb8ec2","kanji":"劈開","romaji":"hekikai","fr":"cleavage (in gems)","readings":["へきかい"],"jlpt_level":4,"jmdict_seq":1564820,"total_freq":1,"pos":["n,vs"]}
+{"id":"71e70d7e-aea3-5d11-ba32-c355ff95be05","kanji":"吼える","romaji":"hoeru","fr":"to bark; to howl; to bay; to roar; to yelp; to yap; to howl (of the wind); to roar (of the sea); to yell; to shout; to cry; to moan","readings":["ほえる"],"jmdict_seq":1603420,"total_freq":1,"pos":["v1,vi"]}
+{"id":"3bec863a-6b28-5625-b561-5cf666e3b932","kanji":"呻き声","romaji":"umekigoe","fr":"groan; moan; moaning","readings":["うめきごえ"],"jlpt_level":3,"jmdict_seq":1955400,"total_freq":1,"pos":["n"]}
+{"id":"51f4f991-f8a6-5cc9-8e31-94d609114d6f","kanji":"呻吟","romaji":"shingin","fr":"moaning; groaning","readings":["しんぎん"],"jlpt_level":1,"jmdict_seq":1619060,"total_freq":1,"pos":["n,vs"]}
+{"id":"a10eb004-1a25-5d81-9a1d-66e677fc5a72","kanji":"咸","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"c4f71590-2004-5677-88a4-2c8924f7f610","kanji":"哺乳動物","romaji":"honyuudoubutsu","fr":"mammal","readings":["ほにゅうどうぶつ"],"jlpt_level":2,"jmdict_seq":1565240,"total_freq":1,"pos":["n"]}
+{"id":"76aeea04-309d-5750-91ff-abbff7a45cb6","kanji":"啜り込む","romaji":"susurikomu","fr":"to slurp noisily","readings":["すすりこむ"],"jlpt_level":3,"jmdict_seq":2100270,"total_freq":1,"pos":["v5m"]}
+{"id":"f8001ba3-4d73-579f-b3ec-3b1b27de0286","kanji":"喀痰","romaji":"kakutan","fr":"expectoration; sputum","readings":["かくたん"],"jmdict_seq":1565320,"total_freq":1,"pos":["n,vs"]}
+{"id":"f8004e90-782d-5c94-ab16-9a9a5c2d1270","kanji":"嗄らす","romaji":"karasu","fr":"to talk oneself hoarse; to shout oneself hoarse","readings":["からす"],"jmdict_seq":2087020,"total_freq":1,"pos":["v5s,vt"]}
+{"id":"e374d562-3710-5c0a-8829-c55976b18026","kanji":"嗜眠性脳炎","romaji":"shiminseinouen","fr":"encephalitis lethargica","readings":["しみんせいのうえん"],"jlpt_level":1,"jmdict_seq":2136800,"total_freq":1,"pos":["n"]}
+{"id":"71fc5d4a-c3fa-5228-b244-ef433773ab1d","kanji":"嘔気","romaji":"ouki","fr":"nausea","readings":["おうき"],"jlpt_level":5,"jmdict_seq":2509960,"total_freq":1,"pos":["n"]}
+{"id":"503dc465-c398-5fd6-b54a-d1ece7e4ccad","kanji":"嘔吐反射","romaji":"outohansha","fr":"vomiting reflex; retching reflex","readings":["おうとはんしゃ"],"jlpt_level":1,"jmdict_seq":2541020,"total_freq":1,"pos":["n"]}
+{"id":"d8e34999-7436-5102-9974-0486c5fd8712","kanji":"國家","romaji":"koっka","fr":"state; country; nation","readings":["こっか"],"jlpt_level":4,"jmdict_seq":1286170,"total_freq":1,"pos":["n"]}
+{"id":"89246bc4-951c-5694-994f-376b4ccb8052","kanji":"國村","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"d4db6574-17ad-5717-bc68-d6041e1e63b3","kanji":"國雄","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"f8008e65-b583-58ca-bafe-63e0dc97e5cc","kanji":"國學院","romaji":"","fr":"","jlpt_level":4,"total_freq":1,"pos":["n"]}
+{"id":"1f7472ce-0996-55f6-a385-311c5005166b","kanji":"團栗","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"9a89d05d-28cb-5f03-bdf1-26bbc49fd24f","kanji":"團十郎","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"8824170c-5c4f-5c0f-9fba-fbf0fe22cf2f","kanji":"埒が明かない","romaji":"rachigaakanai","fr":"making no progress; getting nowhere; remaining unsettled","readings":["らちがあかない","ラチがあかない","ラチがあかん","らちがあかん","らちがあかぬ","ラチがあかぬ"],"jlpt_level":4,"jmdict_seq":1915350,"total_freq":1,"pos":["adj-i"]}
+{"id":"0aea5b99-f757-5740-8485-b68421735733","kanji":"埒もない","romaji":"rachimonai","fr":"incoherent; vague; silly; foolish","readings":["らちもない","らっちもない"],"jmdict_seq":2533350,"total_freq":1,"pos":["adj-i"]}
+{"id":"255a0c50-c926-53c6-8203-2da9d09df2f0","kanji":"毀す","romaji":"kowasu","fr":"to break; to destroy; to demolish; to wreck; to ruin; to spoil; to damage; to break (a bill, etc.)","readings":["こわす"],"jmdict_seq":1199890,"total_freq":1,"pos":["v5s,vt"]}
+{"id":"bcc9e60b-31dd-5e77-8ca0-7281ba1ed91d","kanji":"毀つ","romaji":"kobotsu","fr":"to destroy; to break; to damage","readings":["こぼつ","こほつ"],"jmdict_seq":1877300,"total_freq":1,"pos":["v5t,vt"]}
+{"id":"b06cd4c1-b13f-5429-b06e-0c6c213b2476","kanji":"毀誉褒貶","romaji":"kiyohouhen","fr":"praise and censure; public criticisms","readings":["きよほうへん"],"jlpt_level":1,"jmdict_seq":1565790,"total_freq":1,"pos":["n"]}
+{"id":"550769a2-dd80-55af-8b40-ecfb53b05a7c","kanji":"壤","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"11831c14-fd56-5889-8074-9b644fa02f90","kanji":"壽司","romaji":"sushi","fr":"sushi; range of dishes made with vinegared rice combined with fish, vegetables, egg, etc.","readings":["すし"],"jlpt_level":1,"jmdict_seq":1595650,"total_freq":1,"pos":["n"]}
+{"id":"c76f741e-e3c3-58d7-812f-64c157ab69da","kanji":"壽子","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"97636c7d-ccb1-5b69-ae9a-78f5204dd270","kanji":"奧林","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"94f39ab9-bcdc-5df8-a695-2adc48badb9d","kanji":"姜","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"5c7c90c8-06e5-5f2a-b576-96e2cc742cc8","kanji":"姜尚中","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"971b4629-c816-574f-9d4e-25ff90a6ecc0","kanji":"婉","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"4a3367f0-6cb1-525e-93af-ee6a3a839d89","kanji":"婢女","romaji":"hashitame","fr":"female servant","readings":["はしため"],"jlpt_level":5,"jmdict_seq":2578350,"total_freq":1,"pos":["n"]}
+{"id":"8acd1997-561d-54f3-8bec-55fe1e413727","kanji":"孵る","romaji":"kaeru","fr":"to hatch (out)","readings":["かえる"],"jmdict_seq":1566230,"total_freq":1,"pos":["v5r,vi"]}
+{"id":"5e98e431-f355-56dd-84af-df40b4c51f12","kanji":"孵化器","romaji":"fukaki","fr":"incubator","readings":["ふかき"],"jlpt_level":1,"jmdict_seq":1566250,"total_freq":1,"pos":["n"]}
+{"id":"4ed9eff9-2f2d-58af-8893-18b1bb00786a","kanji":"實時","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"2178aa60-2907-52b2-a5d2-9217ee0273b5","kanji":"寳","romaji":"takara","fr":"treasure","readings":["たから"],"jmdict_seq":1516160,"total_freq":1,"pos":["n"]}
+{"id":"0642fd18-f9f8-5226-9bf5-8a77f3d52862","kanji":"專門","romaji":"senmon","fr":"speciality; specialty; special subject of study; area of expertise; (one's) field; (one's) major; sole interest; single focus; concentrating exclusively on; doing exclusively; sticking to","readings":["せんもん"],"jlpt_level":2,"jmdict_seq":1389880,"total_freq":1,"pos":["iK"]}
+{"id":"9ca06dcb-c5a2-5b8f-b40f-8878e4cc45ad","kanji":"對島","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"f91add5d-6966-5971-ab1f-f01f77800400","kanji":"尹","romaji":"in","fr":"director (of the ritsuryō-period Imperial Prosecuting and Investigating Office)","readings":["いん"],"jmdict_seq":1566320,"total_freq":1,"pos":["n"]}
+{"id":"a6638099-6585-5eed-b0f7-54fac55f40f1","kanji":"屏息","romaji":"heisoku","fr":"bated breath; being cowed into silence","readings":["へいそく"],"jlpt_level":3,"jmdict_seq":1566390,"total_freq":1,"pos":["n,vs"]}
+{"id":"2893a6e6-4849-5298-b80c-96a6d1a9cf3b","kanji":"屏風ヶ浦","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"0c397eb7-4fb2-5ead-8d93-60377774f821","kanji":"屏風絵","romaji":"byoubue","fr":"picture drawn on a folding screen","readings":["びょうぶえ"],"jlpt_level":3,"jmdict_seq":2591620,"total_freq":1,"pos":["n"]}
+{"id":"b4b8f488-b584-54c6-917c-c2dc12a60676","kanji":"崚","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"c0a0964a-d980-58e7-bfd4-1bcc9e4fbce8","kanji":"嵌り込む","romaji":"hamarikomu","fr":"to fit in (snugly); to get stuck in; to get caught in; to get bogged down in; to get caught up in (a situation); to become deeply involved in; to get addicted to; to become infatuated with (e.g. a woman)","readings":["はまりこむ"],"jlpt_level":3,"jmdict_seq":2018610,"total_freq":1,"pos":["v5m"]}
+{"id":"33ef5145-149b-596b-a2fb-9f984db5ea17","kanji":"巫","romaji":"kannagi","fr":"medium; diviner; shaman; oracle","readings":["かんなぎ"],"jmdict_seq":1566440,"total_freq":1,"pos":["n"]}
+{"id":"f797d949-dbf9-5cea-b774-8d91bdccea20","kanji":"已むに已まれない","romaji":"yamuniyamarenai","fr":"without being able to help oneself; against one's will; compelling; pressing; irresistible","readings":["やむにやまれない"],"jmdict_seq":2413630,"total_freq":1,"pos":["exp"]}
+{"id":"76830bcd-ff41-513c-850f-949768e82c65","kanji":"帷子川","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"6ef42983-2f45-57f5-9986-1ce1e3da6b10","kanji":"广","romaji":"madare","fr":"kanji \"dotted cliff\" radical (radical 53)","readings":["まだれ"],"jmdict_seq":2089290,"total_freq":1,"pos":["n"]}
+{"id":"7b9f166e-0cf3-53a1-9570-22dec65383ee","kanji":"廣香","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"9d201c1b-18e1-5467-b1dd-33b8d5481460","kanji":"廣樹","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"df67892b-bbce-594e-91a7-a4fa74fbf773","kanji":"廣太郎","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"6673cf54-6ef5-5653-956f-758269873ac3","kanji":"恍","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"27b0f2d7-e9e2-5540-a6d1-99d3b99c6040","kanji":"恣意","romaji":"shii","fr":"arbitrariness; self-will; whim","readings":["しい"],"jlpt_level":4,"jmdict_seq":1566800,"total_freq":1,"pos":["n"]}
+{"id":"f7173d06-e63b-5c21-a958-24920e555667","kanji":"恙ない","romaji":"tsutsuganai","fr":"well; in good health; safe; free from accident","readings":["つつがない"],"jmdict_seq":1632120,"total_freq":1,"pos":["adj-i"]}
+{"id":"a063d8b1-867d-5a67-a76f-ded6d5657189","kanji":"惠子","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"9bc4a7c9-4ff9-53a8-a1e6-07f0ee5c4e83","kanji":"惠和","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"d9b957cd-4ed9-5508-8e36-7f2bbb3819ba","kanji":"惻惻","romaji":"sokusoku","fr":"keenly felt; heart-wrenching; heart-rending","readings":["そくそく","しょくしょく"],"jmdict_seq":2435320,"total_freq":1,"pos":["adv-to"]}
+{"id":"edc8d27b-ea91-5e07-b8af-9e39f566d5ea","kanji":"愧死","romaji":"kishi","fr":"dying of shame; being so ashamed one wants to die","readings":["きし"],"jlpt_level":4,"jmdict_seq":2713460,"total_freq":1,"pos":["n,vs"]}
+{"id":"32451823-93cc-56b3-8648-7021ddb6c358","kanji":"慄然","romaji":"ritsuzen","fr":"terrified; horrified; trembling with fear","readings":["りつぜん"],"jlpt_level":3,"jmdict_seq":1566910,"total_freq":1,"pos":["adj-t,adv-to"]}
+{"id":"d0c0edd3-8fe3-5e66-a218-73b89cbf50fb","kanji":"憑き物","romaji":"tsukimono","fr":"evil spirit (that possesses someone); demon; devil","readings":["つきもの"],"jlpt_level":4,"jmdict_seq":1566970,"total_freq":1,"pos":["n"]}
+{"id":"e5ea25ac-3ec3-53b4-bad0-e7aaacb51372","kanji":"罹患","romaji":"rikan","fr":"contraction of a disease","readings":["りかん"],"jlpt_level":2,"jmdict_seq":1566990,"total_freq":1,"pos":["n,vs"]}
+{"id":"d5bec59d-29a8-521e-9841-21ee52b7ff8b","kanji":"罹災","romaji":"risai","fr":"suffering (from a calamity); affliction","readings":["りさい"],"jlpt_level":1,"jmdict_seq":1567000,"total_freq":1,"pos":["n,vs"]}
+{"id":"f5262898-cb28-5e35-9115-fb9f51cbebe2","kanji":"戈","romaji":"hoko","fr":"long-handled Chinese spear; lance; pike; weapon; arms; grip of a bow; parade float decorated with long-handled Chinese spears","readings":["ほこ","とかり"],"jmdict_seq":1603450,"total_freq":1,"pos":["n"]}
+{"id":"1236f03c-9b2b-54fe-8db2-66a20c3d16fe","kanji":"拗ね者","romaji":"sunemono","fr":"perverse individual; cynic; misanthrope","readings":["すねもの"],"jlpt_level":4,"jmdict_seq":1819090,"total_freq":1,"pos":["n"]}
+{"id":"beb04b75-eb7c-5cc0-a157-7775c37251e0","kanji":"抛る","romaji":"houru","fr":"to throw; to fling; to hurl; to toss; to neglect; to abandon; to leave alone; to give up on; to leave undone; to leave unfinished","readings":["ほうる","ほる"],"jmdict_seq":1516530,"total_freq":1,"pos":["v5r,vt"]}
+{"id":"5f06928e-0b46-5dec-84d0-0e5d63bd4deb","kanji":"抛物線","romaji":"houbutsusen","fr":"parabola","readings":["ほうぶつせん"],"jlpt_level":2,"jmdict_seq":1516870,"total_freq":1,"pos":["n"]}
+{"id":"b3894322-edc3-5d11-89d0-32a4acfe7eaa","kanji":"掖","romaji":"waki","fr":"armpit; under one's arm; side; flank; beside; close to; near; by; aside; to the side; away; out of the way; off-track; off-topic; deuteragonist; supporting role; second verse (in a linked series of poems)","readings":["わき"],"jmdict_seq":1562530,"total_freq":1,"pos":["n"]}
+{"id":"73e62f13-7264-5cd0-b3af-95d2dd50e9a4","kanji":"揉み上げ","romaji":"momiage","fr":"tuft of hair under the temple; sideburns; sidelocks","readings":["もみあげ","モミアゲ"],"jlpt_level":5,"jmdict_seq":1567590,"total_freq":1,"pos":["n"]}
+{"id":"8584643d-0a04-5df9-b135-3a629c65cf8b","kanji":"插入","romaji":"sounyuu","fr":"insertion; interposition; interpolation; infixing; (sexual) penetration; interpolation; infix","readings":["そうにゅう"],"jlpt_level":5,"jmdict_seq":1399840,"total_freq":1,"pos":["n,vs"]}
+{"id":"a0b183c7-4c21-5886-ae6e-aacaa8d6f8d9","kanji":"攝津","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"73dfb7ad-8fc5-57d5-b8c5-3e7b984257e3","kanji":"搗ち合う","romaji":"kachiau","fr":"to clash; to collide; to conflict; to coincide; to meet (by chance); to come across; to run into","readings":["かちあう"],"jlpt_level":3,"jmdict_seq":1846900,"total_freq":1,"pos":["v5u,vi"]}
+{"id":"c7b48741-3e58-5593-9344-54ad2d3fd2ab","kanji":"搗栗","romaji":"kachiguri","fr":"dried chestnut","readings":["かちぐり"],"jlpt_level":1,"jmdict_seq":1654550,"total_freq":1,"pos":["n"]}
+{"id":"bb00479b-33bf-55b5-81c6-5cc6bd8dc23a","kanji":"撥","romaji":"bachi","fr":"plectrum (for a shamisen, biwa, etc.); pick; drumstick (for taiko); mallet (for a gong); beater","readings":["ばち","バチ"],"jmdict_seq":1567710,"total_freq":1,"pos":["n"]}
+{"id":"eb21e3fd-6569-5942-a62d-be10be9489e8","kanji":"撥ね上げる","romaji":"haneageru","fr":"to throw up (e.g. mud); to splash (up); to spatter; to flip up; to tip up; to raise sharply (e.g. prices); to hike","readings":["はねあげる"],"jlpt_level":5,"jmdict_seq":2584210,"total_freq":1,"pos":["v1,vt"]}
+{"id":"1b9decc4-0f20-5295-8bd9-6e5023c2b4ab","kanji":"擂り身","romaji":"surimi","fr":"surimi; minced fish (or meat) mashed into a paste","readings":["すりみ"],"jmdict_seq":1744970,"total_freq":1,"pos":["n"]}
+{"id":"cc379373-64c6-5bf1-9cfe-46fc9452b256","kanji":"擡げる","romaji":"motageru","fr":"to raise (one's head)","readings":["もたげる"],"jmdict_seq":1567780,"total_freq":1,"pos":["v1,vt"]}
+{"id":"a1814135-1972-5b46-84a4-cebd65816949","kanji":"斃れる","romaji":"taoreru","fr":"to fall (over, down); to collapse; to take a fall; to topple; to be destroyed (in a collapse); to collapse; to cave in; to crumble; to give away; to be confined to bed (with an illness); to come down with; to break down (e.g. from overwork); to die; to be killed; to go bankrupt (of a company, bank, etc.); to fail; to collapse; to go under; to be defeated (in a game); to lose; to fall (of a government, dictator, etc.); to be overthrown","readings":["たおれる"],"jmdict_seq":1445790,"total_freq":1,"pos":["v1,vi"]}
+{"id":"12e417a1-45e0-504b-b671-530a905302b8","kanji":"晄","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"9bc79e0b-626a-5a97-a067-2a0cfb20583a","kanji":"晝","romaji":"hiru","fr":"noon; midday; daytime; lunch","readings":["ひる"],"jmdict_seq":1426250,"total_freq":1,"pos":["oK"]}
+{"id":"3fb2791f-be12-556c-a81a-145272d1088c","kanji":"晟","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"5d4b992a-4e91-5880-bf89-57d61d318519","kanji":"暈","romaji":"kuma","fr":"corner; nook; recess; shade; shadow; dark area; dark circles (under the eyes); dark rings; bend (in a road, river, etc.); shading; gradation; kumadori; style of kabuki makeup used for violent roles","readings":["くま","クマ"],"jmdict_seq":2131810,"total_freq":1,"pos":["n"]}
+{"id":"f11d6941-a643-5d72-b25d-a260647e1dbb","kanji":"曖昧宿","romaji":"aimaiyado","fr":"brothel fronting as a tea house, inn, restaurant, etc.","readings":["あいまいやど"],"jlpt_level":3,"jmdict_seq":2691970,"total_freq":1,"pos":["n"]}
+{"id":"9461ec2d-f7cd-5d8d-b199-cfa103da1793","kanji":"曖昧模糊","romaji":"aimaimoko","fr":"obscure; vague; ambiguous","readings":["あいまいもこ"],"jlpt_level":1,"jmdict_seq":1567940,"total_freq":1,"pos":["uK"]}
+{"id":"f21d5f93-fb17-5636-a63e-2b22bab79750","kanji":"朧ろ","romaji":"oboro","fr":"hazy; dim; faint; vague; minced fish or meat that is seasoned and fried","readings":["おぼろ"],"jmdict_seq":2587070,"total_freq":1,"pos":["adj-na"]}
+{"id":"486201fa-37f3-5a04-8a19-f98ed4562cb5","kanji":"枡吉","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"5f5c9fce-3ab9-5e08-910b-9f9ec24ef0ad","kanji":"枡形","romaji":"masugata","fr":"square (shape); square bearing block (at the top of a pillar); rectangular space between the inner and outer gates of a castle (where troops can gather)","readings":["ますがた","とがた"],"jlpt_level":3,"jmdict_seq":1855730,"total_freq":1,"pos":["n"]}
+{"id":"02d04ce3-3397-59d7-9d7d-2ec9e951666c","kanji":"枡組","romaji":"masugumi","fr":"square framing (in a house, temple, screen, etc.)","readings":["ますぐみ"],"jlpt_level":3,"jmdict_seq":2518710,"total_freq":1,"pos":["n"]}
+{"id":"8d70a2a5-429b-5066-846f-73db8c55d8d3","kanji":"枳穀","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"2678f5b3-bfa5-566a-89ab-4d5c736339a7","kanji":"檜原村","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"2b11e449-4329-5319-b981-ed18c9b0a8f5","kanji":"栞菜","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"7f60d23d-3a31-5c52-8f13-ed53830ed3aa","kanji":"梳る","romaji":"kushikezuru","fr":"to comb","readings":["くしけずる","けずる"],"jmdict_seq":2063020,"total_freq":1,"pos":["v5r,vt"]}
+{"id":"5dc5c7f6-350d-5c5b-9842-91d39177c130","kanji":"梳毛","romaji":"somou","fr":"combed wool (yarn)","readings":["そもう"],"jlpt_level":2,"jmdict_seq":1854070,"total_freq":1,"pos":["n"]}
+{"id":"c012645d-df44-54f1-99f4-41d6dd20a0b1","kanji":"梟す","romaji":"kyousu","fr":"to expose (a severed head)","readings":["きょうす"],"jmdict_seq":2410150,"total_freq":1,"pos":["v5s,vt"]}
+{"id":"efdd37e6-1b4c-5ec0-b541-63e8dc7eee48","kanji":"檮原","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"63c99259-7409-52cf-bd43-6736c1011365","kanji":"梵語","romaji":"bongo","fr":"Sanskrit","readings":["ぼんご"],"jlpt_level":5,"jmdict_seq":1568160,"total_freq":1,"pos":["n,adj-no"]}
+{"id":"a034f936-2435-58f3-80dc-4cc24bff28ab","kanji":"棘突起","romaji":"kyokutoっki","fr":"spinous process","readings":["きょくとっき"],"jlpt_level":3,"jmdict_seq":2568200,"total_freq":1,"pos":["n"]}
+{"id":"35d2b699-1b38-5dcd-8e81-06d91487a2a3","kanji":"棘皮動物","romaji":"kyokuhidoubutsu","fr":"echinoderm","readings":["きょくひどうぶつ"],"jlpt_level":2,"jmdict_seq":1568230,"total_freq":1,"pos":["n"]}
+{"id":"719aa570-9473-53df-ad83-21faefedcec4","kanji":"棘皮動物門","romaji":"kyokuhidoubutsumon","fr":"Echinodermata (phylum of marine invertebrates)","readings":["きょくひどうぶつもん"],"jlpt_level":2,"jmdict_seq":2697420,"total_freq":1,"pos":["n"]}
+{"id":"74e2f625-23f0-5b32-95ab-f64a82b5a4c1","kanji":"棍棒","romaji":"konbou","fr":"stick; club; cudgel; bludgeon","readings":["こんぼう"],"jlpt_level":2,"jmdict_seq":1568240,"total_freq":1,"pos":["n"]}
+{"id":"2de63ad1-2fa5-58c7-81d9-e19e814e7f19","kanji":"椣","romaji":"shide","fr":"zigzag-shaped paper streamer often used to adorn Shinto-related objects; hornbeam (deciduous tree in the birch family)","readings":["しで","かみしで"],"jmdict_seq":1767000,"total_freq":1,"pos":["n"]}
+{"id":"34e0c875-14fa-5474-a859-44b0099c777a","kanji":"楔子","romaji":"keっshi","fr":"wedge; lynchpin; cotter","readings":["けっし"],"jlpt_level":5,"jmdict_seq":2561910,"total_freq":1,"pos":["n"]}
+{"id":"9b93d50a-3ef1-529e-b242-f6a7900247b0","kanji":"榮","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"c9f42c5f-ffd1-51d1-ac40-aba593546b69","kanji":"樅の木","romaji":"mominoki","fr":"Japanese fir (Abies firma); momi fir","readings":["もみのき","モミノキ"],"jlpt_level":5,"jmdict_seq":2131520,"total_freq":1,"pos":["n"]}
+{"id":"97d92dc6-c2eb-5714-bc18-67472688dbe4","kanji":"橢円","romaji":"daen","fr":"ellipse; oval","readings":["だえん"],"jlpt_level":5,"jmdict_seq":1409000,"total_freq":1,"pos":["oK"]}
+{"id":"11efad3f-aad8-52e8-9abf-d60e0fb3c889","kanji":"櫻本","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"487fa48a-7230-5d00-859b-91aaa842c395","kanji":"鬱金香","romaji":"uっkonkou","fr":"tulip","readings":["うっこんこう","うこんこう"],"jlpt_level":2,"jmdict_seq":2432970,"total_freq":1,"pos":["n"]}
+{"id":"0c710003-e581-5d42-9fac-8ae5327d892c","kanji":"歸之","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"ce7080ae-db99-5a19-b75f-91a4613541e2","kanji":"毟れる","romaji":"mushireru","fr":"to be plucked","readings":["むしれる"],"jmdict_seq":2594710,"total_freq":1,"pos":["v1,vi"]}
+{"id":"20719acc-d5ce-5459-a036-f0446760b8ab","kanji":"毬栗","romaji":"igaguri","fr":"chestnut in its burr","readings":["いがぐり","イガグリ"],"jlpt_level":1,"jmdict_seq":1783660,"total_freq":1,"pos":["n"]}
+{"id":"4202a7fd-0d63-58a9-aa14-f3bb9e5df463","kanji":"沁透る","romaji":"shimitooru","fr":"to soak through; to be deeply impressed","readings":["しみとおる"],"jlpt_level":1,"jmdict_seq":1391150,"total_freq":1,"pos":["v5r,vi"]}
+{"id":"79ec2fb9-7907-519c-b0f9-b3bb2825d95a","kanji":"泛","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"2d69116f-0073-5332-9da9-975741262a56","kanji":"洟","romaji":"hana","fr":"snivel; nasal mucus; snot","readings":["はな"],"jmdict_seq":1634180,"total_freq":1,"pos":["n"]}
+{"id":"589fd6bc-0e95-5642-a762-f6ffaf618b69","kanji":"洟水","romaji":"hanamizu","fr":"nasal mucus; dripping nose; snot","readings":["はなみず"],"jlpt_level":5,"jmdict_seq":1487060,"total_freq":1,"pos":["n"]}
+{"id":"19fa932b-d71c-520e-945c-8310240319b7","kanji":"洵","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"02ae1520-dd3a-5ab3-9a54-123e0ba561d5","kanji":"洒落っ気","romaji":"shareっke","fr":"fashion-consciousness; desire to be stylish; humor; humour; wit","readings":["しゃれっけ"],"jlpt_level":3,"jmdict_seq":1568660,"total_freq":1,"pos":["n"]}
+{"id":"1431173f-549a-58db-8b0b-35f159746fd7","kanji":"洒落者","romaji":"sharemono","fr":"dandy; fop","readings":["しゃれもの"],"jlpt_level":3,"jmdict_seq":1734630,"total_freq":1,"pos":["n"]}
+{"id":"62c08408-1553-502d-a7e0-b1f01f661ae1","kanji":"浣","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"7ea42799-e676-5830-9790-5979f909b069","kanji":"浚渫","romaji":"shunsetsu","fr":"dredging","readings":["しゅんせつ"],"jmdict_seq":1568710,"total_freq":1,"pos":["n,vs"]}
+{"id":"68bc103c-c967-5864-9761-ae496af8f8d0","kanji":"涕","romaji":"namida","fr":"tear; tears; lachrymal secretion; sympathy","readings":["なみだ","なみた","なだ","なんだ"],"jmdict_seq":1555930,"total_freq":1,"pos":["n"]}
+{"id":"af642163-02ea-5e84-bedb-160ea8d54f0a","kanji":"渊","romaji":"fuchi","fr":"deep pool; deep water; abyss; depths (e.g. of despair); grip (e.g. of death)","readings":["ふち"],"jmdict_seq":1501530,"total_freq":1,"pos":["iK"]}
+{"id":"9a3d0da6-7123-5431-ada7-715bcccb93be","kanji":"淪","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"b38ee86a-e5c8-5d40-a925-110a9a677989","kanji":"渾然一体","romaji":"konzeniっtai","fr":"in complete harmony","readings":["こんぜんいったい"],"jlpt_level":3,"jmdict_seq":1667250,"total_freq":1,"pos":["exp"]}
+{"id":"9f19c8cc-ccee-5db9-9bff-b91ff064537a","kanji":"滓","romaji":"kasu","fr":"dregs; sediment; grounds; meal; lees (esp. sake); leftovers; by-product; worthless item; junk; dregs (e.g. of society); scum; dross; 1-point card","readings":["かす","カス"],"jmdict_seq":1568780,"total_freq":1,"pos":["n"]}
+{"id":"5d1e8482-71ad-51ca-8ff6-5fb8570df7aa","kanji":"溲瓶","romaji":"shibin","fr":"urine bottle; (urinary) bedpan; chamber pot (esp. medical); urinal","readings":["しびん","しゅびん"],"jlpt_level":2,"jmdict_seq":2208110,"total_freq":1,"pos":["n"]}
+{"id":"e7467d21-7963-5cd3-92d8-9b50de38a279","kanji":"灌水","romaji":"kansui","fr":"sprinkling (water); watering (plants)","readings":["かんすい"],"jlpt_level":5,"jmdict_seq":1666940,"total_freq":1,"pos":["n,vs"]}
+{"id":"8b303411-c1ab-5420-98a3-c51c863ba03c","kanji":"灌木","romaji":"kanboku","fr":"bush; shrub","readings":["かんぼく"],"jlpt_level":5,"jmdict_seq":1666950,"total_freq":1,"pos":["n"]}
+{"id":"25b58972-8340-5570-84fe-5d39a2260508","kanji":"漿","romaji":"niomoi","fr":"boiled drinking water","readings":["におもい"],"jmdict_seq":2443450,"total_freq":1,"pos":["n"]}
+{"id":"89f12a14-05a6-510b-a705-6bb5dfc09cd4","kanji":"滲透","romaji":"shintou","fr":"permeation (of thought, ideology, culture, etc.); infiltration (e.g. of ideas); spread; penetration (e.g. into a market); pervasion; permeation (of a liquid, etc.); soaking; percolation; osmosis","readings":["しんとう"],"jlpt_level":1,"jmdict_seq":1362630,"total_freq":1,"pos":["n,vs"]}
+{"id":"9d4a19b4-9796-583c-93d4-5b431c680e6c","kanji":"澤村田之助","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"f70a4cde-6d4c-5c36-aef0-26469c8648a6","kanji":"濟","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"29199e1a-76b2-522a-8e2e-fb52abf83c2b","kanji":"濱倉","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"96293579-29e2-5596-8100-216a0ba48525","kanji":"濾す","romaji":"kosu","fr":"to filter; to strain","readings":["こす"],"jmdict_seq":1288330,"total_freq":1,"pos":["v5s,vt"]}
+{"id":"15df6502-e858-52df-a0d7-eb26fe2371af","kanji":"瀰茫","romaji":"bibou","fr":"endless river; boundless water","readings":["びぼう"],"jmdict_seq":2641160,"total_freq":1,"pos":["n"]}
+{"id":"e4151563-d710-5580-b6ea-f0f48233ea00","kanji":"焙焼","romaji":"baishou","fr":"roasting (in metallurgy, etc.); calcination; torrefaction","readings":["ばいしょう"],"jlpt_level":2,"jmdict_seq":2613780,"total_freq":1,"pos":["n,vs"]}
+{"id":"ebf0b54b-d731-54f4-92b5-691942a5fb20","kanji":"焙烙","romaji":"houroku","fr":"earthenware baking pan; parching pan; form of punishment in which a person is forced to walk on an oiled pipe over a charcoal fire (ancient China)","readings":["ほうろく","ほうらく"],"jmdict_seq":1569010,"total_freq":1,"pos":["n"]}
+{"id":"7ce3f82a-404c-526c-a80b-3a0d268164e4","kanji":"煥発","romaji":"kanpatsu","fr":"brilliance","readings":["かんぱつ"],"jlpt_level":4,"jmdict_seq":1747570,"total_freq":1,"pos":["n,vs"]}
+{"id":"18b19d19-2896-5f45-bb5a-509e3b343e29","kanji":"熈","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"1d5d8ae9-4d21-5e88-b515-02d1aa43b2c8","kanji":"燻べる","romaji":"kusuberu","fr":"to smoke; to fumigate","readings":["くすべる","ふすべる"],"jmdict_seq":2462690,"total_freq":1,"pos":["v1"]}
+{"id":"b068c599-a64f-54c1-82ba-c57abd4f651d","kanji":"燻煙","romaji":"kunen","fr":"smoking (esp. as a means of preserving food)","readings":["くんえん"],"jlpt_level":3,"jmdict_seq":2455250,"total_freq":1,"pos":["n"]}
+{"id":"6ff2805d-bfae-59e2-bd86-d230f546a9e7","kanji":"熨斗","romaji":"noshi","fr":"noshi; long thin strip of dried abalone in folded patterned paper, attached to a gift","readings":["のし","ぬし"],"jlpt_level":1,"jmdict_seq":1569080,"total_freq":1,"pos":["n"]}
+{"id":"92ed84c7-3874-511d-94e0-89c3d69d1c93","kanji":"燗酒","romaji":"kanzake","fr":"warmed sake","readings":["かんざけ"],"jlpt_level":3,"jmdict_seq":1781600,"total_freq":1,"pos":["n"]}
+{"id":"efd4940f-4bec-5aef-bbc0-f1bf486c6b79","kanji":"犂","romaji":"karasuki","fr":"plow (esp. horse or ox-drawn); plough","readings":["からすき"],"jmdict_seq":1774820,"total_freq":1,"pos":["n"]}
+{"id":"38f74afd-f821-5ec6-b7f9-3bc1fd98ddac","kanji":"獰悪","romaji":"douaku","fr":"violent; cruel; fiendish","readings":["どうあく"],"jlpt_level":4,"jmdict_seq":2253550,"total_freq":1,"pos":["adj-na"]}
+{"id":"f61192f3-2349-5d54-a65e-1ae448c97857","kanji":"玻璃","romaji":"hari","fr":"quartz; glass","readings":["はり"],"jlpt_level":1,"jmdict_seq":1569400,"total_freq":1,"pos":["n"]}
+{"id":"a7037dd2-2c19-5075-971b-5de28fef487d","kanji":"珥とう","romaji":"jitou","fr":"earplug (traditional jewellery worn in the earlobe, popular in Han dynasty China)","readings":["じとう"],"jmdict_seq":2567280,"total_freq":1,"pos":["n"]}
+{"id":"f5e854a2-c91d-546e-b6ee-2f36b4690b21","kanji":"瑕","romaji":"kizu","fr":"wound; injury; cut; gash; bruise; scratch; scrape; scar; chip; crack; scratch; nick; flaw; defect; weakness; weak point; stain (on one's reputation); disgrace; dishonor; dishonour; (emotional) hurt; hurt feelings","readings":["きず","キズ"],"jmdict_seq":1580260,"total_freq":1,"pos":["n"]}
+{"id":"40988925-5b8a-5cf7-bf02-eb6d7a9aa781","kanji":"瑪瑙","romaji":"menou","fr":"agate","readings":["めのう","メノウ"],"jmdict_seq":1569470,"total_freq":1,"pos":["n"]}
+{"id":"141288c2-17fc-5936-bed2-aa00546b9c62","kanji":"疳の虫","romaji":"kannomushi","fr":"convulsions (in a child); nervousness; short-temperedness; bug thought to cause children's diseases","readings":["かんのむし"],"jlpt_level":2,"jmdict_seq":2670260,"total_freq":1,"pos":["n"]}
+{"id":"d302856f-2193-5742-bc8a-87feabdec445","kanji":"疱疹","romaji":"houshin","fr":"herpes","readings":["ほうしん"],"jmdict_seq":1569550,"total_freq":1,"pos":["n"]}
+{"id":"ca944233-c1c5-5611-8169-2a993d86a0a4","kanji":"痒がる","romaji":"kayugaru","fr":"to complain of itching; to be bothered by an itch (or rash, etc.); to feel itchy; to have an itch (or rash, etc.); to itch","readings":["かゆがる"],"jmdict_seq":2085460,"total_freq":1,"pos":["v5r,vi"]}
+{"id":"5c45791f-e09c-571c-ab72-cf5f316347e1","kanji":"痒み止め","romaji":"kayumidome","fr":"anti-itch medication; antipruritic drug","readings":["かゆみどめ"],"jlpt_level":4,"jmdict_seq":2151690,"total_freq":1,"pos":["n"]}
+{"id":"3a3c0175-381e-5f51-8b10-521722fed5a0","kanji":"痙性麻痺","romaji":"keiseimahi","fr":"spastic paralysis","readings":["けいせいまひ"],"jlpt_level":1,"jmdict_seq":2663300,"total_freq":1,"pos":["n"]}
+{"id":"1347c71d-2733-5d54-b22a-6f5863c254d0","kanji":"瘧","romaji":"eyami","fr":"infectious disease; plague; epidemic; ague; intermittent fever; the shakes; malarial fever","readings":["えやみ"],"jmdict_seq":2736580,"total_freq":1,"pos":["n"]}
+{"id":"095f88f3-e574-52cf-915f-14c61e9130e7","kanji":"瘡","romaji":"kasa","fr":"pustule; scab; syphilis; pox","readings":["かさ"],"jmdict_seq":2130640,"total_freq":1,"pos":["n"]}
+{"id":"de28aeec-06cb-56e5-9676-41e0cc846192","kanji":"癇","romaji":"kan","fr":"temper; nerves","readings":["かん"],"jmdict_seq":1980710,"total_freq":1,"pos":["n"]}
+{"id":"9f54bcaf-ee78-5d7f-9474-6f899f3784f1","kanji":"癪に触る","romaji":"shakunisawaru","fr":"to annoy; to irritate; to cause offence; to provoke; to get on someone's nerves","readings":["しゃくにさわる"],"jlpt_level":2,"jmdict_seq":1594650,"total_freq":1,"pos":["iK"]}
+{"id":"4e82a7fa-8aa4-52d7-9dd8-e715a8a87ff0","kanji":"癸丑","romaji":"mizunotoushi","fr":"Water Ox (50th term of the sexagenary cycle, e.g. 1913, 1973, 2033)","readings":["みずのとうし","きちゅう"],"jlpt_level":1,"jmdict_seq":1869180,"total_freq":1,"pos":["n"]}
+{"id":"d51604cd-aacc-568a-8aed-2e9d3cd1ab1f","kanji":"發出","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"14e45755-c816-534e-a0c9-24cc3c1e555f","kanji":"皓","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"a67b816c-8cda-5a28-bfc0-7ed995f68910","kanji":"皓々","romaji":"koukou","fr":"bright (esp. of the moon); broad and empty","readings":["こうこう"],"jlpt_level":1,"jmdict_seq":2427710,"total_freq":1,"pos":["adj-t,adv-to"]}
+{"id":"24761dce-a76c-520a-aa41-f48ae5c8ccc4","kanji":"皺胃","romaji":"shiwai","fr":"abomasum","readings":["しわい","しゅうい","すうい"],"jlpt_level":2,"jmdict_seq":2707920,"total_freq":1,"pos":["n"]}
+{"id":"4a764c67-1feb-5945-b946-adbcb5c47fff","kanji":"皺寄せ","romaji":"shiwayose","fr":"shifting (the burden) onto; ill effects; negative consequences; burden; strain; brunt; loss","readings":["しわよせ"],"jlpt_level":3,"jmdict_seq":1647300,"total_freq":1,"pos":["n,vs"]}
+{"id":"d5b27493-2d51-5d51-a782-306cabc479c5","kanji":"盧溝橋","romaji":"rokoukyou","fr":"Marco Polo Bridge (China)","readings":["ろこうきょう"],"jlpt_level":1,"jmdict_seq":1571840,"total_freq":1,"pos":["n"]}
+{"id":"dd4e5e8e-8be7-59e7-a0de-5e2db4836a6b","kanji":"盧溝橋事件","romaji":"rokoukyoujiken","fr":"Marco Polo Bridge Incident (July 7, 1937)","readings":["ろこうきょうじけん"],"jlpt_level":1,"jmdict_seq":2100200,"total_freq":1,"pos":["n"]}
+{"id":"7c77da1c-2491-5ff0-9c37-9a53cae7dbaf","kanji":"眩めく","romaji":"kurumeku","fr":"to feel dizzy; to feel faint; to spin; to revolve; to twirl","readings":["くるめく"],"jmdict_seq":2183290,"total_freq":1,"pos":["v5k,vi"]}
+{"id":"1d112c6f-f56c-5a52-8749-83d7bc157b77","kanji":"眩惑","romaji":"genwaku","fr":"dazzlement; bewilderment; daze","readings":["げんわく"],"jlpt_level":1,"jmdict_seq":1569800,"total_freq":1,"pos":["n,vs"]}
+{"id":"96dd5839-6b4b-56f9-b85d-582d9bf5a1dc","kanji":"眞紀子","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"4edf3dd3-bf23-5f40-9475-128502de0fc1","kanji":"眞空","romaji":"","fr":"","jlpt_level":4,"total_freq":1,"pos":["n"]}
+{"id":"e5b7d5b0-b665-571a-8827-d54e9db8f0e3","kanji":"眞砂子","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"ac2d8c56-0dd6-590a-abcf-0370d0465a8d","kanji":"眞田","romaji":"","fr":"","jlpt_level":4,"total_freq":1,"pos":["n"]}
+{"id":"62a99acf-e939-5718-a78d-4148908a4af8","kanji":"眞鍋かをり","romaji":"眞鍋kawori","fr":"","total_freq":1,"pos":["n"]}
+{"id":"b5d78176-b761-5ee7-891b-e715363dd299","kanji":"眞木","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"ec9916eb-175c-56d1-a9a3-dcf04b5ed6be","kanji":"眷","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"bfb48c4a-52bf-5926-ba30-2f2a99003978","kanji":"睨","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"3730b47e-c3e7-5848-9b14-41258de304b3","kanji":"瞋","romaji":"shin","fr":"dosa (ill will, antipathy)","readings":["しん"],"jmdict_seq":2186130,"total_freq":1,"pos":["n"]}
+{"id":"e94fef88-619a-5dbd-9602-2e477c7bba3f","kanji":"瞑す","romaji":"meisu","fr":"to close one's eyes; to sleep; to rest in peace","readings":["めいす"],"jmdict_seq":2582640,"total_freq":1,"pos":["vs-c,vi"]}
+{"id":"3de9265a-d75b-5b81-b84e-24afca73ef82","kanji":"矜恃","romaji":"kyouji","fr":"pride; dignity; self-respect","readings":["きょうじ","きんじ"],"jmdict_seq":1640670,"total_freq":1,"pos":["n"]}
+{"id":"5fc6f894-62a2-5159-a5ee-cd9c22714122","kanji":"硼酸","romaji":"housan","fr":"boric acid","readings":["ホウさん","ほうさん"],"jlpt_level":1,"jmdict_seq":1570010,"total_freq":1,"pos":["n"]}
+{"id":"fb774bf8-fc80-515c-bce5-b519fc49bd03","kanji":"磔柱","romaji":"haritsukebashira","fr":"cross (used in a crucifixion)","readings":["はりつけばしら","はっつけばしら","たくちゅう","はりき"],"jlpt_level":2,"jmdict_seq":2453280,"total_freq":1,"pos":["n"]}
+{"id":"55bcbf15-8d06-5a9d-af68-a0189520f926","kanji":"碾割り","romaji":"hikiwari","fr":"grinding; cracking (e.g. wheat, barley); ground barley; cracked barley","readings":["ひきわり"],"jlpt_level":3,"jmdict_seq":2691280,"total_freq":1,"pos":["io"]}
+{"id":"aeceaca6-87f5-577f-91de-1352862c6b2a","kanji":"磊蔵","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"51516f7d-6f7e-5ed9-8430-36dde38a9603","kanji":"磊落","romaji":"rairaku","fr":"open-hearted; free and easy; frank; not being bothered by unimportant things","readings":["らいらく"],"jlpt_level":3,"jmdict_seq":1739270,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"5872bd1e-9960-5c36-93e2-2dc5efaa3532","kanji":"磬","romaji":"kin","fr":"inverted copper or iron bell shaped like a bowl (sounded when reciting sutras)","readings":["きん"],"jmdict_seq":2256860,"total_freq":1,"pos":["n"]}
+{"id":"82a4f21a-01e6-5ed9-8097-031c32d12d9c","kanji":"礒","romaji":"iso","fr":"(rocky) beach; seashore","readings":["いそ"],"jmdict_seq":1955820,"total_freq":1,"pos":["n,adj-na"]}
+{"id":"10cedd74-0602-521c-8f78-326f0c22dd68","kanji":"礫川","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"cc0402ed-e9c3-5223-ac86-dd214c93670a","kanji":"祓い清める","romaji":"haraikiyomeru","fr":"to purify; to exorcise","readings":["はらいきよめる"],"jlpt_level":2,"jmdict_seq":1601090,"total_freq":1,"pos":["v1,vt"]}
+{"id":"1201e269-3070-5e9b-a330-62a80f580432","kanji":"祿","romaji":"roku","fr":"stipend; reward","readings":["ろく"],"jmdict_seq":2566050,"total_freq":1,"pos":["oK"]}
+{"id":"6809a6d3-f727-54b4-8709-76a698b0ccfc","kanji":"禪","romaji":"zen","fr":"dhyana (profound meditation); Zen (Buddhism)","readings":["ぜん"],"jmdict_seq":1396420,"total_freq":1,"pos":["oK"]}
+{"id":"4d701e18-d8d5-50b1-9e6b-aa538f2e5164","kanji":"秉五郎","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"c696853e-a997-5d2f-9883-5d8876a7e5e0","kanji":"稠度","romaji":"choudo","fr":"consistency","readings":["ちょうど","ちゅうど"],"jlpt_level":4,"jmdict_seq":2229500,"total_freq":1,"pos":["n"]}
+{"id":"c890a0d8-6251-50fc-bcdf-8551f883c5f1","kanji":"穹窿","romaji":"kyuuryuu","fr":"vault of heaven; vaulted sky; dome; vault; arch","readings":["きゅうりゅう"],"jmdict_seq":2455090,"total_freq":1,"pos":["n"]}
+{"id":"aad245ea-2051-5f48-ae4d-1c0693aa2835","kanji":"窗","romaji":"mado","fr":"window","readings":["まど"],"jmdict_seq":1401400,"total_freq":1,"pos":["n"]}
+{"id":"18ae68c3-f69f-5cd8-98d8-cb4b80983181","kanji":"笊貝科","romaji":"zarugaika","fr":"Cardiidae (family of bivalve molluscs comprising the cockles)","readings":["ザルガイか","ざるがいか"],"jlpt_level":2,"jmdict_seq":2604890,"total_freq":1,"pos":["n"]}
+{"id":"802bfdca-0cfb-5d3a-bd3a-4b8291c67913","kanji":"笞","romaji":"shimoto","fr":"scourge; whip; switch","readings":["しもと"],"jmdict_seq":2249060,"total_freq":1,"pos":["n"]}
+{"id":"d9534799-a0e9-58d1-a438-16721cb51cb6","kanji":"筐","romaji":"hako","fr":"box; case; chest; package; pack; crate; car (of a train, etc.); shamisen case; shamisen; public building; community building; man who carries a geisha's shamisen; receptacle for human waste; feces (faeces); counter for boxes (or boxed objects)","readings":["はこ","ハコ"],"jmdict_seq":1585650,"total_freq":1,"pos":["n"]}
+{"id":"2c0468e1-cbde-5a56-bed5-dc8ba7c2da55","kanji":"筥崎宮","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"c6421813-387d-5601-93be-9101837588d1","kanji":"箝口","romaji":"kankou","fr":"keeping silent; silence; restraining (speech); gagging; muzzling","readings":["かんこう","けんこう"],"jlpt_level":4,"jmdict_seq":1683260,"total_freq":1,"pos":["n,vs"]}
+{"id":"ee6f35f6-768b-5cd8-afc3-e84d0a18c998","kanji":"箋","romaji":"sen","fr":"slip (of paper); tag (usu. bamboo, wood, ivory, etc.); label","readings":["せん"],"jmdict_seq":2456620,"total_freq":1,"pos":["n"]}
+{"id":"85437c2f-a7d9-5103-b70d-1d042eec3ed4","kanji":"篆書","romaji":"tensho","fr":"seal-engraving style (of writing Chinese characters); seal script","readings":["てんしょ"],"jlpt_level":5,"jmdict_seq":1570300,"total_freq":1,"pos":["n"]}
+{"id":"de8e539e-024d-5776-8545-f357ad9bd2f7","kanji":"篩う","romaji":"furuu","fr":"to sieve (e.g. flour); to sift; to riddle; to pick out (e.g. a candidate); to select (from); to sort out; to eliminate (e.g. a possibility); to choose","readings":["ふるう"],"jmdict_seq":2100940,"total_freq":1,"pos":["v5u"]}
+{"id":"810c1549-eaf2-56e7-b391-8b75b36fa799","kanji":"簑","romaji":"mino","fr":"straw raincoat","readings":["みの"],"jmdict_seq":1634010,"total_freq":1,"pos":["n"]}
+{"id":"bca1ff06-a56e-5e79-849e-d9de178bab91","kanji":"籠城作戦","romaji":"roujousakusen","fr":"strategy of holing oneself up in a castle (house, building)","readings":["ろうじょうさくせん"],"jlpt_level":2,"jmdict_seq":2055230,"total_freq":1,"pos":["n"]}
+{"id":"30256010-b641-5280-91d9-35cd1f8b34fd","kanji":"籠池","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"8547618b-2fe8-50a3-b9eb-9307194c7409","kanji":"簗田","romaji":"","fr":"","jlpt_level":4,"total_freq":1,"pos":["n"]}
+{"id":"084bcb89-a0ad-5801-9f5d-0159cbec577e","kanji":"簷","romaji":"noki","fr":"eaves; narrow aisle surrounding the core of a temple building","readings":["のき"],"jmdict_seq":1260330,"total_freq":1,"pos":["n"]}
+{"id":"f67b9938-c2d2-5839-9245-e0e77fab68c1","kanji":"籔","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"e3c873df-0f76-5362-a389-2d407da94a3f","kanji":"籏","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"1ca58e77-0477-50ad-a2d5-b5bb2e1f13eb","kanji":"糒","romaji":"hoshii","fr":"dried boiled rice used mainly as provisions of samurai troops and travelers (travellers)","readings":["ほしい","ほしいい"],"jmdict_seq":1637720,"total_freq":1,"pos":["n"]}
+{"id":"e77ae43c-19e9-505a-9549-df66a10ea4b9","kanji":"紆余曲折を経て","romaji":"uyokyokusetsuwohete","fr":"after many twists and turns; after much trouble","readings":["うよきょくせつをへて"],"jlpt_level":3,"jmdict_seq":2402550,"total_freq":1,"pos":["exp"]}
+{"id":"c3e29057-8bfb-5c85-8533-166daa9c703c","kanji":"絨毛","romaji":"juumou","fr":"villus; soft hair","readings":["じゅうもう"],"jlpt_level":2,"jmdict_seq":1570440,"total_freq":1,"pos":["n,adj-no"]}
+{"id":"4193dfd7-98b3-52a2-95fb-df8ec8e33c9c","kanji":"綏撫","romaji":"suibu","fr":"lulled into peacefulness; comforted and consoled","readings":["すいぶ","ずいぶ"],"jmdict_seq":2174980,"total_freq":1,"pos":["n,vs"]}
+{"id":"ccd2d766-a6ae-5a59-b4e2-377c2b6145f0","kanji":"絽","romaji":"ro","fr":"silk gauze (esp. used in light clothing for high summer)","readings":["ろ"],"jmdict_seq":2559640,"total_freq":1,"pos":["n"]}
+{"id":"62c1d5c2-fc3e-525f-8c2d-b2f20d5af81b","kanji":"綺談","romaji":"kidan","fr":"romantic story; colorful story; colourful story; highly embellished story","readings":["きだん"],"jlpt_level":1,"jmdict_seq":1639410,"total_freq":1,"pos":["n"]}
+{"id":"7f98202e-53e6-5ff7-a6c0-edbdbbdfd661","kanji":"綺麗好き","romaji":"kireizuki","fr":"love of cleanliness; liking to keep things clean; tidiness (of people); neatness","readings":["きれいずき"],"jlpt_level":1,"jmdict_seq":2184780,"total_freq":1,"pos":["n,adj-na"]}
+{"id":"1c371736-4eb6-580c-8acb-6aa625816b85","kanji":"綯い交ぜにする","romaji":"naimazenisuru","fr":"to blend (e.g. fact and fiction); to mix; to weave (together)","readings":["ないまぜにする"],"jlpt_level":3,"jmdict_seq":1009370,"total_freq":1,"pos":["exp,vs-i"]}
+{"id":"b4e4798d-37bc-5d0f-b92f-5eb1a55a3099","kanji":"緘口令を敷く","romaji":"kankoureiwoshiku","fr":"to impose a gag order; to hush up; to order someone not to mention something","readings":["かんこうれいをしく"],"jlpt_level":1,"jmdict_seq":2135290,"total_freq":1,"pos":["exp,v5k"]}
+{"id":"d8c56d64-17ee-5a25-988e-9f04454c89f1","kanji":"緘黙","romaji":"kanmoku","fr":"keeping silent","readings":["かんもく"],"jlpt_level":1,"jmdict_seq":1683270,"total_freq":1,"pos":["n,vs"]}
+{"id":"b2f06b61-54f7-5efb-a547-32462ae07d68","kanji":"緞子","romaji":"donsu","fr":"silk damask; satin damask","readings":["どんす"],"jlpt_level":5,"jmdict_seq":1570500,"total_freq":1,"pos":["n"]}
+{"id":"25ed3da0-88c4-513c-b43d-846f69518665","kanji":"緞帳","romaji":"donchou","fr":"thick curtain; drop curtain","readings":["どんちょう"],"jlpt_level":1,"jmdict_seq":1570510,"total_freq":1,"pos":["n"]}
+{"id":"7a1a64e8-d202-550d-9630-087cbeff7f4f","kanji":"縣","romaji":"ken","fr":"prefecture (of Japan); county (of China, Taiwan, Norway, etc.); department (of France); province (of Italy, Spain, etc.)","readings":["けん"],"jmdict_seq":1258810,"total_freq":1,"pos":["oK"]}
+{"id":"02462130-da49-5244-87aa-161f4d3928e3","kanji":"縒りを戻す","romaji":"yoriwomodosu","fr":"to untangle; to untwine; to get back together (with a former partner)","readings":["よりをもどす"],"jlpt_level":3,"jmdict_seq":1570550,"total_freq":1,"pos":["exp,v5s"]}
+{"id":"8494b4e3-12a8-5526-99b9-bd30d4009f11","kanji":"繧繝","romaji":"ungen","fr":"ungen; method of dyeing in which a color repeatedly goes from dense to diffuse, diffuse to dense; used in Buddhist pictures, temple ornaments, etc., during the Nara and Heian periods","readings":["うんげん","うげん"],"jmdict_seq":2174790,"total_freq":1,"pos":["n"]}
+{"id":"8f7c08a3-fe11-55bd-ba8a-0456d646ffc7","kanji":"繩","romaji":"nawa","fr":"rope; cord; policeman's rope","readings":["なわ"],"jmdict_seq":1459830,"total_freq":1,"pos":["n"]}
+{"id":"5ec25c72-02c2-5954-8d1d-048d7c15b566","kanji":"繻珍","romaji":"shuchin","fr":"satin with raised figures","readings":["しゅちん","しちん"],"jlpt_level":2,"jmdict_seq":2533160,"total_freq":1,"pos":["n"]}
+{"id":"56f86bb0-3379-568c-a4b2-b948bcbd341b","kanji":"纓坂","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"b9555cbb-38c7-5f57-b110-3233722d8bba","kanji":"纜","romaji":"tomozuna","fr":"stern line; mooring line","readings":["ともづな"],"jmdict_seq":2267090,"total_freq":1,"pos":["n"]}
+{"id":"21daaca1-d8aa-569e-82c6-4a187575cfae","kanji":"缺","romaji":"ketsu","fr":"lack; deficiency; vacancy; absence; non-attendance","readings":["けつ"],"jmdict_seq":1956200,"total_freq":1,"pos":["oK"]}
+{"id":"d7e06f3c-26d9-511f-991d-54626adb37fd","kanji":"罌粟粒","romaji":"keshitsubu","fr":"poppy seed; something extremely tiny","readings":["けしつぶ"],"jlpt_level":2,"jmdict_seq":1977320,"total_freq":1,"pos":["n"]}
+{"id":"e39a1b63-ec8c-5fed-991d-9d66769e370c","kanji":"羹","romaji":"atsumono","fr":"broth made of fish and vegetables","readings":["あつもの"],"jmdict_seq":2002120,"total_freq":1,"pos":["n"]}
+{"id":"19637dd5-3c78-53ee-9a9e-b5099be2596d","kanji":"翔汰","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"7e9b2d1f-296c-5251-b9c0-8e7fc0d32985","kanji":"翔鶴","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"19f8b47c-0ef0-58ed-bcce-757befb8e0ff","kanji":"翔陽","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"5f3db506-9350-5611-ad39-ac04d37e8449","kanji":"翳","romaji":"kasumi","fr":"haze (esp. in spring); mist; dimness (of sight)","readings":["かすみ"],"jmdict_seq":1196510,"total_freq":1,"pos":["n"]}
+{"id":"fe193539-26d7-51ce-a38d-74cf02152dbe","kanji":"翳る","romaji":"kageru","fr":"to become clouded; to darken; to get dark; to become hidden (behind clouds); to darken (of a face); to worsen; to deteriorate; to become gloomy","readings":["かげる"],"jmdict_seq":1590180,"total_freq":1,"pos":["v5r,vi"]}
+{"id":"51532e62-7f54-566b-82be-c4473fb10f5d","kanji":"耻","romaji":"haji","fr":"shame; embarrassment; disgrace","readings":["はじ","じょく"],"jmdict_seq":1421590,"total_freq":1,"pos":["n"]}
+{"id":"b0915f7e-b041-583c-9175-f70dd87232fd","kanji":"聚楽","romaji":"juraku","fr":"grey wall covering material (gray)","readings":["じゅらく"],"jlpt_level":4,"jmdict_seq":2114680,"total_freq":1,"pos":["n"]}
+{"id":"78d242fd-f309-566d-b469-ae576bbe1e2d","kanji":"聟","romaji":"muko","fr":"husband; groom; (one's) son-in-law","readings":["むこ"],"jmdict_seq":1531160,"total_freq":1,"pos":["n"]}
+{"id":"345ef31e-15f2-5e4b-94be-fecc422ba44e","kanji":"聰","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"d4f20971-3624-58f4-811f-a195296d2404","kanji":"肛門科","romaji":"koumonka","fr":"proctology department; proctology clinic; proctology","readings":["こうもんか"],"jlpt_level":2,"jmdict_seq":1875750,"total_freq":1,"pos":["n"]}
+{"id":"10a4ddc5-9bed-56f1-9d8d-5adf58ffebcc","kanji":"胥","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"9589a061-9747-5bc8-b143-e29cfed209a3","kanji":"胄","romaji":"kabuto","fr":"helmet (of a warrior); headpiece","readings":["かぶと"],"jmdict_seq":1209030,"total_freq":1,"pos":["iK"]}
+{"id":"3578ba43-e5b9-5b65-a7a6-a4a8bff55a6c","kanji":"胚発生","romaji":"haihaっsei","fr":"embryogenesis; embryogeny; embryonic development","readings":["はいはっせい"],"jlpt_level":4,"jmdict_seq":2690050,"total_freq":1,"pos":["n"]}
+{"id":"1e569b96-a33e-5a75-a98d-70d0d4b989d2","kanji":"脛に傷持つ","romaji":"sunenikizumotsu","fr":"to have a guilty conscience","readings":["すねにきずもつ"],"jlpt_level":1,"jmdict_seq":1887100,"total_freq":1,"pos":["exp,v5t"]}
+{"id":"c93e30f8-7ea2-5a4a-80c5-e5f6f7719538","kanji":"腓腹","romaji":"hifuku","fr":"calf muscle; sural","readings":["ひふく"],"jlpt_level":3,"jmdict_seq":2679640,"total_freq":1,"pos":["n"]}
+{"id":"9346c8f7-2b06-585a-be49-b726ead64006","kanji":"腱板","romaji":"kenban","fr":"rotator cuff","readings":["けんばん"],"jlpt_level":2,"jmdict_seq":2170770,"total_freq":1,"pos":["n"]}
+{"id":"cbdcd418-598f-514b-b13d-a0e0c8f8c728","kanji":"腥い","romaji":"namagusai","fr":"smelling of fish; fishy; smelling of blood; bloody; degenerate (of a monk); depraved; corrupt; fallen; worldly; mundane; secular; common; ordinary; fishy; suspicious; questionable","readings":["なまぐさい"],"jmdict_seq":1379110,"total_freq":1,"pos":["adj-i"]}
+{"id":"57004aba-9921-5dc3-95a6-8872712c4fea","kanji":"膀胱癌","romaji":"boukougan","fr":"bladder cancer","readings":["ぼうこうがん"],"jmdict_seq":2206120,"total_freq":1,"pos":["n"]}
+{"id":"372ed0e1-a70a-503c-8b1e-12e77d1e830b","kanji":"膀胱鏡","romaji":"boukoukyou","fr":"cystoscope","readings":["ぼうこうきょう"],"jlpt_level":1,"jmdict_seq":2206110,"total_freq":1,"pos":["n"]}
+{"id":"8159e133-f51f-5b0d-9e42-2d5b0bd8e6b0","kanji":"膣壁","romaji":"chitsuheki","fr":"vaginal wall","readings":["ちつへき"],"jlpt_level":1,"jmdict_seq":2440820,"total_freq":1,"pos":["n"]}
+{"id":"b0212d8c-8f13-510e-99e3-9e3773911287","kanji":"膾","romaji":"namasu","fr":"namasu; dish of raw fish and vegetables seasoned in vinegar","readings":["なます"],"jmdict_seq":1957170,"total_freq":1,"pos":["n"]}
+{"id":"e68a74b4-0ebc-5323-bc76-57aa0fcb0e7c","kanji":"臍ピアス","romaji":"hesopiasu","fr":"navel piercing; belly button ring","readings":["へそピアス"],"jmdict_seq":2114260,"total_freq":1,"pos":["n"]}
+{"id":"36e9f1fc-f27a-5ad8-a5e7-383d0b6e9f46","kanji":"臍下丹田","romaji":"seikatanden","fr":"pit of the stomach","readings":["せいかたんでん"],"jlpt_level":1,"jmdict_seq":1571210,"total_freq":1,"pos":["n"]}
+{"id":"286cf3bf-b09b-5a87-8a55-d024d878f548","kanji":"與一","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"3dd8d9e6-a657-597e-9a0c-407c1463cf26","kanji":"與志","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"5762d765-bcca-53ec-afe7-b705e0e8d245","kanji":"與那","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"7964358d-bfa7-5a73-aae8-f253ce17688a","kanji":"與之","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"d2bb0480-1280-5393-9a2e-ff3a354796ca","kanji":"與本","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"516f336c-35db-5fda-975e-bc5e6ccbb231","kanji":"舐め舐め","romaji":"namename","fr":"licking","readings":["なめなめ"],"jmdict_seq":2123760,"total_freq":1,"pos":["n,vs"]}
+{"id":"485fc73d-8abc-5591-95b4-bcbf60809cca","kanji":"舩","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"8cb2a92e-0389-5234-b84f-3e2ee95d2215","kanji":"莓","romaji":"ichigo","fr":"strawberry (esp. the garden strawberry, Fragaria x ananassa); 15,000 yen","readings":["いちご","イチゴ"],"jmdict_seq":1571460,"total_freq":1,"pos":["n"]}
+{"id":"2462a57c-e752-5a17-80ba-cddd3e1006ee","kanji":"苞苴","romaji":"aramaki","fr":"lightly roasted and salted salmon (Hokkaidō specialty); fish wrapped in bamboo leaves or straw for transport","readings":["あらまき"],"jmdict_seq":1671350,"total_freq":1,"pos":["ok"]}
+{"id":"ae8c71d9-1439-520e-9e5d-ec4ac4d00373","kanji":"荀","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"b96de7b7-08b7-5013-9ca1-f6595a0db4a0","kanji":"茹で溢す","romaji":"yudekobosu","fr":"to boil, then discard the liquid (in order to remove astringency)","readings":["ゆでこぼす"],"jmdict_seq":2522190,"total_freq":1,"pos":["v5s"]}
+{"id":"fc8b6ee4-7f83-5b47-b871-620d975a8aa1","kanji":"茹で海老","romaji":"yudeebi","fr":"boiled red prawn, shrimp, lobster, etc. (sometimes used as a New Year decoration)","readings":["ゆでえび","ゆでエビ"],"jlpt_level":3,"jmdict_seq":2573480,"total_freq":1,"pos":["n"]}
+{"id":"ec7fb48b-cc87-5654-b112-7176bc3ff067","kanji":"茯苓","romaji":"bukuryou","fr":"Poria cocos (species of basidiomycete used in Chinese medicine)","readings":["ぶくりょう"],"jmdict_seq":2212150,"total_freq":1,"pos":["n"]}
+{"id":"85605af5-1912-56dd-aa9b-f39bf14132fa","kanji":"茫洋","romaji":"bouyou","fr":"vast; limitless; boundless","readings":["ぼうよう"],"jlpt_level":4,"jmdict_seq":1571430,"total_freq":1,"pos":["n"]}
+{"id":"94fc55d4-2eb9-55a0-a117-a49602ac5e69","kanji":"莎","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"0cbdb5ac-4652-5cec-88ae-6aa71607edf9","kanji":"莊司","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"0cb6c7e3-a8e0-5d80-90be-43d49bf87364","kanji":"荳科","romaji":"mameka","fr":"Fabaceae (pea family of plants)","readings":["マメか","まめか"],"jlpt_level":3,"jmdict_seq":2065850,"total_freq":1,"pos":["n"]}
+{"id":"617da320-af1f-5ccd-bbe9-b899f438dd7a","kanji":"萠黄色","romaji":"moegiiro","fr":"light green; yellowish-green","readings":["もえぎいろ"],"jlpt_level":2,"jmdict_seq":1605190,"total_freq":1,"pos":["n"]}
+{"id":"0ecda4f3-b142-5808-b2ac-7f3b8eda4d17","kanji":"葭戸","romaji":"yoshido","fr":"reed sliding door","readings":["よしど"],"jlpt_level":2,"jmdict_seq":2559190,"total_freq":1,"pos":["n"]}
+{"id":"7812c93e-0aae-5c19-a4e7-cf71fe5ce55a","kanji":"萬吉","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"0ff80afa-b993-5ba9-b484-da72e46fe549","kanji":"萬金","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"a80a2888-0408-5561-89fc-a49fd4e4e22a","kanji":"萬年","romaji":"","fr":"","jlpt_level":5,"total_freq":1,"pos":["n"]}
+{"id":"39f4bd50-eead-5e07-8c52-c2b7e5940b50","kanji":"萬葉集","romaji":"manyoushuu","fr":"Man'yōshū (8th century anthology of Japanese poetry)","readings":["まんようしゅう"],"jlpt_level":3,"jmdict_seq":1526550,"total_freq":1,"pos":["n"]}
+{"id":"7a3f2307-9ab9-5810-beaf-655366a93989","kanji":"萬里","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"2bff8290-8184-5807-8fbe-de00c6647954","kanji":"蓖麻子","romaji":"himashi","fr":"castor bean","readings":["ひまし"],"jlpt_level":1,"jmdict_seq":1571660,"total_freq":1,"pos":["n"]}
+{"id":"f7377735-05e3-5e6c-99f5-26f5d58eaf74","kanji":"薀蓄","romaji":"unchiku","fr":"great erudition; extensive knowledge; vast stock of knowledge","readings":["うんちく","ウンチク"],"jlpt_level":1,"jmdict_seq":1571830,"total_freq":1,"pos":["n,vs"]}
+{"id":"54acbd67-8908-5038-8fbb-2f7734c78c4b","kanji":"薀蓄を傾ける","romaji":"unchikuwokatamukeru","fr":"to draw upon one's profound knowledge","readings":["うんちくをかたむける"],"jlpt_level":1,"jmdict_seq":2102360,"total_freq":1,"pos":["exp,v1"]}
+{"id":"c90e62ec-63a7-5835-9efb-be6b7a4d1ca6","kanji":"薑","romaji":"shouga","fr":"ginger (Zingiber officinale)","readings":["しょうが","ショウガ"],"jmdict_seq":1379620,"total_freq":1,"pos":["n"]}
+{"id":"1bc35c0c-92d7-5fc2-96ab-0d1b9c735bc5","kanji":"藪医者","romaji":"yabuisha","fr":"inept doctor; bad doctor; poor doctor; quack","readings":["やぶいしゃ"],"jlpt_level":4,"jmdict_seq":1709350,"total_freq":1,"pos":["ateji"]}
+{"id":"494c4f54-724a-52a5-b6bf-7d143f0ea42e","kanji":"藪蕎麦","romaji":"yabusoba","fr":"yabu soba; green-colored soba made from buckwheat flour milled with green buckwheat berry chaff","readings":["やぶそば"],"jlpt_level":2,"jmdict_seq":2252530,"total_freq":1,"pos":["n"]}
+{"id":"4c2ad048-a36d-55cc-9884-cbfc6b21071c","kanji":"藪睨み","romaji":"yabunirami","fr":"squint; cross-eyed; mistaken view","readings":["やぶにらみ"],"jmdict_seq":1709370,"total_freq":1,"pos":["n"]}
+{"id":"228122c9-7d79-5418-9bbe-d993037c461b","kanji":"薹が立つ","romaji":"tougatatsu","fr":"to go to seed; to become hard and fibrous; to have passed one's prime; to have lost the first bloom of one's youth","readings":["とうがたつ"],"jlpt_level":4,"jmdict_seq":2545960,"total_freq":1,"pos":["exp,v5t"]}
+{"id":"4e24f667-185a-52e6-8da7-462f8e77d7d2","kanji":"蠣殻","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"df614085-a103-5e92-9ffa-bbb04ea8b766","kanji":"蛯原","romaji":"","fr":"","jlpt_level":3,"total_freq":1,"pos":["n"]}
+{"id":"e5a5ac80-1b12-5058-8993-20a1011929b3","kanji":"蜀漢","romaji":"shoっkan","fr":"Shu Han (kingdom in China during the Three Kingdoms era; 221-263); Shu","readings":["しょっかん","しょくかん"],"jlpt_level":4,"jmdict_seq":2086260,"total_freq":1,"pos":["n"]}
+{"id":"a6aaf606-0a00-5f93-b101-99d4a16a93e5","kanji":"蛻け","romaji":"monuke","fr":"shed skin (of a snake, insect, etc.); ecdysis","readings":["もぬけ"],"jmdict_seq":1402260,"total_freq":1,"pos":["n"]}
+{"id":"527dbfea-bf39-508b-99ab-b8b06b4673fe","kanji":"蛹","romaji":"sanagi","fr":"chrysalis; pupa","readings":["さなぎ"],"jmdict_seq":1571990,"total_freq":1,"pos":["n"]}
+{"id":"eeebf6f5-078d-50c2-9dbb-69ecdf6d23bd","kanji":"蜷川幸雄","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"861662af-3330-5e20-a093-610696185bb7","kanji":"蜻蛉","romaji":"tonbo","fr":"dragonfly","readings":["とんぼ","とんぼう","トンボ"],"jmdict_seq":1585910,"total_freq":1,"pos":["n"]}
+{"id":"b2f44a06-4b7a-5518-8b52-c31332c20b90","kanji":"螫す","romaji":"sasu","fr":"to pierce; to stab; to prick; to stick; to thrust; to sting; to bite; to sew; to stitch; to embroider; to pole (a boat); to catch (with a limed pole); to put (a runner) out; to pick off","readings":["さす"],"jmdict_seq":1306470,"total_freq":1,"pos":["oK"]}
+{"id":"77f36412-7aa0-5eff-9b87-5fd7fa1cea02","kanji":"蠏玉","romaji":"kanitama","fr":"Chinese dish with fried egg and crab","readings":["かにたま"],"jlpt_level":2,"jmdict_seq":1801340,"total_freq":1,"pos":["n"]}
+{"id":"f27e379d-bb97-51df-a7ab-05b083858c25","kanji":"蟾酥","romaji":"senso","fr":"toad venom (used as an analgesic and cardiac stimulant in Chinese medicine)","readings":["せんそ"],"jmdict_seq":2588430,"total_freq":1,"pos":["n"]}
+{"id":"fced4ebc-7f44-51a8-9980-c26d784573a8","kanji":"蠢動","romaji":"shundou","fr":"wriggling; squirming; writhing; maneuvering (behind the scenes; of insignificant people); manoeuvring; planning mischief","readings":["しゅんどう"],"jlpt_level":4,"jmdict_seq":1572280,"total_freq":1,"pos":["n,vs"]}
+{"id":"d1eea390-cc7b-586e-a723-9818de56f658","kanji":"蠱毒","romaji":"kodoku","fr":"poisoning someone","readings":["こどく"],"jlpt_level":2,"jmdict_seq":2621570,"total_freq":1,"pos":["n,vs"]}
+{"id":"a4864187-3ac6-5b9a-8afa-f0b59d6c4019","kanji":"蠱惑","romaji":"kowaku","fr":"fascination; glamour; glamor; enchantment; seduction","readings":["こわく"],"jlpt_level":1,"jmdict_seq":1572290,"total_freq":1,"pos":["n,vs"]}
+{"id":"3e831e3a-f8fa-51dd-b5b3-a81420134b74","kanji":"蠱惑的","romaji":"kowakuteki","fr":"fascinating; alluring","readings":["こわくてき"],"jlpt_level":1,"jmdict_seq":1572300,"total_freq":1,"pos":["adj-na"]}
+{"id":"3f2853e0-1182-5254-8c0b-cf799e110295","kanji":"蠻","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"a31ff504-d31e-5c8c-8adf-1314e3f6f47d","kanji":"衒学","romaji":"gengaku","fr":"pedantry; display of one's learning","readings":["げんがく"],"jlpt_level":5,"jmdict_seq":1572320,"total_freq":1,"pos":["n"]}
+{"id":"ec231a90-5210-5888-9d98-1d050e58d859","kanji":"袢天","romaji":"hanten","fr":"traditional short winter coat resembling a haori without gussets; livery coat; half the sky; mid-air; middle of the sky","readings":["はんてん"],"jlpt_level":5,"jmdict_seq":1479740,"total_freq":1,"pos":["iK"]}
+{"id":"31466c5b-012d-51e5-8ab7-4b66de8afd3d","kanji":"褥瘡","romaji":"jokusou","fr":"bedsore; pressure ulcer; pressure sore; pressure injury","readings":["じょくそう"],"jmdict_seq":1572400,"total_freq":1,"pos":["n"]}
+{"id":"75b57d03-7bdc-5b44-970a-f2f53018487a","kanji":"褪色","romaji":"taishoku","fr":"fading; faded colour; faded color","readings":["たいしょく"],"jlpt_level":4,"jmdict_seq":1572440,"total_freq":1,"pos":["n,vs"]}
+{"id":"5433c6e9-438f-5870-afec-7c87916538fb","kanji":"襤褸","romaji":"ranru","fr":"tattered clothes; ragged clothes; rag","readings":["らんる"],"jmdict_seq":2859027,"total_freq":1,"pos":["n,pref"]}
+{"id":"6408ea1f-2e46-5792-b855-c20599947ce9","kanji":"覺如","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"6dc00e95-db5b-5f3e-9c6d-40e87c36137c","kanji":"訝しい","romaji":"ibukashii","fr":"suspicious; doubtful; dubious; questionable; fishy","readings":["いぶかしい"],"jmdict_seq":1572590,"total_freq":1,"pos":["adj-i"]}
+{"id":"b684bc55-b173-5475-aa65-ca4fb3b7278d","kanji":"詭弁を弄する","romaji":"kibenworousuru","fr":"to use sophistry","readings":["きべんをろうする"],"jlpt_level":1,"jmdict_seq":2103120,"total_freq":1,"pos":["exp,vs-s"]}
+{"id":"b6310713-08f8-5f27-9a74-c598695592c6","kanji":"誅する","romaji":"chuusuru","fr":"to put to death (e.g. a sinner, traitor, etc.); to punish someone with death","readings":["ちゅうする"],"jmdict_seq":2662940,"total_freq":1,"pos":["vs-s,vt"]}
+{"id":"cf780b3f-de45-52ce-b298-403786ffb3a2","kanji":"誣告","romaji":"bukoku","fr":"false accusation; slander; calumny","readings":["ぶこく"],"jlpt_level":3,"jmdict_seq":1622110,"total_freq":1,"pos":["n,vs"]}
+{"id":"621d9d31-dd74-5c3c-a19a-85359b348ec1","kanji":"諚","romaji":"jou","fr":"lord's command","readings":["じょう"],"jmdict_seq":2843125,"total_freq":1,"pos":["n"]}
+{"id":"89534db6-1db2-594d-857d-1ab6aa396784","kanji":"諫","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"aad79ff1-58d6-5c70-9a15-eef191e305f7","kanji":"諢名","romaji":"adana","fr":"nickname","readings":["あだな","こんめい"],"jlpt_level":5,"jmdict_seq":1586450,"total_freq":1,"pos":["n,vs"]}
+{"id":"f792a6a9-73e8-5321-b356-b54b1ef8945e","kanji":"諷誦","romaji":"fuuju","fr":"reciting","readings":["ふうじゅ","ふうしょう","ふじゅ"],"jmdict_seq":1905490,"total_freq":1,"pos":["n,vs"]}
+{"id":"4f914982-5426-5be6-b966-d9e7150f0d8b","kanji":"諷諫","romaji":"fuukan","fr":"indirect remonstrance; exhortation by insinuation","readings":["ふうかん"],"jmdict_seq":1572860,"total_freq":1,"pos":["n"]}
+{"id":"1c97f128-5508-5be2-9729-eed81c8cded3","kanji":"諡","romaji":"shi","fr":"posthumous name; posthumous title","readings":["し"],"jmdict_seq":2843029,"total_freq":1,"pos":["n"]}
+{"id":"f0849e07-f1bb-5491-be2d-8bc12332d521","kanji":"諡号","romaji":"okurigou","fr":"posthumous Buddhist name","readings":["おくりごう"],"jlpt_level":3,"jmdict_seq":2112710,"total_freq":1,"pos":["n"]}
+{"id":"330705cb-0dae-5b13-a159-4ed4964acc17","kanji":"鞫問","romaji":"kikumon","fr":"questioning (someone) about a crime; interrogation","readings":["きくもん"],"jlpt_level":4,"jmdict_seq":2633740,"total_freq":1,"pos":["n,vs"]}
+{"id":"308bf5d8-0190-57e9-8ebe-5e95d114a4d1","kanji":"證","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"19218aaa-d39e-5492-aac8-77b33b5e637d","kanji":"譬える","romaji":"tatoeru","fr":"to compare (something) to; to liken; to speak figuratively; to use a simile; to use a metaphor","readings":["たとえる"],"jmdict_seq":1597130,"total_freq":1,"pos":["v1,vt"]}
+{"id":"9e5bad56-7f92-559d-adbc-3194f582e3b3","kanji":"譴責","romaji":"kenseki","fr":"reprimand; rebuke; censure; reproof","readings":["けんせき"],"jlpt_level":3,"jmdict_seq":1572970,"total_freq":1,"pos":["n,vs"]}
+{"id":"f3fbb369-17b6-54f3-a9cf-249b3977c7fe","kanji":"譽","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"c6a16819-9b02-57fb-96f4-dd6b477336c7","kanji":"讒臣","romaji":"zanshin","fr":"slanderous retainer; libelous vassal","readings":["ざんしん"],"jlpt_level":2,"jmdict_seq":1573000,"total_freq":1,"pos":["n"]}
+{"id":"d65aa74d-2b04-5853-aadd-921e4798b62d","kanji":"讚","romaji":"san","fr":"a style of Chinese poetry; legend or inscription on a picture","readings":["さん"],"jmdict_seq":1879320,"total_freq":1,"pos":["n"]}
+{"id":"2758954b-2307-5545-b7b0-78304913e557","kanji":"豈図らんや","romaji":"anihakaranya","fr":"contrary to one's expectations; to one's surprise","readings":["あにはからんや"],"jlpt_level":4,"jmdict_seq":2034920,"total_freq":1,"pos":["exp"]}
+{"id":"6637f893-4363-5867-94db-5e979fc1d20b","kanji":"貪り食う","romaji":"musaborikuu","fr":"to eat greedily; to devour; to wolf down; to gobble up","readings":["むさぼりくう"],"jlpt_level":5,"jmdict_seq":1573070,"total_freq":1,"pos":["v5u"]}
+{"id":"dd450307-87fa-5709-8f67-fa05634e207d","kanji":"貪り食らう","romaji":"musaborikurau","fr":"to devour greedily","readings":["むさぼりくらう"],"jlpt_level":5,"jmdict_seq":1573080,"total_freq":1,"pos":["v5u"]}
+{"id":"b0b666ab-beda-5655-9117-ffebd10f1f70","kanji":"貪り読む","romaji":"musaboriyomu","fr":"to read avidly","readings":["むさぼりよむ"],"jlpt_level":5,"jmdict_seq":1634670,"total_freq":1,"pos":["v5m"]}
+{"id":"02043da7-be64-5e2b-82d7-27f5e244d246","kanji":"賈","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"f4852165-c44b-54ab-a608-2262e6a60ab6","kanji":"賽は投げられた","romaji":"saihanagerareta","fr":"the die is cast; there is no going back; alea iacta est","readings":["さいはなげられた"],"jlpt_level":3,"jmdict_seq":2078930,"total_freq":1,"pos":["exp"]}
+{"id":"b7f8aeef-2e83-5df3-9ec6-22720f4beaa3","kanji":"贔屓目","romaji":"hiikime","fr":"seeing things in a favourable light (favorable)","readings":["ひいきめ"],"jlpt_level":4,"jmdict_seq":1573220,"total_freq":1,"pos":["n"]}
+{"id":"f82ade2c-babe-53a4-a1ab-e3f8dab9e6c7","kanji":"赧らめる","romaji":"akarameru","fr":"to blush; to redden","readings":["あからめる"],"jmdict_seq":1383290,"total_freq":1,"pos":["v1,vt"]}
+{"id":"13d7a3bb-bcdc-555e-adf3-e8df14affb7c","kanji":"蹠骨","romaji":"shokotsu","fr":"metatarsal","readings":["しょこつ"],"jlpt_level":2,"jmdict_seq":2193600,"total_freq":1,"pos":["n"]}
+{"id":"65b25123-82af-5157-b0d4-9b39eddd3a8b","kanji":"蹲","romaji":"tsukubai","fr":"stone wash basin found in Japanese gardens","readings":["つくばい"],"jmdict_seq":1648090,"total_freq":1,"pos":["n"]}
+{"id":"603b95ca-365c-5ef7-aa38-33d362c890f7","kanji":"躁うつ","romaji":"souutsu","fr":"manic depression; mood swing","readings":["そううつ"],"jmdict_seq":1573350,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"c401d717-cade-57fb-92ac-6789f4d673a3","kanji":"躁うつ病","romaji":"souutsubyou","fr":"manic depression; manic-depressive psychosis; bipolar disorder","readings":["そううつびょう"],"jlpt_level":4,"jmdict_seq":1573360,"total_freq":1,"pos":["n,adj-no"]}
+{"id":"f03f32b2-909d-51c3-b783-421061b7ca7c","kanji":"躁鬱","romaji":"souutsu","fr":"manic depression; mood swing","readings":["そううつ"],"jmdict_seq":1573350,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"82e13688-8252-55a6-82e7-26859b76045a","kanji":"軛","romaji":"kubiki","fr":"yoke; constraints; oppression","readings":["くびき"],"jmdict_seq":1831840,"total_freq":1,"pos":["n"]}
+{"id":"20dbf4b5-37f3-5d71-8ac9-bfc24867325d","kanji":"軻遇突智","romaji":"kagutsuchi","fr":"Kagutsuchi; fire deity who burned to death his mother Izanami during childbirth (and was therefore beheaded by his father Izanagi)","readings":["かぐつち"],"jlpt_level":1,"jmdict_seq":2580400,"total_freq":1,"pos":["n"]}
+{"id":"b2f69552-b411-5ef8-85e0-1afc143f7c4e","kanji":"軫念","romaji":"shinnen","fr":"the grief or feelings of the Emperor","readings":["しんねん"],"jlpt_level":3,"jmdict_seq":2181970,"total_freq":1,"pos":["n"]}
+{"id":"37270c19-49d5-599e-906e-40cbe8bb7222","kanji":"輛","romaji":"ryou","fr":"counter for carriages (e.g. in a train); counter for vehicles","readings":["りょう"],"jmdict_seq":2714770,"total_freq":1,"pos":["ctr"]}
+{"id":"5a958527-5695-5502-8e31-b9dd16e3be96","kanji":"辜","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"38800e05-6cbf-54ba-9bb0-69473335f0be","kanji":"邇","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"a216afd4-22b4-55bb-9387-ceabf58e9815","kanji":"逍遙","romaji":"shouyou","fr":"ramble; saunter; walk; wander; stroll","readings":["しょうよう"],"jmdict_seq":1573630,"total_freq":1,"pos":["oK"]}
+{"id":"7e2aea0d-a064-574f-86c7-4578913d7531","kanji":"逞しくする","romaji":"takumashikusuru","fr":"to give rein to (imagination)","readings":["たくましくする"],"jmdict_seq":2441370,"total_freq":1,"pos":["vs-s,vt"]}
+{"id":"fb747e4e-47a0-598f-bbce-cb41b3b8903a","kanji":"鄙俗","romaji":"hizoku","fr":"vulgar; coarse; low","readings":["ひぞく"],"jlpt_level":1,"jmdict_seq":1482810,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"66632145-1e7a-5772-8155-f8b8c9fbebea","kanji":"鄙賤","romaji":"hisen","fr":"low class; lowly (position); humble (condition)","readings":["ひせん"],"jmdict_seq":1482800,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"755d25ad-45a9-55ee-8a01-ef2ed9d96c1a","kanji":"鄰","romaji":"tonari","fr":"next (to); adjoining; adjacent; house next door; neighbouring house; next-door neighbour; next-door neighbor","readings":["となり"],"jmdict_seq":1555830,"total_freq":1,"pos":["oK"]}
+{"id":"9f62446b-7c63-5add-9a31-3a52d13abc45","kanji":"酖溺","romaji":"tandeki","fr":"indulgence (in alcohol, women, etc.); debauchery; dissipation","readings":["たんでき"],"jmdict_seq":1768720,"total_freq":1,"pos":["n,vs"]}
+{"id":"175cdcc7-fa77-5b18-ab2d-4d65ed80eec2","kanji":"醂す","romaji":"sawasu","fr":"to remove the astringent taste from persimmons; to soak in water; to steep in water; to matte (with black lacquer)","readings":["さわす","あわす"],"jmdict_seq":2578010,"total_freq":1,"pos":["v5s,vt"]}
+{"id":"7855d604-b9ae-5b2e-a308-98be93f67811","kanji":"釵","romaji":"sai","fr":"sai (Okinawan weapon)","readings":["さい"],"jmdict_seq":2015020,"total_freq":1,"pos":["n"]}
+{"id":"26fefb3b-2b17-55c8-a02a-0f5ebd35714f","kanji":"鈔","romaji":"shou","fr":"excerpt; extract; annotation; shō (unit of volume, approx. 1.8 ml); banknote; paper money","readings":["しょう"],"jmdict_seq":2249440,"total_freq":1,"pos":["n"]}
+{"id":"68dfc1cf-baf2-5cb3-a904-a3209b2842cf","kanji":"鉞","romaji":"masakari","fr":"broadaxe; battle axe","readings":["まさかり","マサカリ"],"jmdict_seq":2239280,"total_freq":1,"pos":["n"]}
+{"id":"72c79d70-bef2-5632-b830-68e30a1b54ad","kanji":"鉉","romaji":"tsuru","fr":"bowstring; string (of shamisen, guitar, violin, etc.); bail (arched pot handle); diagonal levelling wire across the top of a masu","readings":["つる"],"jmdict_seq":1578400,"total_freq":1,"pos":["n"]}
+{"id":"1f733e36-e486-5c32-a7e3-93180376f2d9","kanji":"鉤十字","romaji":"kagijuuji","fr":"swastika (in its clockwise form, esp. as a Nazi symbol)","readings":["かぎじゅうじ","カギじゅうじ"],"jlpt_level":4,"jmdict_seq":1712480,"total_freq":1,"pos":["n"]}
+{"id":"4ad1c837-545a-56d5-bbf9-e951f54e86b7","kanji":"鉤鼻","romaji":"kagibana","fr":"hooked nose","readings":["かぎばな","かぎはな"],"jlpt_level":2,"jmdict_seq":1712520,"total_freq":1,"pos":["n"]}
+{"id":"8562fb80-9cc3-501a-ab6c-ddd09e5e6889","kanji":"銜え込む","romaji":"kuwaekomu","fr":"to hold firmly in one's mouth; to clamp down on with one's teeth; to bring (a man) in (for sexual purposes); to lure in","readings":["くわえこむ"],"jlpt_level":3,"jmdict_seq":2105520,"total_freq":1,"pos":["v5m"]}
+{"id":"d260bfd9-628e-5b22-aa92-c6bfeed976e9","kanji":"鋩","romaji":"hesaki","fr":"the tip of a spear; the edge at the very tip of a sword","readings":["へさき"],"jmdict_seq":2178050,"total_freq":1,"pos":["n"]}
+{"id":"e49d76bd-34ed-5448-8b4d-6d94ab207338","kanji":"鋺","romaji":"kanamari","fr":"small metal bowl","readings":["かなまり","かなわん"],"jmdict_seq":2149740,"total_freq":1,"pos":["n"]}
+{"id":"ed69533b-da79-554e-8ec0-6271657245ed","kanji":"錺り職","romaji":"kazarishoku","fr":"maker of metallic ornaments","readings":["かざりしょく"],"jlpt_level":3,"jmdict_seq":1733780,"total_freq":1,"pos":["n"]}
+{"id":"bb1adb3d-66a5-55e5-b764-6770dabb633e","kanji":"錺職","romaji":"kazarishoku","fr":"maker of metallic ornaments","readings":["かざりしょく"],"jlpt_level":3,"jmdict_seq":1733780,"total_freq":1,"pos":["io"]}
+{"id":"683890c7-c537-5ef9-894e-788a06eaef5a","kanji":"鍼医","romaji":"harii","fr":"acupuncturist","readings":["はりい","しんい"],"jlpt_level":4,"jmdict_seq":1626270,"total_freq":1,"pos":["n"]}
+{"id":"edd438a8-3ff1-54f4-ac0e-ebadc66e6684","kanji":"鍼麻酔","romaji":"harimasui","fr":"anesthesia by acupuncture","readings":["はりますい"],"jlpt_level":1,"jmdict_seq":2508680,"total_freq":1,"pos":["n"]}
+{"id":"bc2af4b8-826c-5e26-802e-4959f930ea5d","kanji":"鏈","romaji":"kusari","fr":"chain; chains","readings":["くさり"],"jmdict_seq":1291730,"total_freq":1,"pos":["n"]}
+{"id":"0ac41eae-ef00-56cd-98f4-ca90a17d3ab5","kanji":"鏤骨","romaji":"rukotsu","fr":"painstaking efforts","readings":["るこつ"],"jlpt_level":2,"jmdict_seq":1796530,"total_freq":1,"pos":["n"]}
+{"id":"5151d5b2-d08b-5ef4-8cfd-db254418b62d","kanji":"鑰","romaji":"kagi","fr":"key; lock; key (to a problem, success, etc.); clue","readings":["かぎ","カギ"],"jmdict_seq":1260490,"total_freq":1,"pos":["n"]}
+{"id":"360e0fda-6d0e-555a-8730-4e36033559c8","kanji":"閨秀","romaji":"keishuu","fr":"accomplished lady; talented woman; eminent woman","readings":["けいしゅう"],"jlpt_level":1,"jmdict_seq":1573950,"total_freq":1,"pos":["n"]}
+{"id":"3fb1b78b-af75-56b5-87c9-7942a8cd7d3b","kanji":"閾値","romaji":"ikichi","fr":"threshold (amount, dose, etc.)","readings":["いきち","しきいち"],"jlpt_level":3,"jmdict_seq":1594140,"total_freq":1,"pos":["n"]}
+{"id":"f10d10d1-2b9e-5d6b-91e2-9c741d090b03","kanji":"濶歩","romaji":"kaっpo","fr":"striding; swaggering; strutting; lording it over others; throwing one's weight around; acting as if one owns the place","readings":["かっぽ"],"jlpt_level":4,"jmdict_seq":1617710,"total_freq":1,"pos":["n,vs"]}
+{"id":"29d4ea2b-c508-5a71-b435-0f43218c71c1","kanji":"闖入","romaji":"chinnyuu","fr":"intrusion; forced entry","readings":["ちんにゅう"],"jlpt_level":5,"jmdict_seq":1574000,"total_freq":1,"pos":["n,vs"]}
+{"id":"026bb3f4-f0ad-5637-bced-bb107f04a070","kanji":"雉も鳴かずば撃たれまい","romaji":"kijimonakazubautaremai","fr":"avoiding unnecessary talk can prevent disaster falling on one; there is safety in silence; the pheasant would not be shot but for its cries","readings":["きじもなかずばうたれまい"],"jlpt_level":1,"jmdict_seq":2111630,"total_freq":1,"pos":["exp"]}
+{"id":"dd5a86f4-41bc-51aa-b9e7-7fe575da2a8e","kanji":"雉科","romaji":"kijika","fr":"Phasianidae (pheasant family of birds)","readings":["キジか","きじか"],"jlpt_level":3,"jmdict_seq":2512750,"total_freq":1,"pos":["n"]}
+{"id":"2986a2f8-c772-58f6-84b9-d06b735e0abf","kanji":"霓","romaji":"niji","fr":"rainbow","readings":["にじ"],"jmdict_seq":1463740,"total_freq":1,"pos":["oK"]}
+{"id":"08e5a6b6-65e1-5501-acc4-bc5a80033495","kanji":"勒する","romaji":"rokusuru","fr":"to manage; to carve; to write (for posterity)","readings":["ろくする"],"jmdict_seq":2454910,"total_freq":1,"pos":["vs-s,vt"]}
+{"id":"9cc729ac-a803-5b01-a3ec-fb477cbebfbb","kanji":"頸肩腕症候群","romaji":"keikenwanshoukougun","fr":"cervicobrachial syndrome; indicates pain, swelling, weakness and/or numbness in the neck/shoulder region, used when specific diagnosis is not known","readings":["けいけんわんしょうこうぐん"],"jlpt_level":1,"jmdict_seq":2557920,"total_freq":1,"pos":["n"]}
+{"id":"571cab0a-8992-5967-a2aa-94c65b0fe723","kanji":"頸動脈狭窄症","romaji":"keidoumyakukyousakushou","fr":"carotid stenosis; carotid artery stenosis","readings":["けいどうみゃくきょうさくしょう"],"jlpt_level":1,"jmdict_seq":2608160,"total_freq":1,"pos":["n"]}
+{"id":"6f0cdcc1-a143-518b-9d5d-708ccfddea4c","kanji":"顋","romaji":"ago","fr":"jaw; chin; barb (of a fishhook)","readings":["あご","アゴ"],"jmdict_seq":1207560,"total_freq":1,"pos":["n,adj-no"]}
+{"id":"07768ef5-786a-5746-8840-d9a8c9668a2e","kanji":"顰めっ面","romaji":"shikameっtsura","fr":"frown; scowl; grimace","readings":["しかめっつら"],"jlpt_level":3,"jmdict_seq":1731870,"total_freq":1,"pos":["n"]}
+{"id":"07689872-085e-5ad1-9534-3ecc48a5232a","kanji":"颯馬","romaji":"","fr":"","jlpt_level":1,"total_freq":1,"pos":["n"]}
+{"id":"441c23df-794a-5b77-8f7d-edabf0ce29c0","kanji":"飄々","romaji":"hyouhyou","fr":"whistling (wind); blowing; howling; fluttering (in the wind); waving; flapping; swirling; dancing; staggering; tottering; wandering; roaming; aimless; aloof from the world; easygoing; transcendental; detached","readings":["ひょうひょう"],"jmdict_seq":1574420,"total_freq":1,"pos":["adv-to,adv"]}
+{"id":"fd6c8558-c226-56a6-8dde-3e305654c7fa","kanji":"饌米","romaji":"senmai","fr":"offering of consecrated rice","readings":["せんまい"],"jlpt_level":3,"jmdict_seq":1824620,"total_freq":1,"pos":["n"]}
+{"id":"8b524140-8e94-5233-8f77-2f3e42d2bec8","kanji":"馥郁","romaji":"fukuiku","fr":"fragrant; sweet-smelling","readings":["ふくいく"],"jlpt_level":1,"jmdict_seq":1905710,"total_freq":1,"pos":["adj-t,adv-to"]}
+{"id":"bf94bb53-5c6a-5e23-9707-9f66d163474a","kanji":"馭者","romaji":"gyosha","fr":"coachman; driver; cabman; postilion","readings":["ぎょしゃ"],"jlpt_level":4,"jmdict_seq":1592080,"total_freq":1,"pos":["n"]}
+{"id":"07ef87ab-0dba-589a-9bdf-5999b97a5ca2","kanji":"駭然","romaji":"gaizen","fr":"astonished; very surprised","readings":["がいぜん"],"jlpt_level":3,"jmdict_seq":2172610,"total_freq":1,"pos":["adv-to,adj-t"]}
+{"id":"cb041f50-851d-5216-90ed-009c538eb1b2","kanji":"驕る平家は久しからず","romaji":"ogoruheikehahisashikarazu","fr":"pride goes before a fall; pride comes before a fall; the proud Heike family does not last long","readings":["おごるへいけはひさしからず"],"jlpt_level":2,"jmdict_seq":2420190,"total_freq":1,"pos":["exp"]}
+{"id":"21bf3dcb-a1b6-5078-b23f-0d5db6e67131","kanji":"驕奢","romaji":"kyousha","fr":"luxury; extravagance","readings":["きょうしゃ"],"jmdict_seq":1574610,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"55509bb3-46af-54a1-8d9b-eb20e66e3bd7","kanji":"鬚","romaji":"hige","fr":"moustache; mustache; beard; whiskers; sideburns; facial hair; whiskers (on a cat, etc.); feelers (on an insect, etc.); (chin) tuft; shadow (on a candlestick chart)","readings":["ひげ","ヒゲ"],"jmdict_seq":1601810,"total_freq":1,"pos":["n"]}
+{"id":"88d4faa0-75d0-5c6a-a45d-1c7020dd26bc","kanji":"鬢付け油","romaji":"bintsukeabura","fr":"pomade; pomatum; hair oil","readings":["びんつけあぶら"],"jlpt_level":2,"jmdict_seq":2139500,"total_freq":1,"pos":["n"]}
+{"id":"21e6f299-ac96-5965-836c-f5a8f27fdfd1","kanji":"魏志","romaji":"gishi","fr":"the history of Wei","readings":["ぎし"],"jlpt_level":1,"jmdict_seq":2440480,"total_freq":1,"pos":["n"]}
+{"id":"bba8fd4f-e44d-5e8a-8806-0adae3824ac3","kanji":"鮑の片思い","romaji":"awabinokataomoi","fr":"secret, unrequited love","readings":["あわびのかたおもい"],"jlpt_level":2,"jmdict_seq":2141220,"total_freq":1,"pos":["exp"]}
+{"id":"0f751833-3b13-5bb3-bea2-0787c1adb079","kanji":"鰡子","romaji":"karasumi","fr":"dried mullet roe","readings":["からすみ","カラスミ"],"jlpt_level":5,"jmdict_seq":2453620,"total_freq":1,"pos":["n"]}
+{"id":"85e66d22-809d-5415-bed8-c73ec3834a47","kanji":"鱶の鰭","romaji":"fukanohire","fr":"shark fin","readings":["ふかのひれ"],"jmdict_seq":2669540,"total_freq":1,"pos":["n"]}
+{"id":"7c63f1cd-d5a2-5381-958a-8f8897ccb2de","kanji":"鷽替","romaji":"usokae","fr":"annual religious ceremony that occurs in Tenmangu where worshippers come to exchange their wooden bullfinch birds","readings":["うそかえ"],"jlpt_level":2,"jmdict_seq":2570370,"total_freq":1,"pos":["n"]}
+{"id":"5310756e-867a-56f2-bf19-a6c8151ba356","kanji":"鹹い","romaji":"shiokarai","fr":"salty (taste); briny","readings":["しおからい","からい"],"jmdict_seq":1609860,"total_freq":1,"pos":["adj-i"]}
+{"id":"21ac14de-bd97-5554-976e-ac34d6db04ee","kanji":"麝香鹿","romaji":"jakoujika","fr":"musk deer","readings":["じゃこうじか","ジャコウジカ"],"jlpt_level":1,"jmdict_seq":1575220,"total_freq":1,"pos":["n"]}
+{"id":"9f19bd2e-502d-5b29-879f-9d0a52767335","kanji":"麩澤","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"c1ee7392-765e-5dc1-a66f-94e83272806f","kanji":"麪棒","romaji":"menbou","fr":"rolling pin","readings":["めんぼう"],"jlpt_level":2,"jmdict_seq":1605040,"total_freq":1,"pos":["n"]}
+{"id":"195b3737-528c-51a2-9427-17af48214266","kanji":"黎明期","romaji":"reimeiki","fr":"dawn (of a new era, civilization, etc.); dawning","readings":["れいめいき"],"jlpt_level":1,"jmdict_seq":1843430,"total_freq":1,"pos":["n"]}
+{"id":"3571d2af-8e75-54b3-89ee-8e575a60ca63","kanji":"黏稠","romaji":"nenchuu","fr":"viscous","readings":["ねんちゅう"],"jmdict_seq":1469790,"total_freq":1,"pos":["adj-na,n"]}
+{"id":"85a588c6-26af-53a9-b524-5ae3790e6751","kanji":"鼬の最後っ屁","romaji":"itachinosaigoっpe","fr":"final emergency measure; final defence when one is cornered","readings":["いたちのさいごっぺ"],"jlpt_level":3,"jmdict_seq":2141310,"total_freq":1,"pos":["exp"]}
+{"id":"3fd185fe-201f-53db-a849-ddba73d40c42","kanji":"齒","romaji":"ha","fr":"tooth; teeth; tooth (of a comb, saw, etc.); cog; support (of a geta)","readings":["は"],"jmdict_seq":1313000,"total_freq":1,"pos":["oK"]}
+{"id":"6ec2e95f-c7c3-5067-8578-c62101751626","kanji":"齦","romaji":"","fr":"","total_freq":1,"pos":["n,adj-no"]}
+{"id":"c5a54d8f-c1b9-5310-a8c5-23f7e6e6c9d9","kanji":"齧歯","romaji":"geっshi","fr":"rodent","readings":["げっし"],"jlpt_level":3,"jmdict_seq":2444990,"total_freq":1,"pos":["n"]}
+{"id":"b461f480-6723-59f8-b71c-3370a53b5463","kanji":"龕灯","romaji":"gandou","fr":"Buddhist altar light; flashlight-like lantern with a freely rotating candle that only directs light forward","readings":["がんどう"],"jlpt_level":2,"jmdict_seq":1575630,"total_freq":1,"pos":["n"]}
+{"id":"a944545c-12a2-5f3a-a5fe-36df514c21a3","kanji":"龕燈","romaji":"gandou","fr":"Buddhist altar light; flashlight-like lantern with a freely rotating candle that only directs light forward","readings":["がんどう"],"jmdict_seq":1575630,"total_freq":1,"pos":["n"]}
+{"id":"b0d6c22e-8078-5977-98c8-3f1b0de0dffa","kanji":"槇島","romaji":"","fr":"","jlpt_level":2,"total_freq":1,"pos":["n"]}
+{"id":"6f4944e5-7a08-5aae-909f-7bb401a4b75e","kanji":"槇嶋","romaji":"","fr":"","total_freq":1,"pos":["n"]}
+{"id":"b20ab782-94c8-5775-9643-68d511d43023","kanji":"の","romaji":"no","fr":"field; plain; hidden interior part (of a structure or object); wild (of an animal or plant)","readings":["の"],"jmdict_seq":1537250,"total_freq":0,"pos":["prt"]}

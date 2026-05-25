@@ -3,12 +3,22 @@ use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Card {
     pub id: String,
     pub kanji: String,
     pub romaji: String,
     pub fr: String,
+    #[serde(default)]
+    pub readings: Option<Vec<String>>,
+    #[serde(default)]
+    pub meanings_en: Option<Vec<String>>,
+    #[serde(default)]
+    pub jlpt_level: Option<u8>,
+    #[serde(default)]
+    pub jmdict_seq: Option<u64>,
+    #[serde(default)]
+    pub total_freq: Option<u64>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -139,7 +149,30 @@ fn validate_slug(slug: &str) -> bool {
     if slug.is_empty() {
         return false;
     }
-    slug.chars().all(|c| c.is_ascii_lowercase() || c == '-')
+    slug.chars()
+        .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-')
+}
+
+fn insert_card(
+    map: &mut HashMap<String, (String, Card)>,
+    card: &Card,
+    source: &str,
+) -> Result<(), LoadError> {
+    if !validate_slug(&card.id) {
+        return Err(LoadError::InvalidSlug {
+            slug: card.id.clone(),
+            kind: "card",
+        });
+    }
+    if let Some((existing_file, _)) = map.get(&card.id) {
+        return Err(LoadError::DuplicateCardId {
+            id: card.id.clone(),
+            file1: existing_file.clone(),
+            file2: source.to_string(),
+        });
+    }
+    map.insert(card.id.clone(), (source.to_string(), card.clone()));
+    Ok(())
 }
 
 fn load_json_files<T: for<'de> serde::Deserialize<'de>>(
@@ -174,24 +207,44 @@ pub fn load_catalog(data_dir: &Path) -> Result<CardCatalog, LoadError> {
 
     // Load all cards
     let mut cards_map: HashMap<String, (String, Card)> = HashMap::new();
-    let cards_files = load_json_files::<CardsFile>(&cards_dir)?;
 
+    // Load from .json files (CardsFile format)
+    let cards_files = load_json_files::<CardsFile>(&cards_dir)?;
     for (fname, cards_file) in &cards_files {
         for card in &cards_file.cards {
-            if !validate_slug(&card.id) {
-                return Err(LoadError::InvalidSlug {
-                    slug: card.id.clone(),
-                    kind: "card",
-                });
+            let source = fname.clone();
+            insert_card(&mut cards_map, card, &source)?;
+        }
+    }
+
+    // Load from .jsonl files (one Card per line)
+    if cards_dir.exists() {
+        let entries = fs::read_dir(&cards_dir)
+            .map_err(|e| LoadError::Io(format!("Cannot read cards dir: {}", e)))?;
+        for entry in entries {
+            let entry = entry.map_err(|e| LoadError::Io(e.to_string()))?;
+            let path = entry.path();
+            if path.extension().and_then(|e| e.to_str()) != Some("jsonl") {
+                continue;
             }
-            if let Some((existing_file, _)) = cards_map.get(&card.id) {
-                return Err(LoadError::DuplicateCardId {
-                    id: card.id.clone(),
-                    file1: existing_file.clone(),
-                    file2: fname.clone(),
-                });
+            let content = fs::read_to_string(&path)
+                .map_err(|e| LoadError::Io(format!("Cannot read {}: {}", path.display(), e)))?;
+            let fname = path.file_name().unwrap().to_string_lossy().to_string();
+            for (line_num, line) in content.lines().enumerate() {
+                let line = line.trim();
+                if line.is_empty() {
+                    continue;
+                }
+                let card: Card = serde_json::from_str(line).map_err(|e| {
+                    LoadError::Io(format!(
+                        "JSONL parse error in {} line {}: {}",
+                        path.display(),
+                        line_num + 1,
+                        e
+                    ))
+                })?;
+                insert_card(&mut cards_map, &card, &fname)?;
             }
-            cards_map.insert(card.id.clone(), (fname.clone(), card.clone()));
         }
     }
 
