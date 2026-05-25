@@ -8,7 +8,7 @@ dirs = ["Dragon Ball", "Dragon Ball Z", "Dragon Ball Super", "Dragon Ball GT", "
 dirs = ["Pocket Monsters", "Pocket Monsters (2019)", "Pocket Monsters (2023)", "Pocket Monsters Advanced Generation", "Pocket Monsters Best Wishes!", "Pocket Monsters Best Wishes! Season 2", "Pocket Monsters Diamond & Pearl", "Pocket Monsters Sun & Moon", "Pocket Monsters XY", "Pocket Monsters XY&Z", "Pocket Monsters. Mezase Pokémon Master"]
 
 [mappings.YuGiOh]
-dirs = ["Yu☆Gi☆Oh!", "Yu☆Gi☆Oh! Duel Monsters", "Yu-Gi-Oh! 5D's", "Yu-Gi-Oh! Duel Monsters Remaster Duelist Kingdom", "Yu☆Gi☆Oh! GX", "Yu☆Gi☆Oh! ARC-V", "Yu☆Gi☆Oh! ZEXAL", "Yu☆Gi☆Oh! ZEXAL II", "Yu☆Gi☆Oh! VRAINS", "Yu☆Gi☆Oh! SEVENS", "Yu☆Gi☆Oh! Go Rush!!"]
+dirs = ["Yu☆Gi☆Oh!", "Yu☆Gi☆Oh! Duel Monsters", "Yu-Gi-Oh! 5D’s", "Yu-Gi-Oh! Duel Monsters Remaster Duelist Kingdom", "Yu☆Gi☆Oh! Duel Monsters GX", "Yu☆Gi☆Oh! ARC-V", "Yu☆Gi☆Oh! ZEXAL", "Yu☆Gi☆Oh! ZEXAL II", "Yu☆Gi☆Oh! VRAINS", "Yu☆Gi☆Oh! SEVENS", "Yu☆Gi☆Oh! Go Rush!!"]
 
 [mappings.Jojo]
 dirs = ["JoJo no Kimyou na Bouken (TV)", "JoJo no Kimyou na Bouken. Stardust Crusaders", "JoJo no Kimyou na Bouken. Stardust Crusaders - Egypt-hen", "JoJo no Kimyou na Bouken. Diamond wa Kudakenai", "JoJo no Kimyou na Bouken. Ougon no Kaze", "JoJo no Kimyou na Bouken. Stone Ocean", "JoJo no Kimyou na Bouken. Stone Ocean Part 2", "JoJo no Kimyou na Bouken. Steel Ball Run"]
@@ -26,13 +26,13 @@ dirs = ["HUNTER×HUNTER", "HUNTER×HUNTER (2011)"]
 dirs = ["BLEACH", "BLEACH. Sennen Kessen-hen", "BLEACH. Sennen Kessen-hen - Ketsubetsu-tan", "BLEACH. Sennen Kessen-hen - Soukoku-tan"]
 
 [mappings.Gintama]
-dirs = ["Gintama", "Gintama°", "Gintama'", "Gintama'. Enchousen", "Gintama.. Porori-hen", "Gintama.. Shirogane no Tamashii-hen", "Gintama.. Shirogane no Tamashii-hen - Kouhan-sen", "Gintama. THE SEMI-FINAL"]
+dirs = ["Gintama", "Gintama°", "Gintama’", "Gintama’. Enchousen", "Gintama.. Porori-hen", "Gintama.. Shirogane no Tamashii-hen", "Gintama.. Shirogane no Tamashii-hen - Kouhan-sen", "Gintama. THE SEMI-FINAL"]
 
 [mappings.ShingekiNoKyojin]
 dirs = ["Shingeki no Kyojin", "Shingeki no Kyojin 2", "Shingeki no Kyojin 3", "Shingeki no Kyojin 3 Part 2", "Shingeki no Kyojin. The Final Season", "Shingeki no Kyojin. The Final Season Part 2", "Shingeki no Kyojin. The Final Season - Kanketsu-hen Zenpen", "Shingeki no Kyojin. The Final Season - Kanketsu-hen Kouhen"]
 
 [mappings.Aikatsu]
-dirs = ["Aikatsu!", "Aikatsu! 2", "Aikatsu! 3", "Aikatsu! 4", "Aikatsu Friends!", "Aikatsu Friends!. Kagayaki no Jewel", "Aikatsu on Parade!", "Aikatsu Planet!", "Aikatsu Stars!", "Aikatsu Stars!. Hoshi no Tsubasa"]
+dirs = ["Aikatsu!", "Aikatsu! 2", "Aikatsu! 3", "Aikatsu! 4", "Aikatsu Friends!", "Aikatsu Friends!. Kagayaki no Jewel", "Aikatsu on Parade!", "Aikatsu Planet!", "Aikatsu Stars!", "Aikatsu Stars! Hoshi no Tsubasa"]
 
 [mappings.KurokoBasket]
 dirs = ["Kuroko no Basket", "Kuroko no Basket 2nd SEASON", "Kuroko no Basket 3rd SEASON"]
@@ -53,7 +53,7 @@ dirs = ["Shokugeki no Souma", "Shokugeki no Souma. Ni no Sara", "Shokugeki no So
 dirs = ["Tensei Shitara Slime Datta Ken", "Tensei Shitara Slime Datta Ken 2nd Season", "Tensei Shitara Slime Datta Ken 2nd Season Part 2", "Tensei Shitara Slime Datta Ken 3rd Season", "Tensei Shitara Slime Datta Ken 4th Season", "Tensei Shitara Slime Datta Ken. Coleus no Yume", "Tensei Shitara Slime Datta Ken. Tensura Nikki", "Tensei Shitara Slime Datta Ken OVA"]
 
 [mappings.ReZero]
-dirs = ["Re.Zero kara Hajimeru Isekai Seikatsu", "Re.Zero kara Hajimeru Isekai Seikatsu 2nd Season", "Re.Zero kara Hajimeru Isekai Seikatsu 2nd Season Part 2", "Re.Zero kara Hajimeru Isekai Seikatsu 3rd Season", "Re.Zero kara Hajimeru Isekai Seikatsu 4th Season", "Re.Zero kara Hajimeru Isekai Seikatsu. OVAs"]
+dirs = ["Re.Zero kara Hajimeru Isekai Seikatsu", "Re.Zero kara Hajimeru Isekai Seikatsu 2nd Season", "Re.Zero kara Hajimeru Isekai Seikatsu 2nd Season Part 2", "Re.Zero kara Hajimeru Isekai Seikatsu 3rd Season", "Re.Zero kara Hajimeru Isekai Seikatsu 4th Season", "Re.Zero kara Hajimeru Isekai Seikatsu OVAs"]
 
 [mappings.SwordArtOnline]
 dirs = ["Sword Art Online", "Sword Art Online II", "Sword Art Online. Alicization", "Sword Art Online. Alicization - War of Underworld", "Sword Art Online. Alicization - War of Underworld Part 2", "Sword Art Online. Extra Edition"]
