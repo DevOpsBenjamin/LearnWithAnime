@@ -1,0 +1,86 @@
+[mappings.Naruto]
+dirs = ["NARUTO", "NARUTO. Shippuuden", "BORUTO. NARUTO NEXT GENERATIONS"]
+
+[mappings.DragonBall]
+dirs = ["Dragon Ball", "Dragon Ball Z", "Dragon Ball Super", "Dragon Ball GT", "Dragon Ball Kai", "Dragon Ball Kai (2014)", "Dragon Ball DAIMA"]
+
+[mappings.Pokemon]
+dirs = ["Pocket Monsters", "Pocket Monsters (2019)", "Pocket Monsters (2023)", "Pocket Monsters Advanced Generation", "Pocket Monsters Best Wishes!", "Pocket Monsters Best Wishes! Season 2", "Pocket Monsters Diamond & Pearl", "Pocket Monsters Sun & Moon", "Pocket Monsters XY", "Pocket Monsters XY&Z", "Pocket Monsters. Mezase Pokémon Master"]
+
+[mappings.YuGiOh]
+dirs = ["Yu☆Gi☆Oh!", "Yu☆Gi☆Oh! Duel Monsters", "Yu-Gi-Oh! 5D's", "Yu-Gi-Oh! Duel Monsters Remaster Duelist Kingdom", "Yu☆Gi☆Oh! GX", "Yu☆Gi☆Oh! ARC-V", "Yu☆Gi☆Oh! ZEXAL", "Yu☆Gi☆Oh! ZEXAL II", "Yu☆Gi☆Oh! VRAINS", "Yu☆Gi☆Oh! SEVENS", "Yu☆Gi☆Oh! Go Rush!!"]
+
+[mappings.Jojo]
+dirs = ["JoJo no Kimyou na Bouken (TV)", "JoJo no Kimyou na Bouken. Stardust Crusaders", "JoJo no Kimyou na Bouken. Stardust Crusaders - Egypt-hen", "JoJo no Kimyou na Bouken. Diamond wa Kudakenai", "JoJo no Kimyou na Bouken. Ougon no Kaze", "JoJo no Kimyou na Bouken. Stone Ocean", "JoJo no Kimyou na Bouken. Stone Ocean Part 2", "JoJo no Kimyou na Bouken. Steel Ball Run"]
+
+[mappings.Ranma]
+dirs = ["Ranma 1∕2", "Ranma 1∕2. Nettou-hen", "Ranma 1∕2 (2024)", "Ranma 1∕2 (2024) 2nd Season"]
+
+[mappings.FairyTail]
+dirs = ["FAIRY TAIL", "FAIRY TAIL (2014)", "FAIRY TAIL (2018)", "FAIRY TAIL. 100 YEARS QUEST"]
+
+[mappings.HunterXHunter]
+dirs = ["HUNTER×HUNTER", "HUNTER×HUNTER (2011)"]
+
+[mappings.Bleach]
+dirs = ["BLEACH", "BLEACH. Sennen Kessen-hen", "BLEACH. Sennen Kessen-hen - Ketsubetsu-tan", "BLEACH. Sennen Kessen-hen - Soukoku-tan"]
+
+[mappings.Gintama]
+dirs = ["Gintama", "Gintama°", "Gintama'", "Gintama'. Enchousen", "Gintama.. Porori-hen", "Gintama.. Shirogane no Tamashii-hen", "Gintama.. Shirogane no Tamashii-hen - Kouhan-sen", "Gintama. THE SEMI-FINAL"]
+
+[mappings.ShingekiNoKyojin]
+dirs = ["Shingeki no Kyojin", "Shingeki no Kyojin 2", "Shingeki no Kyojin 3", "Shingeki no Kyojin 3 Part 2", "Shingeki no Kyojin. The Final Season", "Shingeki no Kyojin. The Final Season Part 2", "Shingeki no Kyojin. The Final Season - Kanketsu-hen Zenpen", "Shingeki no Kyojin. The Final Season - Kanketsu-hen Kouhen"]
+
+[mappings.Aikatsu]
+dirs = ["Aikatsu!", "Aikatsu! 2", "Aikatsu! 3", "Aikatsu! 4", "Aikatsu Friends!", "Aikatsu Friends!. Kagayaki no Jewel", "Aikatsu on Parade!", "Aikatsu Planet!", "Aikatsu Stars!", "Aikatsu Stars!. Hoshi no Tsubasa"]
+
+[mappings.KurokoBasket]
+dirs = ["Kuroko no Basket", "Kuroko no Basket 2nd SEASON", "Kuroko no Basket 3rd SEASON"]
+
+[mappings.BokuNoHero]
+dirs = ["Boku no Hero Academia", "Boku no Hero Academia 2", "Boku no Hero Academia 3", "Boku no Hero Academia 4", "Boku no Hero Academia 5", "Boku no Hero Academia 6", "Boku no Hero Academia 7", "Boku no Hero Academia FINAL SEASON"]
+
+[mappings.KimetsuNoYaiba]
+dirs = ["Kimetsu no Yaiba", "Kimetsu no Yaiba. Mugen Ressha-hen (TV)", "Kimetsu no Yaiba. Yuukaku-hen", "Kimetsu no Yaiba. Katanakaji no Sato-hen", "Kimetsu no Yaiba. Hashira Geiko-hen"]
+
+[mappings.Haikyuu]
+dirs = ["Haikyuu!!", "Haikyuu!! 2nd Season", "Haikyuu!! TO THE TOP", "Haikyuu!! TO THE TOP 2", "Haikyuu!!. Karasuno Koukou VS Shiratorizawa Gakuen Koukou"]
+
+[mappings.ShokugekiNoSouma]
+dirs = ["Shokugeki no Souma", "Shokugeki no Souma. Ni no Sara", "Shokugeki no Souma. San no Sara", "Shokugeki no Souma. San no Sara - Tootsuki Ressha-hen", "Shokugeki no Souma. Gou no Sara", "Shokugeki no Souma. Shin no Sara"]
+
+[mappings.TenseiSlime]
+dirs = ["Tensei Shitara Slime Datta Ken", "Tensei Shitara Slime Datta Ken 2nd Season", "Tensei Shitara Slime Datta Ken 2nd Season Part 2", "Tensei Shitara Slime Datta Ken 3rd Season", "Tensei Shitara Slime Datta Ken 4th Season", "Tensei Shitara Slime Datta Ken. Coleus no Yume", "Tensei Shitara Slime Datta Ken. Tensura Nikki", "Tensei Shitara Slime Datta Ken OVA"]
+
+[mappings.ReZero]
+dirs = ["Re.Zero kara Hajimeru Isekai Seikatsu", "Re.Zero kara Hajimeru Isekai Seikatsu 2nd Season", "Re.Zero kara Hajimeru Isekai Seikatsu 2nd Season Part 2", "Re.Zero kara Hajimeru Isekai Seikatsu 3rd Season", "Re.Zero kara Hajimeru Isekai Seikatsu 4th Season", "Re.Zero kara Hajimeru Isekai Seikatsu. OVAs"]
+
+[mappings.SwordArtOnline]
+dirs = ["Sword Art Online", "Sword Art Online II", "Sword Art Online. Alicization", "Sword Art Online. Alicization - War of Underworld", "Sword Art Online. Alicization - War of Underworld Part 2", "Sword Art Online. Extra Edition"]
+
+[mappings.CodeGeass]
+dirs = ["Code Geass. Hangyaku no Lelouch", "Code Geass. Hangyaku no Lelouch R2"]
+
+[mappings.SteinsGate]
+dirs = ["Steins;Gate", "Steins;Gate 0"]
+
+[mappings.FullmetalAlchemist]
+dirs = ["Hagane no Renkinjutsushi", "Hagane no Renkinjutsushi. FULLMETAL ALCHEMIST"]
+
+[mappings.Kingdom]
+dirs = ["Kingdom", "Kingdom 2nd Season", "Kingdom 3rd Season", "Kingdom 4th Season", "Kingdom 5th Season", "Kingdom 6th Season"]
+
+[mappings.SpyFamily]
+dirs = ["SPY×FAMILY", "SPY×FAMILY Part 2", "SPY×FAMILY Season 2", "SPY×FAMILY Season 3"]
+
+[mappings.JujutsuKaisen]
+dirs = ["Jujutsu Kaisen", "Jujutsu Kaisen 2nd Season"]
+
+[mappings.OshiNoKo]
+dirs = ["[Oshi no Ko]", "[Oshi no Ko] 2nd Season", "[Oshi no Ko] 3rd Season"]
+
+[mappings.Dandadan]
+dirs = ["Dandadan", "Dandadan 2nd Season"]
+
+[mappings.VinlandSaga]
+dirs = ["VINLAND SAGA", "VINLAND SAGA SEASON 2"]
