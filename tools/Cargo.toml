@@ -15,8 +15,19 @@ path = "src/export_radicals.rs"
 name = "build-jmdict"
 path = "src/build_jmdict.rs"
 
+[[bin]]
+name = "export-kana"
+path = "src/export_kana.rs"
+
+[[bin]]
+name = "generate-cards"
+path = "src/generate_cards.rs"
+
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 quick-xml = "0.31"
 anyhow = "1"
+lindera = "0.39"
+lindera-dictionary = "0.39"
+uuid = { version = "1", features = ["v5"] }
