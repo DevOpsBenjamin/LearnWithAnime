@@ -11,10 +11,9 @@ if [ ! -f "$CONFIG" ]; then
 fi
 
 echo "=== Preparing $MERGED_DIR ==="
-rm -rf "$MERGED_DIR"
-mkdir -p "$MERGED_DIR"
+rm -rf "$MERGED_DIR" 2>/dev/null; mkdir -p "$MERGED_DIR"
 
-# --- Step 1: Parse merge groups ---
+# --- Parse merge groups ---
 declare -a GROUP_NAMES=()
 declare -a GROUP_DIRS=()
 while IFS= read -r line; do
@@ -37,15 +36,15 @@ while IFS= read -r line; do
             entry="$(echo "$entry" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
             entry="${entry#\"}"
             entry="${entry%\"}"
-            [ -n "$entry" ] && [ -z "$acc" ] && acc="$entry"
-            [ -n "$entry" ] && [ -n "$acc" ] && acc="$acc|$entry"
+            if [ -n "$entry" ]; then
+                if [ -z "$acc" ]; then acc="$entry"; else acc="$acc|$entry"; fi
+            fi
         done
         GROUP_DIRS[${#GROUP_DIRS[@]}-1]="$acc"
     fi
 done < "$CONFIG"
-echo "   ${#GROUP_NAMES[@]} merge groups defined"
 
-# Collect all source dir names that are part of merge groups
+# Collect member dirs
 group_members=""
 for dirlist in "${GROUP_DIRS[@]}"; do
     IFS='|' read -ra dirs <<< "$dirlist"
@@ -54,55 +53,45 @@ for dirlist in "${GROUP_DIRS[@]}"; do
     done
 done
 
-# --- Step 2: Process merge groups ---
+# --- Merge groups ---
+echo ""
+echo "--- Merge groups ---"
 for ((i = 0; i < ${#GROUP_NAMES[@]}; i++)); do
     group="${GROUP_NAMES[$i]}"
     mkdir -p "$MERGED_DIR/$group"
-
     IFS='|' read -ra dirs <<< "${GROUP_DIRS[$i]}"
-    total=0
     for d in "${dirs[@]}"; do
         src="$SOURCE_DIR/$d"
-        if [ ! -d "$src" ]; then
-            echo "   SKIP (not found): $d"
-            continue
-        fi
-        slug="$(echo "$d" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')"
-        while IFS= read -r -d '' f; do
-            fname="$(basename "$f")"
-            ln -sf "$(realpath "$f")" "$MERGED_DIR/$group/${slug}__${fname}"
-            total=$((total + 1))
-        done < <(find "$src" -maxdepth 3 \( -name '*.srt' -o -name '*.ass' \) -print0)
+        [ -d "$src" ] && cp -rs "$(realpath "$src")" "$MERGED_DIR/$group/" 2>/dev/null || true
     done
+    total=$(find "$MERGED_DIR/$group" -type l \( -name '*.srt' -o -name '*.ass' \) 2>/dev/null | wc -l | tr -d ' ')
     echo "   $group → $total files"
 done
 
-# --- Step 3: Add individual anime (50+ files, not in any merge group) ---
-count=0
-skipped=0
+# --- Precompute 50+ anime ---
+echo ""
+echo "--- Individual 50+ ---"
+eligible=""
 for d in "$SOURCE_DIR"/*/; do
     name="$(basename "$d")"
-    files="$(find "$d" -maxdepth 3 \( -name '*.srt' -o -name '*.ass' \) 2>/dev/null | wc -l | tr -d ' ')"
+    files=$(find "$d" -maxdepth 3 \( -name '*.srt' -o -name '*.ass' \) 2>/dev/null | wc -l | tr -d ' ')
+    [ "$files" -ge 50 ] || continue
+    eligible="$eligible|$name"
+done
 
-    [ "$files" -lt 50 ] && { skipped=$((skipped + 1)); continue; }
-
-    # Skip if already part of a merge group
+count=0
+IFS='|' read -ra names <<< "$eligible"
+for name in "${names[@]}"; do
+    [ -z "$name" ] && continue
     if echo "$group_members" | grep -F -q "|$name|"; then
-        skipped=$((skipped + 1))
         continue
     fi
-
-    mkdir -p "$MERGED_DIR/$name"
-    while IFS= read -r -d '' f; do
-        fname="$(basename "$f")"
-        ln -sf "$(realpath "$f")" "$MERGED_DIR/$name/${fname}"
-    done < <(find "$d" -maxdepth 3 \( -name '*.srt' -o -name '*.ass' \) -print0)
+    cp -rs "$(realpath "$SOURCE_DIR/$name")" "$MERGED_DIR/" 2>/dev/null || true
     count=$((count + 1))
 done
 
 echo ""
 echo "=== Summary ==="
-echo "   Merged groups:  ${#GROUP_NAMES[@]}"
+echo "   Merge groups:  ${#GROUP_NAMES[@]}"
 echo "   Individual 50+: $count"
-echo "   Skipped (<50 or in merge): $skipped"
-echo "   Total in $MERGED_DIR: $(ls -d "$MERGED_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ') anime"
+echo "   Total: $(ls -d "$MERGED_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ') anime"
