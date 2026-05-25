@@ -179,6 +179,9 @@ fn load_json_files<T: for<'de> serde::Deserialize<'de>>(
     dir: &Path,
 ) -> Result<Vec<(String, T)>, LoadError> {
     let mut results = Vec::new();
+    if !dir.exists() {
+        return Ok(results);
+    }
     let entries = fs::read_dir(dir)
         .map_err(|e| LoadError::Io(format!("Cannot read directory {}: {}", dir.display(), e)))?;
 
