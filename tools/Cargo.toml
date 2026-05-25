@@ -23,11 +23,13 @@ path = "src/export_kana.rs"
 name = "generate-cards"
 path = "src/generate_cards.rs"
 
+[[bin]]
+name = "extract-anime-freq"
+path = "src/extract_anime_freq.rs"
+
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 quick-xml = "0.31"
 anyhow = "1"
-lindera = "0.39"
-lindera-dictionary = "0.39"
 uuid = { version = "1", features = ["v5"] }
