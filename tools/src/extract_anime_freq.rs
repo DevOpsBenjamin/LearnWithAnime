@@ -1,12 +1,46 @@
 use std::collections::HashMap;
 use std::fs;
 use std::io::{BufRead, BufReader, Write};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
+struct Args {
+    sources: Vec<PathBuf>,
+    merge: bool,
+}
+
+fn parse_args() -> Args {
+    let mut sources = Vec::new();
+    let mut merge = false;
+    let mut i = 1;
+    let raw: Vec<String> = std::env::args().collect();
+    while i < raw.len() {
+        match raw[i].as_str() {
+            "--source" => {
+                i += 1;
+                sources.push(PathBuf::from(&raw[i]));
+            }
+            "--merge" => merge = true,
+            other => {
+                eprintln!("Unknown arg: {}", other);
+                std::process::exit(1);
+            }
+        }
+        i += 1;
+    }
+    if sources.is_empty() {
+        sources.push(
+            Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join("_sources")
+                .join("JP-Subtitles"),
+        );
+    }
+    Args { sources, merge }
+}
+
 fn main() {
+    let args = parse_args();
     let root = Path::new(env!("CARGO_MANIFEST_DIR"));
-    let sources_dir = root.join("_sources").join("JP-Subtitles");
     let output_dir = root.join("data").join("anime_freq");
     fs::create_dir_all(&output_dir).expect("Cannot create anime_freq dir");
 
@@ -16,42 +50,65 @@ fn main() {
         std::process::exit(1);
     }
 
-    println!("🔍 Scanning subtitle directories...");
-    let entries = fs::read_dir(&sources_dir).expect("Cannot read JP-Subtitles dir");
-    let mut anime_dirs: Vec<String> = Vec::new();
-    for entry in entries {
-        let entry = entry.expect("Cannot read entry");
-        if entry.path().is_dir() {
+    // Count total anime across all sources
+    let mut all_anime: Vec<(String, PathBuf)> = Vec::new(); // (name, dir)
+    for src in &args.sources {
+        if !src.exists() {
+            eprintln!("⚠️ Source not found: {}", src.display());
+            continue;
+        }
+        let entries = match fs::read_dir(src) {
+            Ok(e) => e,
+            Err(e) => {
+                eprintln!("⚠️ Cannot read {}: {}", src.display(), e);
+                continue;
+            }
+        };
+        for entry in entries {
+            let entry = match entry {
+                Ok(e) => e,
+                Err(_) => continue,
+            };
+            let path = entry.path();
+            if !path.is_dir() {
+                continue;
+            }
             if let Some(name) = entry.file_name().to_str() {
-                anime_dirs.push(name.to_string());
+                if name.starts_with('.') {
+                    continue;
+                }
+                all_anime.push((name.to_string(), path));
             }
         }
     }
-    anime_dirs.sort();
-    println!("   {} anime directories found", anime_dirs.len());
+    all_anime.sort_by(|a, b| a.0.cmp(&b.0));
 
-    println!("📖 Processing with MeCab tokenizer...");
-    let total = anime_dirs.len();
+    let total = all_anime.len();
+    println!("📂 {} anime found across {} source(s)", total, args.sources.len());
+    println!("🔧 Initializing MeCab...");
 
-    for (idx, anime_name) in anime_dirs.iter().enumerate() {
-        let anime_dir = sources_dir.join(anime_name);
-        let files = collect_subtitle_files(&anime_dir);
+    // How to count total effort: we'll collect subtitle files for each anime first
+    // Use a single persistent mecab process
+    println!("📖 Processing...");
+
+    for (idx, (anime_name, anime_dir)) in all_anime.iter().enumerate() {
+        let files = collect_subtitle_files_recursive(anime_dir);
+
         if files.is_empty() {
-            if (idx + 1) % 100 == 0 || idx == 0 {
-                println!("   [{}/{}] {} (skipped: no files)", idx + 1, total, anime_name);
-                std::io::stdout().flush().ok();
-            }
+            println!("   [{}/{}] {} (skipped)", idx + 1, total, anime_name);
+            std::io::stdout().flush().ok();
             continue;
         }
 
         let text = extract_text_from_files(&files);
-        if text.is_empty() {
-            if (idx + 1) % 100 == 0 || idx == 0 {
-                println!("   [{}/{}] {} (skipped: no text)", idx + 1, total, anime_name);
-                std::io::stdout().flush().ok();
-            }
+        if text.trim().is_empty() {
+            println!("   [{}/{}] {} (no text)", idx + 1, total, anime_name);
+            std::io::stdout().flush().ok();
             continue;
         }
+
+        println!("   [{}/{}] {} → parsing {} files...", idx + 1, total, anime_name, files.len());
+        std::io::stdout().flush().ok();
 
         let word_counts = match count_words_mecab(&text) {
             Ok(map) => map,
@@ -62,14 +119,30 @@ fn main() {
         };
 
         if word_counts.is_empty() {
+            println!("   [{}/{}] {} (0 words)", idx + 1, total, anime_name);
+            std::io::stdout().flush().ok();
             continue;
         }
 
         let slug = slugify(anime_name);
         let out_path = output_dir.join(format!("{}.jsonl", slug));
+
+        // Load existing counts if --merge
+        let mut merged = if args.merge && out_path.exists() {
+            load_existing_counts(&out_path)
+        } else {
+            HashMap::new()
+        };
+
+        // Add new counts
+        for (word, count) in &word_counts {
+            *merged.entry(word.clone()).or_insert(0) += count;
+        }
+
+        // Write output
         let mut content = String::new();
         let mut entries: Vec<(&str, u64)> =
-            word_counts.iter().map(|(w, c)| (w.as_str(), *c)).collect();
+            merged.iter().map(|(w, c)| (w.as_str(), *c)).collect();
         entries.sort_by(|a, b| b.1.cmp(&a.1));
         for (word, count) in &entries {
             content.push_str(
@@ -79,22 +152,47 @@ fn main() {
         }
         fs::write(&out_path, &content).expect("Cannot write anime freq file");
 
-        if (idx + 1) % 50 == 0 || idx == total - 1 || idx == 0 {
-            let pct = (idx + 1) as f64 / total as f64 * 100.0;
-            println!("   [{}/{}] {}: {} words, {} files ({:.0}%)",
-                idx + 1, total, anime_name, word_counts.len(), files.len(), pct);
-            std::io::stdout().flush().ok();
-        }
+        let pct = (idx + 1) as f64 / total as f64 * 100.0;
+        println!("   [{}/{}] {}: {} words, {} files ({:.0}%)",
+            idx + 1, total, anime_name, merged.len(), files.len(), pct);
+        std::io::stdout().flush().ok();
     }
 
-    println!("\n✅ Done! Files in {}", output_dir.display());
+    println!("\n✅ Done! {} anime in {}", all_anime.len(), output_dir.display());
 }
 
-fn collect_subtitle_files(dir: &Path) -> Vec<String> {
+fn load_existing_counts(path: &Path) -> HashMap<String, u64> {
+    let mut map = HashMap::new();
+    let content = match fs::read_to_string(path) {
+        Ok(c) => c,
+        Err(_) => return map,
+    };
+    for line in content.lines() {
+        let line = line.trim();
+        if line.is_empty() {
+            continue;
+        }
+        if let Ok(v) = serde_json::from_str::<serde_json::Value>(line) {
+            let word = v["word"].as_str().unwrap_or_default().to_string();
+            let count = v["count"].as_u64().unwrap_or(0);
+            if !word.is_empty() {
+                map.insert(word, count);
+            }
+        }
+    }
+    map
+}
+
+fn collect_subtitle_files_recursive(dir: &Path) -> Vec<String> {
     let mut files = Vec::new();
+    collect_subtitle_files_inner(dir, &mut files);
+    files
+}
+
+fn collect_subtitle_files_inner(dir: &Path, files: &mut Vec<String>) {
     let entries = match fs::read_dir(dir) {
         Ok(e) => e,
-        Err(_) => return files,
+        Err(_) => return,
     };
     for entry in entries {
         let entry = match entry {
@@ -102,10 +200,9 @@ fn collect_subtitle_files(dir: &Path) -> Vec<String> {
             Err(_) => continue,
         };
         let path = entry.path();
-        if !path.is_file() {
-            continue;
-        }
-        if let Some(ext) = path.extension().and_then(|e| e.to_str()) {
+        if path.is_dir() {
+            collect_subtitle_files_inner(&path, files);
+        } else if let Some(ext) = path.extension().and_then(|e| e.to_str()) {
             if ext == "srt" || ext == "ass" || ext == "txt" {
                 if let Some(p) = path.to_str() {
                     files.push(p.to_string());
@@ -113,7 +210,6 @@ fn collect_subtitle_files(dir: &Path) -> Vec<String> {
             }
         }
     }
-    files
 }
 
 fn extract_text_from_files(files: &[String]) -> String {
@@ -212,7 +308,6 @@ fn count_words_mecab(text: &str) -> Result<HashMap<String, u64>, String> {
         .spawn()
         .map_err(|e| format!("Cannot spawn mecab: {}", e))?;
 
-    // Feed Japanese text line by line with newlines as sentence boundaries
     {
         let stdin = child.stdin.as_mut().unwrap();
         for line in text.lines() {
@@ -225,20 +320,11 @@ fn count_words_mecab(text: &str) -> Result<HashMap<String, u64>, String> {
         }
     }
 
-    // Read output
     let reader = BufReader::new(child.stdout.take().unwrap());
     let mut counts: HashMap<String, u64> = HashMap::new();
 
-    // Skip POS categories we don't want
     let skip_pos = &[
-        "助詞",       // particle
-        "助動詞",     // auxiliary verb
-        "記号",       // symbol
-        "補助記号",   // supplementary symbol
-        "接続詞",     // conjunction
-        "連体詞",     // pre-noun adjectival
-        "フィラー",   // filler (あのー, えーと)
-        "接頭詞",     // prefix
+        "助詞", "助動詞", "記号", "補助記号", "接続詞", "連体詞", "フィラー", "接頭詞",
     ];
 
     for line in reader.lines() {
@@ -248,7 +334,6 @@ fn count_words_mecab(text: &str) -> Result<HashMap<String, u64>, String> {
             continue;
         }
 
-        // Format: 表層形\t品詞,品詞細分類1,...,原形,読み,発音
         let parts: Vec<&str> = line.split('\t').collect();
         if parts.len() < 2 {
             continue;
@@ -262,17 +347,14 @@ fn count_words_mecab(text: &str) -> Result<HashMap<String, u64>, String> {
 
         let pos = features[0];
 
-        // Skip unwanted POS
         if skip_pos.contains(&pos) {
             continue;
         }
 
-        // Skip 1-character tokens (particles, single kana)
         if surface.len() < 2 {
             continue;
         }
 
-        // Use the dictionary form (原形) at index 6 if available, otherwise surface
         let word = features.get(6).unwrap_or(&surface);
         if word.len() < 2 {
             continue;
