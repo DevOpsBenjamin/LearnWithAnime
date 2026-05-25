@@ -39,23 +39,19 @@ fn main() {
         let anime_dir = sources_dir.join(anime_name);
         let files = collect_subtitle_files(&anime_dir);
         if files.is_empty() {
-            if (idx + 1) % 10 == 0 || idx == 0 {
-                let pct = (idx + 1) as f64 / total as f64 * 100.0;
-                println!("   [{}/{}] {} (skipped: no files) {:.0}%",
-                    idx + 1, total, anime_name, pct);
-                std::io::stdout().flush().ok();
-            }
+            let pct = (idx + 1) as f64 / total as f64 * 100.0;
+            println!("   [{}/{}] {} (skipped) {:.0}%",
+                idx + 1, total, anime_name, pct);
+            std::io::stdout().flush().ok();
             continue;
         }
 
         let text = extract_text_from_files(&files);
         if text.is_empty() {
-            if (idx + 1) % 10 == 0 || idx == 0 {
-                let pct = (idx + 1) as f64 / total as f64 * 100.0;
-                println!("   [{}/{}] {} (skipped: no text) {:.0}%",
-                    idx + 1, total, anime_name, pct);
-                std::io::stdout().flush().ok();
-            }
+            let pct = (idx + 1) as f64 / total as f64 * 100.0;
+            println!("   [{}/{}] {} (no text) {:.0}%",
+                idx + 1, total, anime_name, pct);
+            std::io::stdout().flush().ok();
             continue;
         }
 
@@ -85,56 +81,10 @@ fn main() {
         }
         fs::write(&out_path, &content).expect("Cannot write anime freq file");
 
-        if (idx + 1) % 10 == 0 || idx == total - 1 || idx == 0 {
-            let pct = (idx + 1) as f64 / total as f64 * 100.0;
-            println!("   [{}/{}] {}: {} words, {} files ({:.0}%)",
-                idx + 1, total, anime_name, word_counts.len(), files.len(), pct);
-            std::io::stdout().flush().ok();
-        }
-            continue;
-        }
-
-        let text = extract_text_from_files(&files);
-        if text.is_empty() {
-            if (idx + 1) % 100 == 0 || idx == 0 {
-                println!("   [{}/{}] {} (skipped: no text)", idx + 1, total, anime_name);
-                std::io::stdout().flush().ok();
-            }
-            continue;
-        }
-
-        let word_counts = match count_words_mecab(&text) {
-            Ok(map) => map,
-            Err(e) => {
-                eprintln!("   ⚠️ {}: {}", anime_name, e);
-                continue;
-            }
-        };
-
-        if word_counts.is_empty() {
-            continue;
-        }
-
-        let slug = slugify(anime_name);
-        let out_path = output_dir.join(format!("{}.jsonl", slug));
-        let mut content = String::new();
-        let mut entries: Vec<(&str, u64)> =
-            word_counts.iter().map(|(w, c)| (w.as_str(), *c)).collect();
-        entries.sort_by(|a, b| b.1.cmp(&a.1));
-        for (word, count) in &entries {
-            content.push_str(
-                &serde_json::json!({ "word": word, "count": count }).to_string(),
-            );
-            content.push('\n');
-        }
-        fs::write(&out_path, &content).expect("Cannot write anime freq file");
-
-        if (idx + 1) % 10 == 0 || idx == total - 1 || idx == 0 {
-            let pct = (idx + 1) as f64 / total as f64 * 100.0;
-            println!("   [{}/{}] {}: {} words, {} files ({:.0}%)",
-                idx + 1, total, anime_name, word_counts.len(), files.len(), pct);
-            std::io::stdout().flush().ok();
-        }
+        let pct = (idx + 1) as f64 / total as f64 * 100.0;
+        println!("   [{}/{}] {}: {} words, {} files ({:.0}%)",
+            idx + 1, total, anime_name, word_counts.len(), files.len(), pct);
+        std::io::stdout().flush().ok();
     }
 
     println!("\n✅ Done! Files in {}", output_dir.display());
